@@ -16,5 +16,10 @@ namespace PetShop
         {
             InitializeComponent();
         }
+
+        private void produk_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
