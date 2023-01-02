@@ -342,6 +342,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "halaman_utama";
             this.Text = "halaman_utama";
+            this.Load += new System.EventHandler(this.halaman_utama_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel9.ResumeLayout(false);
