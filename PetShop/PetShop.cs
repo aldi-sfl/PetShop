@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace PetShop
 {
-    public partial class halaman_utama : Form
+    public partial class PetShop : Form
     {
-        public halaman_utama()
+        public PetShop()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void halaman_utama_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
