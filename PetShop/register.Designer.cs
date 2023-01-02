@@ -33,15 +33,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtnama = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txtalamat = new System.Windows.Forms.TextBox();
+            this.txthp = new System.Windows.Forms.TextBox();
+            this.txtemail = new System.Windows.Forms.TextBox();
+            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.btsave = new System.Windows.Forms.Button();
+            this.btcanccel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -94,13 +93,13 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "email";
             // 
-            // textBox1
+            // txtnama
             // 
-            this.textBox1.Location = new System.Drawing.Point(156, 67);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(348, 23);
-            this.textBox1.TabIndex = 1;
+            this.txtnama.Location = new System.Drawing.Point(156, 67);
+            this.txtnama.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtnama.Name = "txtnama";
+            this.txtnama.Size = new System.Drawing.Size(348, 23);
+            this.txtnama.TabIndex = 1;
             // 
             // label6
             // 
@@ -112,70 +111,61 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Password";
             // 
-            // textBox2
+            // txtalamat
             // 
-            this.textBox2.Location = new System.Drawing.Point(158, 104);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(348, 23);
-            this.textBox2.TabIndex = 1;
+            this.txtalamat.Location = new System.Drawing.Point(158, 104);
+            this.txtalamat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtalamat.Name = "txtalamat";
+            this.txtalamat.Size = new System.Drawing.Size(348, 23);
+            this.txtalamat.TabIndex = 1;
             // 
-            // textBox3
+            // txthp
             // 
-            this.textBox3.Location = new System.Drawing.Point(156, 141);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(348, 23);
-            this.textBox3.TabIndex = 1;
+            this.txthp.Location = new System.Drawing.Point(156, 141);
+            this.txthp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txthp.Name = "txthp";
+            this.txthp.Size = new System.Drawing.Size(348, 23);
+            this.txthp.TabIndex = 1;
             // 
-            // textBox4
+            // txtemail
             // 
-            this.textBox4.Location = new System.Drawing.Point(158, 177);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(348, 23);
-            this.textBox4.TabIndex = 1;
+            this.txtemail.Location = new System.Drawing.Point(158, 177);
+            this.txtemail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(348, 23);
+            this.txtemail.TabIndex = 1;
             // 
-            // textBox5
+            // txtpassword
             // 
-            this.textBox5.Location = new System.Drawing.Point(166, 213);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(348, 23);
-            this.textBox5.TabIndex = 1;
+            this.txtpassword.Location = new System.Drawing.Point(158, 212);
+            this.txtpassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(348, 23);
+            this.txtpassword.TabIndex = 1;
             // 
-            // button1
+            // btsave
             // 
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(69, 267);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btsave.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btsave.Location = new System.Drawing.Point(69, 267);
+            this.btsave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btsave.Name = "btsave";
+            this.btsave.Size = new System.Drawing.Size(102, 40);
+            this.btsave.TabIndex = 2;
+            this.btsave.Text = "Save";
+            this.btsave.UseVisualStyleBackColor = true;
+            this.btsave.Click += new System.EventHandler(this.btsave_Click);
             // 
-            // button2
+            // btcanccel
             // 
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(233, 269);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 40);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(403, 267);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 40);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btcanccel.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btcanccel.Location = new System.Drawing.Point(403, 267);
+            this.btcanccel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btcanccel.Name = "btcanccel";
+            this.btcanccel.Size = new System.Drawing.Size(102, 40);
+            this.btcanccel.TabIndex = 2;
+            this.btcanccel.Text = "Cancel";
+            this.btcanccel.UseVisualStyleBackColor = true;
+            this.btcanccel.Click += new System.EventHandler(this.btcanccel_Click);
             // 
             // register
             // 
@@ -183,14 +173,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(613, 338);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btcanccel);
+            this.Controls.Add(this.btsave);
+            this.Controls.Add(this.txtpassword);
+            this.Controls.Add(this.txtemail);
+            this.Controls.Add(this.txthp);
+            this.Controls.Add(this.txtalamat);
+            this.Controls.Add(this.txtnama);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -200,6 +189,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "register";
             this.Text = "Name";
+            this.Load += new System.EventHandler(this.register_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,14 +202,13 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox1;
+        private TextBox txtnama;
         private Label label6;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private TextBox txtalamat;
+        private TextBox txthp;
+        private TextBox txtemail;
+        private TextBox txtpassword;
+        private Button btsave;
+        private Button btcanccel;
     }
 }
