@@ -34,8 +34,6 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,7 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvtampil = new System.Windows.Forms.DataGridView();
+            this.bttampil = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel6.SuspendLayout();
@@ -64,7 +63,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvtampil)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -94,11 +93,11 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Window;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(35, 8);
+            this.label6.Location = new System.Drawing.Point(17, 29);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 17);
+            this.label6.Size = new System.Drawing.Size(128, 17);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Product";
+            this.label6.Text = "tampilkan produk";
             // 
             // pictureBox4
             // 
@@ -115,10 +114,9 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Azure;
+            this.panel6.Controls.Add(this.bttampil);
             this.panel6.Controls.Add(this.pictureBox7);
-            this.panel6.Controls.Add(this.comboBox1);
             this.panel6.Controls.Add(this.pictureBox6);
-            this.panel6.Controls.Add(this.label11);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Location = new System.Drawing.Point(24, 8);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -136,26 +134,6 @@
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 9;
             this.pictureBox7.TabStop = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(35, 50);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(116, 23);
-            this.comboBox1.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.SystemColors.Window;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(38, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 16);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Kategori";
             // 
             // label5
             // 
@@ -303,7 +281,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dgvtampil);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(182, 9);
@@ -312,15 +290,24 @@
             this.panel1.Size = new System.Drawing.Size(507, 292);
             this.panel1.TabIndex = 5;
             // 
-            // dataGridView1
+            // dgvtampil
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 124);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(470, 150);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvtampil.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvtampil.Location = new System.Drawing.Point(24, 124);
+            this.dgvtampil.Name = "dgvtampil";
+            this.dgvtampil.RowTemplate.Height = 25;
+            this.dgvtampil.Size = new System.Drawing.Size(470, 150);
+            this.dgvtampil.TabIndex = 1;
+            this.dgvtampil.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // bttampil
+            // 
+            this.bttampil.Location = new System.Drawing.Point(162, 29);
+            this.bttampil.Name = "bttampil";
+            this.bttampil.Size = new System.Drawing.Size(75, 23);
+            this.bttampil.TabIndex = 10;
+            this.bttampil.Text = "tampilkan";
+            this.bttampil.UseVisualStyleBackColor = true;
             // 
             // produk
             // 
@@ -358,7 +345,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvtampil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,8 +372,7 @@
         private PictureBox pictureBox1;
         private Panel panel1;
         private PictureBox pictureBox7;
-        private ComboBox comboBox1;
-        private Label label11;
-        private DataGridView dataGridView1;
+        private DataGridView dgvtampil;
+        private Button bttampil;
     }
 }

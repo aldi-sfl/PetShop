@@ -10,7 +10,7 @@ namespace PetShop
             InitializeComponent();
         }
         SqlConnection con = new SqlConnection
-                (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=petshopp;Integrated Security=True");
+                (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop;Integrated Security=True");
 
         
 
@@ -32,7 +32,7 @@ private bool ValidateCredentials(string email, string password)
             con.Open();
 
             // Check if the username and password match a record in the database
-            string query = "SELECT COUNT(*) FROM tb_user WHERE nama = @username AND password = @password";
+            string query = "SELECT COUNT(*) FROM Customers WHERE Email = @email AND Password = @password";
             SqlCommand command = new SqlCommand(query, con);
             command.Parameters.AddWithValue("@email", email);
             command.Parameters.AddWithValue("@password", password);
@@ -74,10 +74,18 @@ private bool ValidateCredentials(string email, string password)
 
         }
 
-        private void btadmin_Click(object sender, EventArgs e)
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+ 
+
+        private void btadmin_Click_1(object sender, EventArgs e)
         {
             login_admin admin = new login_admin();
-            admin.Show();   
+            admin.Show();
             this.Hide();
         }
     }

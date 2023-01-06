@@ -22,17 +22,11 @@ namespace PetShop
         public register()
         {
             InitializeComponent();
-            txtid.ReadOnly= true;
+            
         }
         SqlConnection con = new SqlConnection
-        (@"Data Source=LAPTOP-D2PPFK1M;Initial Catalog=PetShopp;Integrated Security=True");
+        (@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop;Integrated Security=True");
 
-
-
-
-       
-
-        
 
 
         private void register_Load(object sender, EventArgs e)
@@ -47,6 +41,7 @@ namespace PetShop
             txthp.Clear();
             txtemail.Clear();
             txtpassword.Clear();
+            txtId.Clear();
         }
         
 
@@ -92,6 +87,11 @@ namespace PetShop
                 MessageBox.Show("alamat harus diisi.");
                 return;
             }
+
+            MessageBox.Show("register berhasil");
+            Form1 balik = new Form1();
+            balik.Show();
+            this.Hide();
 
             
 

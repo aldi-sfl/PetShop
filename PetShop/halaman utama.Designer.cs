@@ -314,11 +314,11 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(80, 332);
+            this.button4.Location = new System.Drawing.Point(80, 325);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(131, 35);
             this.button4.TabIndex = 4;
-            this.button4.Text = "password";
+            this.button4.Text = "keluar";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // halaman_utama

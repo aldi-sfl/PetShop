@@ -20,6 +20,7 @@ namespace PetShop
             
         }
 
+        /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
             (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop;Integrated Security=True");
 
@@ -171,6 +172,13 @@ namespace PetShop
             showdata();
             reset();
 
+        }
+
+        private void btexit_Click(object sender, EventArgs e)
+        {
+            Form1 balik = new Form1();
+            balik.Show();
+            this.Hide();
         }
     }
 }
