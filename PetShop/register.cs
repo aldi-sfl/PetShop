@@ -27,7 +27,7 @@ namespace PetShop
 
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
-        (@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop;Integrated Security=True");
+        (@"Data Source=LAPTOP-RSFBMM3I\XFRHK;Initial Catalog=db_PetShop;Integrated Security=True");
 
 
 
@@ -59,13 +59,20 @@ namespace PetShop
             sqlcmd.CommandType = CommandType.Text;
             sqlcmd.CommandText = "INSERT INTO Customers values ('" + txtId.Text + "','" + txtnama.Text + "','" + txthp.Text + "','" + txtemail.Text + "', '" + txtpassword.Text + "', '" + txtalamat.Text + "')";
 
-            string nama, email, nohp, alamat;
-
+            string nama, email /*= "SELECT COUNT(*) FROM Users WHERE Email = @email"*/, nohp, alamat;
+            //sqlcmd.Parameters.AddWithValue("@email", email);
             nama = txtnama.Text;
             email = txtemail.Text;
             nohp = txthp.Text;
             alamat = txtalamat.Text;
 
+            //menghindari data duplicate
+            //int count = (int)sqlcmd.ExecuteScalar();
+            //if (count > 0)
+            //{
+            //    MessageBox.Show("This username is already taken. Please choose a different one.");
+            //    return;
+            //}
             if (string.IsNullOrEmpty(nama))
             {
                 MessageBox.Show("nama harus diisi.");
