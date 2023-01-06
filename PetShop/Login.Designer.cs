@@ -32,8 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnregis = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,7 +41,7 @@
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btlogin = new System.Windows.Forms.Button();
-            this.btnregis = new System.Windows.Forms.Button();
+            this.btadmin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -82,14 +82,24 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Orange;
+            this.panel2.Controls.Add(this.btadmin);
             this.panel2.Controls.Add(this.btnregis);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label9);
             this.panel2.Location = new System.Drawing.Point(0, 297);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(373, 99);
             this.panel2.TabIndex = 1;
+            // 
+            // btnregis
+            // 
+            this.btnregis.Location = new System.Drawing.Point(12, 9);
+            this.btnregis.Name = "btnregis";
+            this.btnregis.Size = new System.Drawing.Size(75, 23);
+            this.btnregis.TabIndex = 5;
+            this.btnregis.Text = "register";
+            this.btnregis.UseVisualStyleBackColor = true;
+            this.btnregis.Click += new System.EventHandler(this.btnregis_Click);
             // 
             // label8
             // 
@@ -100,17 +110,6 @@
             this.label8.Size = new System.Drawing.Size(75, 17);
             this.label8.TabIndex = 3;
             this.label8.Text = "Buat Akun";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(273, 15);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(93, 17);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Login Admin";
-            this.label9.Click += new System.EventHandler(this.label2_Click);
             // 
             // label2
             // 
@@ -129,9 +128,9 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(104, 135);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 23);
+            this.label3.Size = new System.Drawing.Size(63, 23);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Username";
+            this.label3.Text = "email";
             this.label3.Click += new System.EventHandler(this.label2_Click);
             // 
             // label4
@@ -184,15 +183,15 @@
             this.btlogin.UseVisualStyleBackColor = false;
             this.btlogin.Click += new System.EventHandler(this.btlogin_Click);
             // 
-            // btnregis
+            // btadmin
             // 
-            this.btnregis.Location = new System.Drawing.Point(12, 9);
-            this.btnregis.Name = "btnregis";
-            this.btnregis.Size = new System.Drawing.Size(75, 23);
-            this.btnregis.TabIndex = 5;
-            this.btnregis.Text = "register";
-            this.btnregis.UseVisualStyleBackColor = true;
-            this.btnregis.Click += new System.EventHandler(this.btnregis_Click);
+            this.btadmin.Location = new System.Drawing.Point(284, 9);
+            this.btadmin.Name = "btadmin";
+            this.btadmin.Size = new System.Drawing.Size(75, 23);
+            this.btadmin.TabIndex = 5;
+            this.btadmin.Text = "admin";
+            this.btadmin.UseVisualStyleBackColor = true;
+            this.btadmin.Click += new System.EventHandler(this.btadmin_Click);
             // 
             // Form1
             // 
@@ -235,7 +234,7 @@
         private Label label5;
         private Button btlogin;
         private Label label8;
-        private Label label9;
         private Button btnregis;
+        private Button btadmin;
     }
 }

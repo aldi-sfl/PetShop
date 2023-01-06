@@ -24,12 +24,12 @@ namespace PetShop
 private bool ValidateCredentials(string username, string password)
     {
             SqlConnection con = new SqlConnection
-                (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=petshop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshop;Integrated Security=True");
             {
             con.Open();
 
             // Check if the username and password match a record in the database
-            string query = "SELECT COUNT(*) FROM tb_user WHERE nama = @username AND password = @password";
+            string query = "SELECT COUNT(*) FROM CUstomer WHERE Email = @username AND password = @password";
             SqlCommand command = new SqlCommand(query, con);
             command.Parameters.AddWithValue("@username", username);
             command.Parameters.AddWithValue("@password", password);
@@ -68,6 +68,13 @@ private bool ValidateCredentials(string username, string password)
             registrationForm.Show();
             this.Hide();
 
+        }
+
+        private void btadmin_Click(object sender, EventArgs e)
+        {
+            login_admin admin = new login_admin();
+            admin.Show();   
+            this.Hide();
         }
     }
 }
