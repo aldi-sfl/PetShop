@@ -1,3 +1,4 @@
+using System.Data;
 using System.Data.SqlClient;
 
 namespace PetShop
@@ -8,6 +9,8 @@ namespace PetShop
         {
             InitializeComponent();
         }
+        SqlConnection con = new SqlConnection
+                (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=petshopp;Integrated Security=True");
 
         
 
@@ -21,7 +24,7 @@ namespace PetShop
         {
 
         }
-private bool ValidateCredentials(string username, string password)
+private bool ValidateCredentials(string email, string password)
     {
             SqlConnection con = new SqlConnection
             (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshop;Integrated Security=True");
@@ -29,9 +32,9 @@ private bool ValidateCredentials(string username, string password)
             con.Open();
 
             // Check if the username and password match a record in the database
-            string query = "SELECT COUNT(*) FROM CUstomer WHERE Email = @username AND password = @password";
+            string query = "SELECT COUNT(*) FROM tb_user WHERE nama = @username AND password = @password";
             SqlCommand command = new SqlCommand(query, con);
-            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@email", email);
             command.Parameters.AddWithValue("@password", password);
             int count = (int)command.ExecuteScalar();
 
@@ -52,7 +55,7 @@ private bool ValidateCredentials(string username, string password)
                 halaman_utama mainForm = new halaman_utama();
                 mainForm.Show();
                 this.Hide();
-                
+
             }
             else
             {
@@ -60,6 +63,7 @@ private bool ValidateCredentials(string username, string password)
                 MessageBox.Show("Invalid username or password.");
             }
         }
+
 
 
         private void btnregis_Click(object sender, EventArgs e)

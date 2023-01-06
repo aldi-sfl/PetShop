@@ -16,17 +16,23 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace PetShop
 {
     public partial class register : Form
+
+
     {
         public register()
         {
             InitializeComponent();
             txtid.ReadOnly= true;
         }
-
         SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=petshop;Integrated Security=True");
+        (@"Data Source=LAPTOP-D2PPFK1M;Initial Catalog=PetShopp;Integrated Security=True");
 
 
+
+
+       
+
+        
 
 
         private void register_Load(object sender, EventArgs e)
@@ -34,6 +40,14 @@ namespace PetShop
             
         }
 
+        private void  ClearData()
+        {
+            txtnama.Clear();
+            txtalamat.Clear();
+            txthp.Clear();
+            txtemail.Clear();
+            txtpassword.Clear();
+        }
         
 
 
@@ -41,6 +55,13 @@ namespace PetShop
 
         private void btsave_Click(object sender, EventArgs e)
         {
+
+            con.Open();
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = con;
+            sqlcmd.CommandType = CommandType.Text;
+            sqlcmd.CommandText = "INSERT INTO Customers values ('" + txtId.Text + "','" + txtnama.Text + "','" + txthp.Text + "','" + txtemail.Text + "', '" + txtpassword.Text + "', '" + txtalamat.Text + "')";
+
             string nama, email, nohp, alamat;
 
             nama = txtnama.Text;
@@ -74,6 +95,13 @@ namespace PetShop
 
             
 
+            sqlcmd.ExecuteNonQuery();
+            con.Close();
+            
+            ClearData();
+
+
+
             
 
         }
@@ -83,6 +111,11 @@ namespace PetShop
             Form1 registrationForm = new Form1();
             registrationForm.Show();
             this.Hide();
+
+        }
+
+        private void txtnama_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
