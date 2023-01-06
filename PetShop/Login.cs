@@ -8,7 +8,9 @@ namespace PetShop
         public Form1()
         {
             InitializeComponent();
+            txtpassword.UseSystemPasswordChar= true;
         }
+        /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
                 (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop;Integrated Security=True");
 
