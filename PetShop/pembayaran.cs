@@ -21,5 +21,10 @@ namespace PetShop
         {
 
         }
+
+        private void pembayaran_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
