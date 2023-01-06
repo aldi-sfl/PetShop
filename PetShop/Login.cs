@@ -10,7 +10,7 @@ namespace PetShop
             InitializeComponent();
         }
         SqlConnection con = new SqlConnection
-                (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop;Integrated Security=True");
+                (@"Data Source=DESKTOP-PEPU3AA; Initial Catalog=db_PetShop;Integrated Security=True");
 
         
 
@@ -27,7 +27,7 @@ namespace PetShop
 private bool ValidateCredentials(string email, string password)
     {
             SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshop;Integrated Security=True");
+            (@"Data Source=DESKTOP-PEPU3AA; Initial Catalog=db_petshop;Integrated Security=True");
             {
             con.Open();
 
