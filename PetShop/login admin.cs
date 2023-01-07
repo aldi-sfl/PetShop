@@ -19,18 +19,18 @@ namespace PetShop
             txtpassword.UseSystemPasswordChar = true;
         }
 
-        private bool ValidateCredentials(string username, string password)
+        private bool ValidateCredentials(string email, string password)
         {
             /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
             SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-PEPU3AA; Initial Catalog=db_petshop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshopp;Integrated Security=True");
             {
                 con.Open();
 
                 // Check if the username and password match a record in the database
-                string query = "SELECT COUNT(*) FROM Admin WHERE Email = @username AND password = @password";
+                string query = "SELECT COUNT(*) FROM Admin WHERE Email = @email AND password = @password";
                 SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@password", password);
                 int count = (int)command.ExecuteScalar();
 
@@ -45,7 +45,7 @@ namespace PetShop
 
         private void btlogin_Click(object sender, EventArgs e)
         {
-            string username = txtemail.Text;
+            string username = txtusername.Text;
             string password = txtpassword.Text;
             bool isValid = ValidateCredentials(username, password);
 
@@ -63,6 +63,11 @@ namespace PetShop
                 // Show an error message
                 MessageBox.Show("Invalid username or password.");
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
     
