@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.ComponentModel.Design.Serialization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PetShop
 {
@@ -17,12 +18,15 @@ namespace PetShop
         public order()
         {
             InitializeComponent();
+            cbkategori.SelectedIndex= 0;
             
         }
 
+       
+
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-PEPU3AA; Initial Catalog=db_PetShop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShopp;Integrated Security=True");
 
         
 
@@ -32,6 +36,8 @@ namespace PetShop
             txtnama.Text = "";
             txtharga.Text = "";
             txtjumlah.Text = "";
+            cbkategori.SelectedIndex = 0;
+
 
         }
 
@@ -63,9 +69,15 @@ namespace PetShop
 
         private void btinsert_Click(object sender, EventArgs e)
         {
-           
-           
-            
+
+            string selectedItem = cbkategori.SelectedItem.ToString();
+
+            //string id, nama;
+
+            //id = txtid.Text; 
+            //nama = txtnama.Text;
+
+
 
 
 
@@ -98,7 +110,7 @@ namespace PetShop
             SqlCommand cmd = new SqlCommand();  
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = " insert into Products values ('" + int.Parse(txtid.Text) + "','" + txtnama.Text + "','" + int.Parse(txtharga.Text) + "','" + int.Parse(txtjumlah.Text) + "')";
+            cmd.CommandText = " insert into Products values ('" + int.Parse(txtid.Text) + "','" +selectedItem+"','"+ txtnama.Text + "','" + int.Parse(txtharga.Text) + "','" + int.Parse(txtjumlah.Text) + "')";
 
             cmd.ExecuteNonQuery();
 

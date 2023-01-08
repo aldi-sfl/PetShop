@@ -42,6 +42,8 @@
             this.btinsert = new System.Windows.Forms.Button();
             this.btdelete = new System.Windows.Forms.Button();
             this.btreset = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbkategori = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvproduk)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +71,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(46, 106);
+            this.label2.Location = new System.Drawing.Point(46, 132);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 23);
             this.label2.TabIndex = 2;
@@ -104,7 +106,7 @@
             // 
             // txtnama
             // 
-            this.txtnama.Location = new System.Drawing.Point(200, 106);
+            this.txtnama.Location = new System.Drawing.Point(200, 132);
             this.txtnama.Name = "txtnama";
             this.txtnama.Size = new System.Drawing.Size(140, 23);
             this.txtnama.TabIndex = 3;
@@ -134,7 +136,7 @@
             // 
             // btupdate
             // 
-            this.btupdate.Location = new System.Drawing.Point(307, 166);
+            this.btupdate.Location = new System.Drawing.Point(294, 182);
             this.btupdate.Name = "btupdate";
             this.btupdate.Size = new System.Drawing.Size(75, 23);
             this.btupdate.TabIndex = 5;
@@ -144,7 +146,7 @@
             // 
             // btinsert
             // 
-            this.btinsert.Location = new System.Drawing.Point(200, 166);
+            this.btinsert.Location = new System.Drawing.Point(187, 182);
             this.btinsert.Name = "btinsert";
             this.btinsert.Size = new System.Drawing.Size(75, 23);
             this.btinsert.TabIndex = 6;
@@ -154,7 +156,7 @@
             // 
             // btdelete
             // 
-            this.btdelete.Location = new System.Drawing.Point(419, 166);
+            this.btdelete.Location = new System.Drawing.Point(406, 182);
             this.btdelete.Name = "btdelete";
             this.btdelete.Size = new System.Drawing.Size(75, 23);
             this.btdelete.TabIndex = 5;
@@ -164,12 +166,35 @@
             // 
             // btreset
             // 
-            this.btreset.Location = new System.Drawing.Point(527, 166);
+            this.btreset.Location = new System.Drawing.Point(514, 182);
             this.btreset.Name = "btreset";
             this.btreset.Size = new System.Drawing.Size(75, 23);
             this.btreset.TabIndex = 5;
             this.btreset.Text = "reset";
             this.btreset.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(46, 104);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 23);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Kategori";
+            // 
+            // cbkategori
+            // 
+            this.cbkategori.FormattingEnabled = true;
+            this.cbkategori.Items.AddRange(new object[] {
+            "-",
+            "Hewan",
+            "Pakan",
+            "Alat-alat"});
+            this.cbkategori.Location = new System.Drawing.Point(200, 102);
+            this.cbkategori.Name = "cbkategori";
+            this.cbkategori.Size = new System.Drawing.Size(140, 23);
+            this.cbkategori.TabIndex = 7;
             // 
             // order
             // 
@@ -177,6 +202,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbkategori);
             this.Controls.Add(this.btinsert);
             this.Controls.Add(this.btreset);
             this.Controls.Add(this.btdelete);
@@ -188,6 +214,7 @@
             this.Controls.Add(this.txtid);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
@@ -216,5 +243,7 @@
         private Button btinsert;
         private Button btdelete;
         private Button btreset;
+        private Label label5;
+        private ComboBox cbkategori;
     }
 }

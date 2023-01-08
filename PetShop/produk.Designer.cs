@@ -31,39 +31,33 @@
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.bttampil = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvtampil = new System.Windows.Forms.DataGridView();
-            this.bttampil = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.bthome = new System.Windows.Forms.Button();
+            this.btproduk = new System.Windows.Forms.Button();
+            this.bttransaksi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtampil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -99,18 +93,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "tampilkan produk";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
-            this.pictureBox4.Image = global::PetShop.Properties.Resources.Billing;
-            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(52, 32);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 4;
-            this.pictureBox4.TabStop = false;
-            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Azure;
@@ -123,6 +105,16 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(473, 81);
             this.panel6.TabIndex = 0;
+            // 
+            // bttampil
+            // 
+            this.bttampil.Location = new System.Drawing.Point(162, 29);
+            this.bttampil.Name = "bttampil";
+            this.bttampil.Size = new System.Drawing.Size(75, 23);
+            this.bttampil.TabIndex = 10;
+            this.bttampil.Text = "tampilkan";
+            this.bttampil.UseVisualStyleBackColor = true;
+            this.bttampil.Click += new System.EventHandler(this.bttampil_Click);
             // 
             // pictureBox7
             // 
@@ -146,39 +138,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Password";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.Window;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(71, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Product";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.Window;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(68, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Billing";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.Window;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(68, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Home";
-            // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
@@ -191,21 +150,10 @@
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::PetShop.Properties.Resources.product;
-            this.pictureBox3.Location = new System.Drawing.Point(-2, 0);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(52, 32);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::PetShop.Properties.Resources.Home;
-            this.pictureBox2.Location = new System.Drawing.Point(4, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 69);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(51, 29);
@@ -223,39 +171,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(174, 32);
             this.panel5.TabIndex = 6;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(2, 160);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(174, 32);
-            this.panel4.TabIndex = 7;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(2, 110);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(174, 32);
-            this.panel3.TabIndex = 8;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(2, 56);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(174, 32);
-            this.panel2.TabIndex = 2;
             // 
             // label1
             // 
@@ -300,14 +215,59 @@
             this.dgvtampil.TabIndex = 1;
             this.dgvtampil.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // bttampil
+            // pictureBox4
             // 
-            this.bttampil.Location = new System.Drawing.Point(162, 29);
-            this.bttampil.Name = "bttampil";
-            this.bttampil.Size = new System.Drawing.Size(75, 23);
-            this.bttampil.TabIndex = 10;
-            this.bttampil.Text = "tampilkan";
-            this.bttampil.UseVisualStyleBackColor = true;
+            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.Image = global::PetShop.Properties.Resources.Billing;
+            this.pictureBox4.Location = new System.Drawing.Point(3, 177);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(52, 32);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 4;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::PetShop.Properties.Resources.product;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 121);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(52, 32);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
+            // bthome
+            // 
+            this.bthome.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bthome.Location = new System.Drawing.Point(59, 69);
+            this.bthome.Name = "bthome";
+            this.bthome.Size = new System.Drawing.Size(116, 33);
+            this.bthome.TabIndex = 7;
+            this.bthome.Text = "home";
+            this.bthome.UseVisualStyleBackColor = true;
+            this.bthome.Click += new System.EventHandler(this.bthome_Click);
+            // 
+            // btproduk
+            // 
+            this.btproduk.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btproduk.Location = new System.Drawing.Point(59, 121);
+            this.btproduk.Name = "btproduk";
+            this.btproduk.Size = new System.Drawing.Size(116, 33);
+            this.btproduk.TabIndex = 7;
+            this.btproduk.Text = "produk";
+            this.btproduk.UseVisualStyleBackColor = true;
+            // 
+            // bttransaksi
+            // 
+            this.bttransaksi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bttransaksi.Location = new System.Drawing.Point(59, 176);
+            this.bttransaksi.Name = "bttransaksi";
+            this.bttransaksi.Size = new System.Drawing.Size(116, 33);
+            this.bttransaksi.TabIndex = 7;
+            this.bttransaksi.Text = "transaksi";
+            this.bttransaksi.UseVisualStyleBackColor = true;
             // 
             // produk
             // 
@@ -315,10 +275,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(700, 338);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.bttransaksi);
+            this.Controls.Add(this.btproduk);
+            this.Controls.Add(this.bthome);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
@@ -327,25 +290,19 @@
             this.Text = "produk";
             this.Load += new System.EventHandler(this.produk_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtampil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,24 +312,21 @@
         private Label label7;
         private PictureBox pictureBox6;
         private Label label6;
-        private PictureBox pictureBox4;
         private Panel panel6;
         private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
         private PictureBox pictureBox5;
-        private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private Panel panel5;
-        private Panel panel4;
-        private Panel panel3;
-        private Panel panel2;
         private Label label1;
         private PictureBox pictureBox1;
         private Panel panel1;
         private PictureBox pictureBox7;
         private DataGridView dgvtampil;
         private Button bttampil;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox3;
+        private Button bthome;
+        private Button btproduk;
+        private Button bttransaksi;
     }
 }

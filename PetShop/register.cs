@@ -24,6 +24,8 @@ namespace PetShop
             InitializeComponent();
             
         }
+
+        /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
         (@"Data Source=LAPTOP-RSFBMM3I\XFRHK;Initial Catalog=db_PetShop;Integrated Security=True");
 
