@@ -43,6 +43,7 @@
             this.btcanccel = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.btrng = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -79,7 +80,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(74, 153);
+            this.label4.Location = new System.Drawing.Point(75, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 23);
             this.label4.TabIndex = 0;
@@ -89,7 +90,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(74, 180);
+            this.label5.Location = new System.Drawing.Point(75, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 23);
             this.label5.TabIndex = 0;
@@ -97,7 +98,7 @@
             // 
             // txtnama
             // 
-            this.txtnama.Location = new System.Drawing.Point(174, 97);
+            this.txtnama.Location = new System.Drawing.Point(211, 94);
             this.txtnama.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtnama.Name = "txtnama";
             this.txtnama.Size = new System.Drawing.Size(348, 23);
@@ -108,7 +109,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(74, 206);
+            this.label6.Location = new System.Drawing.Point(75, 224);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 23);
             this.label6.TabIndex = 0;
@@ -116,7 +117,7 @@
             // 
             // txtalamat
             // 
-            this.txtalamat.Location = new System.Drawing.Point(176, 125);
+            this.txtalamat.Location = new System.Drawing.Point(211, 125);
             this.txtalamat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtalamat.Name = "txtalamat";
             this.txtalamat.Size = new System.Drawing.Size(348, 23);
@@ -124,15 +125,16 @@
             // 
             // txthp
             // 
-            this.txthp.Location = new System.Drawing.Point(174, 153);
+            this.txthp.Location = new System.Drawing.Point(211, 158);
             this.txthp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txthp.Name = "txthp";
             this.txthp.Size = new System.Drawing.Size(348, 23);
             this.txthp.TabIndex = 1;
+            this.txthp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txthp_KeyPress);
             // 
             // txtemail
             // 
-            this.txtemail.Location = new System.Drawing.Point(176, 180);
+            this.txtemail.Location = new System.Drawing.Point(211, 190);
             this.txtemail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtemail.Name = "txtemail";
             this.txtemail.Size = new System.Drawing.Size(348, 23);
@@ -140,7 +142,7 @@
             // 
             // txtpassword
             // 
-            this.txtpassword.Location = new System.Drawing.Point(176, 206);
+            this.txtpassword.Location = new System.Drawing.Point(212, 224);
             this.txtpassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(348, 23);
@@ -150,7 +152,7 @@
             // btsave
             // 
             this.btsave.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btsave.Location = new System.Drawing.Point(102, 247);
+            this.btsave.Location = new System.Drawing.Point(106, 266);
             this.btsave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btsave.Name = "btsave";
             this.btsave.Size = new System.Drawing.Size(102, 40);
@@ -162,12 +164,12 @@
             // btcanccel
             // 
             this.btcanccel.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btcanccel.Location = new System.Drawing.Point(391, 247);
+            this.btcanccel.Location = new System.Drawing.Point(428, 266);
             this.btcanccel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btcanccel.Name = "btcanccel";
             this.btcanccel.Size = new System.Drawing.Size(102, 40);
             this.btcanccel.TabIndex = 2;
-            this.btcanccel.Text = "Cancel";
+            this.btcanccel.Text = "Back";
             this.btcanccel.UseVisualStyleBackColor = true;
             this.btcanccel.Click += new System.EventHandler(this.btcanccel_Click);
             // 
@@ -177,18 +179,28 @@
             this.label7.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(75, 61);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 23);
+            this.label7.Size = new System.Drawing.Size(133, 23);
             this.label7.TabIndex = 0;
-            this.label7.Text = "id";
+            this.label7.Text = "Username Id";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(174, 65);
+            this.txtId.Location = new System.Drawing.Point(212, 61);
             this.txtId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(348, 23);
+            this.txtId.Size = new System.Drawing.Size(72, 23);
             this.txtId.TabIndex = 1;
             this.txtId.TextChanged += new System.EventHandler(this.txtnama_TextChanged);
+            // 
+            // btrng
+            // 
+            this.btrng.Location = new System.Drawing.Point(305, 61);
+            this.btrng.Name = "btrng";
+            this.btrng.Size = new System.Drawing.Size(99, 23);
+            this.btrng.TabIndex = 3;
+            this.btrng.Text = "generate new id";
+            this.btrng.UseVisualStyleBackColor = true;
+            this.btrng.Click += new System.EventHandler(this.btrng_Click);
             // 
             // register
             // 
@@ -196,6 +208,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(613, 338);
+            this.Controls.Add(this.btrng);
             this.Controls.Add(this.btcanccel);
             this.Controls.Add(this.btsave);
             this.Controls.Add(this.txtpassword);
@@ -237,5 +250,6 @@
         private Button btcanccel;
         private Label label7;
         private TextBox txtId;
+        private Button btrng;
     }
 }

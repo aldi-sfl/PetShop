@@ -23,17 +23,37 @@ namespace PetShop
         {
             InitializeComponent();
             
+            
         }
 
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
-        (@"Data Source=LAPTOP-RSFBMM3I\XFRHK;Initial Catalog=db_PetShop;Integrated Security=True");
+        (@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
 
+        private void randomid()
+        {
+            Random rng= new Random();
 
+            string id = "ID";
+            for(int i = 0; i < 2; i++)
+            {
+                int r = rng.Next(0, 30);
+                if(r < 26)
+                {
+                    id += (int)('0' + r);
+                }
+                else
+                {
+                    id += (int)('9' + r - 26);
+                }
+            }
+            txtId.Text = id;
+        }
 
         private void register_Load(object sender, EventArgs e)
         {
-            
+            randomid();
+            txtId.ReadOnly= true;
         }
 
         private void  ClearData()
@@ -45,34 +65,25 @@ namespace PetShop
             txtpassword.Clear();
             txtId.Clear();
         }
-        
 
+        private void btrng_Click(object sender, EventArgs e)
+        {
+            randomid();
+        }
 
 
 
         private void btsave_Click(object sender, EventArgs e)
         {
 
-            con.Open();
-            SqlCommand sqlcmd = new SqlCommand();
-            sqlcmd.Connection = con;
-            sqlcmd.CommandType = CommandType.Text;
-            sqlcmd.CommandText = "INSERT INTO Customers values ('" + txtId.Text + "','" + txtnama.Text + "','" + txthp.Text + "','" + txtemail.Text + "', '" + txtpassword.Text + "', '" + txtalamat.Text + "')";
+            string nama, email, nohp, alamat;
 
-            string nama, email /*= "SELECT COUNT(*) FROM Users WHERE Email = @email"*/, nohp, alamat;
-            //sqlcmd.Parameters.AddWithValue("@email", email);
             nama = txtnama.Text;
             email = txtemail.Text;
             nohp = txthp.Text;
             alamat = txtalamat.Text;
 
-            //menghindari data duplicate
-            //int count = (int)sqlcmd.ExecuteScalar();
-            //if (count > 0)
-            //{
-            //    MessageBox.Show("This username is already taken. Please choose a different one.");
-            //    return;
-            //}
+
             if (string.IsNullOrEmpty(nama))
             {
                 MessageBox.Show("nama harus diisi.");
@@ -96,6 +107,14 @@ namespace PetShop
                 MessageBox.Show("alamat harus diisi.");
                 return;
             }
+
+            con.Open();
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.Connection = con;
+            sqlcmd.CommandType = CommandType.Text;
+            sqlcmd.CommandText = "INSERT INTO Customers values ('" + txtId.Text + "','" + txtnama.Text + "','" + txthp.Text + "','" + txtemail.Text + "', '" + txtpassword.Text + "', '" + txtalamat.Text + "')";
+
+            
 
             MessageBox.Show("register berhasil");
             Form1 balik = new Form1();
@@ -137,5 +156,12 @@ namespace PetShop
         {
 
         }
+
+        private void txthp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        
     }
 }

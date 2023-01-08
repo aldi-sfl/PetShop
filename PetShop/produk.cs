@@ -20,7 +20,7 @@ namespace PetShop
 
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
 
         private void showdata()
         {
@@ -61,6 +61,32 @@ namespace PetShop
         {
             halaman_utama balik_utama = new halaman_utama();
             balik_utama.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from Products where Name like '%" + txtcari.Text + "%' ";
+            cmd.CommandText = "select * from Products where Category like '%" + txtcari.Text + "%' ";
+            DataSet ds = new DataSet();
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds, "Products");
+
+            dgvtampil.DataSource = ds;
+
+            dgvtampil.DataMember = "Products";
+
+            dgvtampil.ReadOnly = true;
+        }
+
+        private void btbelanja_Click(object sender, EventArgs e)
+        {
+            pembayaran kebayar = new pembayaran();
+            kebayar.Show();
             this.Hide();
         }
     }

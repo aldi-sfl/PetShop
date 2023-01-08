@@ -31,5 +31,26 @@ namespace PetShop
         {
 
         }
+
+        private void btproduk_Click(object sender, EventArgs e)
+        {
+            produk keproduk = new produk();
+            keproduk.Show();
+            this.Hide();
+        }
+
+        private void bttransaksi_Click(object sender, EventArgs e)
+        {
+            pembayaran kebayar = new pembayaran();
+            kebayar.Show();
+            this.Hide();
+        }
+
+        private void btkeluar_Click(object sender, EventArgs e)
+        {
+            Form1 keluar = new Form1();
+            keluar.Show();
+            this.Hide();
+        }
     }
 }

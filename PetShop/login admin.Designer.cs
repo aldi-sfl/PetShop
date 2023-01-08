@@ -62,7 +62,7 @@
             this.txtpassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(153, 23);
-            this.txtpassword.TabIndex = 8;
+            this.txtpassword.TabIndex = 2;
             // 
             // txtusername
             // 
@@ -70,7 +70,7 @@
             this.txtusername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(153, 23);
-            this.txtusername.TabIndex = 9;
+            this.txtusername.TabIndex = 1;
             // 
             // label4
             // 
@@ -131,7 +131,7 @@
             this.label2.Location = new System.Drawing.Point(142, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 32);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 11;
             this.label2.Text = "Pet Shop";
             // 
             // pictureBox1
@@ -158,7 +158,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(374, 357);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

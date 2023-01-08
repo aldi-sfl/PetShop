@@ -23,7 +23,7 @@ namespace PetShop
         {
             /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
             SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshopp;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshop1;Integrated Security=True");
             {
                 con.Open();
 

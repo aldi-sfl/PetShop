@@ -12,40 +12,37 @@ namespace PetShop
         }
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
-                (@"Data Source=DESKTOP-PEPU3AA; Initial Catalog=db_PetShopp;Integrated Security=True");
+                (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
 
         
 
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-private bool ValidateCredentials(string email, string password)
-    {
+        private bool ValidateCredentials(string id, string password)
+        {
             SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshop1;Integrated Security=True");
             {
             con.Open();
 
             // Check if the username and password match a record in the database
-            string query = "SELECT COUNT(*) FROM Customers WHERE Email = @email AND Password = @password";
+            string query = "SELECT COUNT(*) FROM Customers WHERE UsernameID = @id AND Password = @password";
             SqlCommand command = new SqlCommand(query, con);
-            command.Parameters.AddWithValue("@email", email);
+            command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@password", password);
             int count = (int)command.ExecuteScalar();
 
             return count > 0;
+            }
         }
-    }
 
 
-    private void btlogin_Click(object sender, EventArgs e)
+        private void btlogin_Click(object sender, EventArgs e)
         {
             string username = txtuser.Text;
             string password = txtpassword.Text;
@@ -54,6 +51,7 @@ private bool ValidateCredentials(string email, string password)
             if (isValid)
             {
                 // Show the main form and close the login form
+                MessageBox.Show("login berhasil");
                 halaman_utama mainForm = new halaman_utama();
                 mainForm.Show();
                 this.Hide();
@@ -82,7 +80,10 @@ private bool ValidateCredentials(string email, string password)
 
         }
 
- 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btadmin_Click_1(object sender, EventArgs e)
         {

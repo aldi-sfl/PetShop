@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(produk));
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtcari = new System.Windows.Forms.TextBox();
             this.bttampil = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -46,7 +50,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.bthome = new System.Windows.Forms.Button();
             this.btproduk = new System.Windows.Forms.Button();
-            this.bttransaksi = new System.Windows.Forms.Button();
+            this.btbelanja = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -65,7 +69,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(215, 101);
+            this.label7.Location = new System.Drawing.Point(249, 104);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 17);
             this.label7.TabIndex = 0;
@@ -87,28 +91,48 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Window;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(17, 29);
+            this.label6.Location = new System.Drawing.Point(15, 14);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 17);
+            this.label6.Size = new System.Drawing.Size(178, 17);
             this.label6.TabIndex = 0;
-            this.label6.Text = "tampilkan produk";
+            this.label6.Text = "tampilkan semua produk";
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Azure;
+            this.panel6.Controls.Add(this.button1);
+            this.panel6.Controls.Add(this.txtcari);
             this.panel6.Controls.Add(this.bttampil);
             this.panel6.Controls.Add(this.pictureBox7);
             this.panel6.Controls.Add(this.pictureBox6);
+            this.panel6.Controls.Add(this.label2);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Location = new System.Drawing.Point(24, 8);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(473, 81);
+            this.panel6.Size = new System.Drawing.Size(513, 81);
             this.panel6.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(315, 44);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 31);
+            this.button1.TabIndex = 12;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtcari
+            // 
+            this.txtcari.Location = new System.Drawing.Point(206, 48);
+            this.txtcari.Name = "txtcari";
+            this.txtcari.Size = new System.Drawing.Size(100, 23);
+            this.txtcari.TabIndex = 11;
             // 
             // bttampil
             // 
-            this.bttampil.Location = new System.Drawing.Point(162, 29);
+            this.bttampil.Location = new System.Drawing.Point(206, 12);
             this.bttampil.Name = "bttampil";
             this.bttampil.Size = new System.Drawing.Size(75, 23);
             this.bttampil.TabIndex = 10;
@@ -119,13 +143,24 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::PetShop.Properties.Resources.product;
-            this.pictureBox7.Location = new System.Drawing.Point(425, 2);
+            this.pictureBox7.Location = new System.Drawing.Point(464, 2);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(45, 29);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 9;
             this.pictureBox7.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Window;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(15, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(183, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "cari produk atau kategori ";
             // 
             // label5
             // 
@@ -202,7 +237,7 @@
             this.panel1.Location = new System.Drawing.Point(182, 9);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 292);
+            this.panel1.Size = new System.Drawing.Size(561, 292);
             this.panel1.TabIndex = 5;
             // 
             // dgvtampil
@@ -211,7 +246,7 @@
             this.dgvtampil.Location = new System.Drawing.Point(24, 124);
             this.dgvtampil.Name = "dgvtampil";
             this.dgvtampil.RowTemplate.Height = 25;
-            this.dgvtampil.Size = new System.Drawing.Size(470, 150);
+            this.dgvtampil.Size = new System.Drawing.Size(513, 150);
             this.dgvtampil.TabIndex = 1;
             this.dgvtampil.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -259,24 +294,25 @@
             this.btproduk.Text = "produk";
             this.btproduk.UseVisualStyleBackColor = true;
             // 
-            // bttransaksi
+            // btbelanja
             // 
-            this.bttransaksi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.bttransaksi.Location = new System.Drawing.Point(59, 176);
-            this.bttransaksi.Name = "bttransaksi";
-            this.bttransaksi.Size = new System.Drawing.Size(116, 33);
-            this.bttransaksi.TabIndex = 7;
-            this.bttransaksi.Text = "transaksi";
-            this.bttransaksi.UseVisualStyleBackColor = true;
+            this.btbelanja.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btbelanja.Location = new System.Drawing.Point(59, 176);
+            this.btbelanja.Name = "btbelanja";
+            this.btbelanja.Size = new System.Drawing.Size(116, 33);
+            this.btbelanja.TabIndex = 7;
+            this.btbelanja.Text = "belanja";
+            this.btbelanja.UseVisualStyleBackColor = true;
+            this.btbelanja.Click += new System.EventHandler(this.btbelanja_Click);
             // 
             // produk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(700, 338);
+            this.ClientSize = new System.Drawing.Size(756, 338);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.bttransaksi);
+            this.Controls.Add(this.btbelanja);
             this.Controls.Add(this.btproduk);
             this.Controls.Add(this.bthome);
             this.Controls.Add(this.pictureBox3);
@@ -327,6 +363,9 @@
         private PictureBox pictureBox3;
         private Button bthome;
         private Button btproduk;
-        private Button bttransaksi;
+        private Button btbelanja;
+        private Button button1;
+        private TextBox txtcari;
+        private Label label2;
     }
 }

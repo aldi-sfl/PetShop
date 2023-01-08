@@ -28,34 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pembayaran));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btco = new System.Windows.Forms.Button();
+            this.dgvtampil = new System.Windows.Forms.DataGridView();
+            this.txtharga = new System.Windows.Forms.TextBox();
+            this.txtjumlah = new System.Windows.Forms.TextBox();
+            this.txtproduct = new System.Windows.Forms.TextBox();
+            this.cbkategori = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bthome = new System.Windows.Forms.Button();
+            this.btproduk = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbkategori = new System.Windows.Forms.ComboBox();
-            this.txtproduct = new System.Windows.Forms.TextBox();
-            this.txtjumlah = new System.Windows.Forms.TextBox();
-            this.txtharga = new System.Windows.Forms.TextBox();
-            this.dgvtampil = new System.Windows.Forms.DataGridView();
+            this.btexit = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtampil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox5
@@ -117,6 +120,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btco);
             this.panel1.Controls.Add(this.dgvtampil);
             this.panel1.Controls.Add(this.txtharga);
             this.panel1.Controls.Add(this.txtjumlah);
@@ -130,9 +135,65 @@
             this.panel1.Location = new System.Drawing.Point(187, 22);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 365);
+            this.panel1.Size = new System.Drawing.Size(539, 373);
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btco
+            // 
+            this.btco.Location = new System.Drawing.Point(414, 139);
+            this.btco.Name = "btco";
+            this.btco.Size = new System.Drawing.Size(75, 23);
+            this.btco.TabIndex = 14;
+            this.btco.Text = "Check out";
+            this.btco.UseVisualStyleBackColor = true;
+            // 
+            // dgvtampil
+            // 
+            this.dgvtampil.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvtampil.Location = new System.Drawing.Point(39, 184);
+            this.dgvtampil.Name = "dgvtampil";
+            this.dgvtampil.RowTemplate.Height = 25;
+            this.dgvtampil.Size = new System.Drawing.Size(460, 166);
+            this.dgvtampil.TabIndex = 13;
+            // 
+            // txtharga
+            // 
+            this.txtharga.Location = new System.Drawing.Point(198, 130);
+            this.txtharga.Name = "txtharga";
+            this.txtharga.Size = new System.Drawing.Size(100, 23);
+            this.txtharga.TabIndex = 12;
+            // 
+            // txtjumlah
+            // 
+            this.txtjumlah.Location = new System.Drawing.Point(198, 89);
+            this.txtjumlah.Name = "txtjumlah";
+            this.txtjumlah.Size = new System.Drawing.Size(100, 23);
+            this.txtjumlah.TabIndex = 12;
+            // 
+            // txtproduct
+            // 
+            this.txtproduct.Location = new System.Drawing.Point(198, 53);
+            this.txtproduct.Name = "txtproduct";
+            this.txtproduct.Size = new System.Drawing.Size(155, 23);
+            this.txtproduct.TabIndex = 12;
+            this.txtproduct.TextChanged += new System.EventHandler(this.txtproduct_TextChanged);
+            // 
+            // cbkategori
+            // 
+            this.cbkategori.FormattingEnabled = true;
+            this.cbkategori.Items.AddRange(new object[] {
+            "-",
+            "Hewan",
+            "Pakan",
+            "Alat-alat",
+            "Layanan"});
+            this.cbkategori.Location = new System.Drawing.Point(198, 23);
+            this.cbkategori.Name = "cbkategori";
+            this.cbkategori.Size = new System.Drawing.Size(121, 23);
+            this.cbkategori.TabIndex = 11;
+            this.cbkategori.SelectedIndexChanged += new System.EventHandler(this.cbkategori_SelectedIndexChanged);
+            this.cbkategori.MouseEnter += new System.EventHandler(this.pembayaran_Load);
             // 
             // label8
             // 
@@ -154,6 +215,27 @@
             this.label7.Size = new System.Drawing.Size(0, 17);
             this.label7.TabIndex = 10;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(13, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 17);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Masukan Jumlah";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(13, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 17);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Masukan Nama Product";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -164,25 +246,27 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Pilih Kategori";
             // 
-            // button1
+            // bthome
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(66, 69);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 29);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Home";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bthome.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.bthome.Location = new System.Drawing.Point(66, 69);
+            this.bthome.Name = "bthome";
+            this.bthome.Size = new System.Drawing.Size(100, 29);
+            this.bthome.TabIndex = 11;
+            this.bthome.Text = "Home";
+            this.bthome.UseVisualStyleBackColor = true;
+            this.bthome.Click += new System.EventHandler(this.bthome_Click);
             // 
-            // button2
+            // btproduk
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(67, 125);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 29);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "product";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btproduk.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btproduk.Location = new System.Drawing.Point(67, 125);
+            this.btproduk.Name = "btproduk";
+            this.btproduk.Size = new System.Drawing.Size(100, 29);
+            this.btproduk.TabIndex = 11;
+            this.btproduk.Text = "product";
+            this.btproduk.UseVisualStyleBackColor = true;
+            this.btproduk.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -191,7 +275,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 29);
             this.button3.TabIndex = 11;
-            this.button3.Text = "transaction";
+            this.button3.Text = "belanja";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // pictureBox3
@@ -205,75 +289,25 @@
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             // 
-            // button4
+            // btexit
             // 
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(64, 266);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 29);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "password";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btexit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btexit.Location = new System.Drawing.Point(64, 266);
+            this.btexit.Name = "btexit";
+            this.btexit.Size = new System.Drawing.Size(100, 29);
+            this.btexit.TabIndex = 11;
+            this.btexit.Text = "keluar";
+            this.btexit.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // button1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(13, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Masukan Nama Product";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(13, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 17);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Masukan Jumlah";
-            // 
-            // cbkategori
-            // 
-            this.cbkategori.FormattingEnabled = true;
-            this.cbkategori.Location = new System.Drawing.Point(177, 28);
-            this.cbkategori.Name = "cbkategori";
-            this.cbkategori.Size = new System.Drawing.Size(121, 23);
-            this.cbkategori.TabIndex = 11;
-            this.cbkategori.SelectedIndexChanged += new System.EventHandler(this.cbkategori_SelectedIndexChanged);
-            // 
-            // txtproduct
-            // 
-            this.txtproduct.Location = new System.Drawing.Point(198, 59);
-            this.txtproduct.Name = "txtproduct";
-            this.txtproduct.Size = new System.Drawing.Size(100, 23);
-            this.txtproduct.TabIndex = 12;
-            // 
-            // txtjumlah
-            // 
-            this.txtjumlah.Location = new System.Drawing.Point(198, 85);
-            this.txtjumlah.Name = "txtjumlah";
-            this.txtjumlah.Size = new System.Drawing.Size(100, 23);
-            this.txtjumlah.TabIndex = 12;
-            // 
-            // txtharga
-            // 
-            this.txtharga.Location = new System.Drawing.Point(198, 132);
-            this.txtharga.Name = "txtharga";
-            this.txtharga.Size = new System.Drawing.Size(100, 23);
-            this.txtharga.TabIndex = 12;
-            // 
-            // dgvtampil
-            // 
-            this.dgvtampil.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvtampil.Location = new System.Drawing.Point(177, 180);
-            this.dgvtampil.Name = "dgvtampil";
-            this.dgvtampil.RowTemplate.Height = 25;
-            this.dgvtampil.Size = new System.Drawing.Size(240, 150);
-            this.dgvtampil.TabIndex = 13;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(360, 48);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 33);
+            this.button1.TabIndex = 15;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pembayaran
             // 
@@ -282,12 +316,12 @@
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(753, 414);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btexit);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btproduk);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bthome);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -302,8 +336,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtampil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,11 +353,11 @@
         private Label label8;
         private Label label7;
         private Label label6;
-        private Button button1;
-        private Button button2;
+        private Button bthome;
+        private Button btproduk;
         private Button button3;
         private PictureBox pictureBox3;
-        private Button button4;
+        private Button btexit;
         private Label label3;
         private Label label2;
         private TextBox txtharga;
@@ -331,5 +365,7 @@
         private TextBox txtproduct;
         private ComboBox cbkategori;
         private DataGridView dgvtampil;
+        private Button btco;
+        private Button button1;
     }
 }
