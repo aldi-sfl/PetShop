@@ -69,8 +69,8 @@ namespace PetShop
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Products where Name like '%" + txtcari.Text + "%' ";
-            cmd.CommandText = "select * from Products where Category like '%" + txtcari.Text + "%' ";
+            cmd.CommandText = "select * from Products where Name like '%" + txtcari.Text + "%' or Category like '%" + txtcari.Text + "%'";
+
             DataSet ds = new DataSet();
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);

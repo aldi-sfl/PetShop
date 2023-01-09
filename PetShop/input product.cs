@@ -36,6 +36,7 @@ namespace PetShop
             txtharga.Text = "";
             txtjumlah.Text = "";
             cbkategori.SelectedIndex = 0;
+            txtcari.Text = "";
         }
 
         private void showdata()
@@ -129,8 +130,8 @@ namespace PetShop
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Products where Name  like '%"+txtcari.Text+"%' ";
-            cmd.CommandText = "select * from Products where Category  like '%" + txtcari.Text + "%' ";
+            cmd.CommandText = "select * from Products where Name like '%"+txtcari.Text+"%' or Category like '%" + txtcari.Text + "%'";
+            
             DataSet ds = new DataSet();
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -171,9 +172,6 @@ namespace PetShop
                 return;
             }
 
-            string selectedItem = cbkategori.SelectedItem.ToString();
-
-
             int product = int.Parse(txtidproduk.Text);
             string name = txtnama.Text;
             bool productvalid = ValidateCredentialsproduct(product);
@@ -191,14 +189,14 @@ namespace PetShop
                     SqlCommand ccmd = new SqlCommand();
                     ccmd.Connection = con;
                     ccmd.CommandType = CommandType.Text;
-                    ccmd.CommandText = " update Products set Name = '" + txtnama.Text + "', Price = '" + txtharga.Text + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
+                    ccmd.CommandText = " update Products set  Price = '" + txtharga.Text + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "' or Name = '" + txtnama.Text + "'";
 
                     ccmd.ExecuteNonQuery();
 
                     con.Close();
 
                     showdata();
-                    showmaxid();
+                    
                     reset();
                     return;
 
@@ -217,9 +215,15 @@ namespace PetShop
             SqlCommand cmd = new SqlCommand();  
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
+            string selectedItem = cbkategori.SelectedItem.ToString();
             //cmd.CommandText = " insert into Products values ('" + customid + "','" + selectedItem+"','"+ txtnama.Text + "','" + int.Parse(txtharga.Text) + "','" + int.Parse(txtjumlah.Text) + "')";
-
-            cmd.CommandText = " insert into Products (ProductID, Category, Name, Price, Quantity) values ('" + int.Parse(txtidproduk.Text) + "','" + selectedItem + "','" + txtnama.Text + "','" + txtharga.Text + "','" + int.Parse(txtjumlah.Text) + "')";
+            //cmd.CommandText = " insert into Products (ProductID, Category, Name, Price, Quantity) values ('" + int.Parse(txtidproduk.Text) + "','" + selectedItem + "','" + txtnama.Text + "','" + txtharga.Text + "','" + int.Parse(txtjumlah.Text) + "')";
+            cmd.CommandText = "INSERT INTO Products (ProductID, Category, Name, Price, Quantity) VALUES (@productId, @category, @name, @price, @quantity)";
+            cmd.Parameters.AddWithValue("@productId", int.Parse(txtidproduk.Text));
+            cmd.Parameters.AddWithValue("@category", selectedItem);
+            cmd.Parameters.AddWithValue("@name", txtnama.Text);
+            cmd.Parameters.AddWithValue("@price", txtharga.Text);
+            cmd.Parameters.AddWithValue("@quantity", int.Parse(txtjumlah.Text));
 
             cmd.ExecuteNonQuery();
 
