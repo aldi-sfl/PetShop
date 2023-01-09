@@ -24,7 +24,7 @@ namespace PetShop
 
         private void cobacoba_Load(object sender, EventArgs e)
         {
-            cn = new SqlConnection(@"Data Source=LAPTOP-RSFBMM3I\XFRHK;Initial Catalog=db_PetShop;Integrated Security=True");
+            cn = new SqlConnection(@"Data Source=LAPTOP-D2PPFK1M;Initial Catalog=db_PetShop;Integrated Security=True");
             cn.Open();
         }
 
