@@ -53,8 +53,8 @@ namespace PetShop
             {
                 // Show the main form and close the login form
                 MessageBox.Show("login berhasil");
-                order mainForm = new order();
-                mainForm.Show();
+                Halaman_Utama_Admin halaman_Utama_Admin = new Halaman_Utama_Admin();
+                halaman_Utama_Admin.Show();
                 this.Hide();
 
             }

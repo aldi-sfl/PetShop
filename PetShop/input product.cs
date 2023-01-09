@@ -332,8 +332,8 @@ namespace PetShop
 
         private void btexit_Click(object sender, EventArgs e)
         {
-            Form1 balik = new Form1();
-            balik.Show();
+            Halaman_Utama_Admin halaman_Utama_Admin = new Halaman_Utama_Admin();
+            halaman_Utama_Admin.Show();
             this.Hide();
         }
 

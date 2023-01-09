@@ -16,5 +16,29 @@ namespace PetShop
         {
             InitializeComponent();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dgv dataUser = new dgv();
+            dataUser.Show();
+            this.Hide();
+        }
+
+        private void txtProduk_Click(object sender, EventArgs e)
+        {
+            order order = new order();
+            order.Show();
+            this.Hide();
+        }
+
+        private void Halaman_Utama_Admin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
