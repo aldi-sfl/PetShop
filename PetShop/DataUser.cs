@@ -22,31 +22,11 @@ namespace PetShop
             (@"Data Source=LAPTOP-PEPU3AA; Initial Catalog=db_PetShop1;Integrated Security=True");
         private void DisplayCustomers()
         {
-            con.Open();
-            string Query = "Select * from Customers";
-            SqlDataAdapter sda = new SqlDataAdapter(Query, con);
-            SqlCommandBuilder Builder = new SqlCommandBuilder(sda);
-            var ds = new DataSet();
-            sda.Fill(ds);
-            dgvUser.DataSource = ds.Tables[0];
-            con.Close();
-        }
-        private void Clear()
-        {
-            txtalamat.Text = "";
-            txtemail.Text = "";
-            txtnama.Text = "";
-            txtnomor.Text = "";
-            txtpassword.Text = "";
-            txtusername.Text = "";
-        }
-        //private void showdata()
-        //{
-        //    SqlCommand cmd = new SqlCommand();
-        //    cmd.Connection = con;
-        //    cmd.CommandType = CommandType.Text;
-        //    cmd.CommandText = "select * from Customers  ";
-        //    DataSet ds = new DataSet();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from Customers  ";
+            DataSet ds = new DataSet();
 
 
         //    SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -54,12 +34,14 @@ namespace PetShop
 
         //    dgvUser.DataSource = ds;
 
-        //    dgvUser.DataMember = "Customers";
+            dgvUser.DataMember = "Customers";
 
-        //    dgvUser.ReadOnly = true;
+            dgvUser.ReadOnly = true;
 
 
         //}
+
+
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
