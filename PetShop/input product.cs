@@ -25,7 +25,7 @@ namespace PetShop
         }
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
 
         
 
@@ -37,6 +37,7 @@ namespace PetShop
             txtjumlah.Text = "";
             cbkategori.SelectedIndex = 0;
             txtcari.Text = "";
+            
         }
 
         private void showdata()
@@ -86,7 +87,7 @@ namespace PetShop
         private bool ValidateCredentialsproduct(int product)
         {
             SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
             {
                 con.Open();
 
@@ -106,7 +107,7 @@ namespace PetShop
         private bool ValidateCredentialsname(string name)
         {
             SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
             {
                 con.Open();
 
@@ -181,7 +182,7 @@ namespace PetShop
             {
 
                 DialogResult result = MessageBox.Show("Id produk atau nama produk sudah terdaftar. apakah anda ingin update?", "Confirm", MessageBoxButtons.YesNo);
-                 
+
                 if (result == DialogResult.Yes)
                 {
                     con.Open();
@@ -196,7 +197,7 @@ namespace PetShop
                     con.Close();
 
                     showdata();
-                    
+
                     reset();
                     return;
 
@@ -214,18 +215,39 @@ namespace PetShop
 
             SqlCommand cmd = new SqlCommand();  
             cmd.Connection = con;
-            cmd.CommandType = CommandType.Text;
-            string selectedItem = cbkategori.SelectedItem.ToString();
-            //cmd.CommandText = " insert into Products values ('" + customid + "','" + selectedItem+"','"+ txtnama.Text + "','" + int.Parse(txtharga.Text) + "','" + int.Parse(txtjumlah.Text) + "')";
-            //cmd.CommandText = " insert into Products (ProductID, Category, Name, Price, Quantity) values ('" + int.Parse(txtidproduk.Text) + "','" + selectedItem + "','" + txtnama.Text + "','" + txtharga.Text + "','" + int.Parse(txtjumlah.Text) + "')";
-            cmd.CommandText = "INSERT INTO Products (ProductID, Category, Name, Price, Quantity) VALUES (@productId, @category, @name, @price, @quantity)";
-            cmd.Parameters.AddWithValue("@productId", int.Parse(txtidproduk.Text));
-            cmd.Parameters.AddWithValue("@category", selectedItem);
-            cmd.Parameters.AddWithValue("@name", txtnama.Text);
-            cmd.Parameters.AddWithValue("@price", txtharga.Text);
-            cmd.Parameters.AddWithValue("@quantity", int.Parse(txtjumlah.Text));
+            //cmd.CommandType = CommandType.Text;
 
-            cmd.ExecuteNonQuery();
+            cmd.CommandText = "ADDPRODUCT";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            string selectedItem = cbkategori.SelectedItem.ToString();
+           
+
+            SqlParameter ProductID = new SqlParameter("@productid", SqlDbType.Int);
+            SqlParameter Category = new SqlParameter("@category", SqlDbType.VarChar);
+            SqlParameter Name = new SqlParameter("@name", SqlDbType.VarChar);
+            SqlParameter Price = new SqlParameter("@harga", SqlDbType.VarChar);
+            SqlParameter Quantity = new SqlParameter("@jumlah", SqlDbType.Int);
+
+            ProductID.Value = int.Parse(txtidproduk.Text);
+            Category.Value = selectedItem;
+            Name.Value = txtnama.Text;
+            Price.Value = txtharga.Text;
+            Quantity.Value = int.Parse(txtjumlah.Text);
+
+            cmd.Parameters.Add(ProductID);
+            cmd.Parameters.Add(Category);
+            cmd.Parameters.Add(Name);
+            cmd.Parameters.Add(Price);
+            cmd.Parameters.Add(Quantity);
+
+
+            int cekdata = cmd.ExecuteNonQuery();
+            if(cekdata > 0)
+            {
+                MessageBox.Show("data berhasil disimpan");
+            }
+            
 
             con.Close();
 
@@ -260,7 +282,7 @@ namespace PetShop
                 MessageBox.Show("harga harus diisi.");
                 return;
             }
-
+            string selectedItem = cbkategori.SelectedItem.ToString();
             int product = int.Parse(txtidproduk.Text);
             bool productvalid = ValidateCredentialsproduct(product);
             if(productvalid )
@@ -270,7 +292,7 @@ namespace PetShop
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = " update Products set Name = '" + txtnama.Text + "', Price = '" + txtharga.Text + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
+                cmd.CommandText = " update Products set Category = '"+selectedItem+"', Name = '" + txtnama.Text + "', Price = '" + txtharga.Text + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
 
                 cmd.ExecuteNonQuery();
 

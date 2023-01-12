@@ -19,14 +19,14 @@ namespace PetShop
         }
 
         SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
 
         private void showdata()
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Customers  ";
+            cmd.CommandText = "select UsernameID, Name, PhoneNumber, Email, Password, Address from Customers ";
             DataSet ds = new DataSet();
 
 
@@ -36,11 +36,14 @@ namespace PetShop
             dgvUser.DataSource = ds;
 
             dgvUser.DataMember = "Customers";
+            
 
             dgvUser.ReadOnly = true;
 
 
         }
+
+
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

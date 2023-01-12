@@ -40,5 +40,12 @@ namespace PetShop
         {
 
         }
+
+        private void btexit_Click(object sender, EventArgs e)
+        {
+            Form1 home = new Form1();
+            home.Show();
+            this.Hide();
+        }
     }
 }
