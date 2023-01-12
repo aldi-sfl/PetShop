@@ -19,7 +19,7 @@ namespace PetShop
         }
 
         SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop;Integrated Security=True");
+            (@"Data Source=LAPTOP-RSFBMM3I\XFRHK; Initial Catalog=db_PetShop1;Integrated Security=True");
 
         private void showdata()
         {

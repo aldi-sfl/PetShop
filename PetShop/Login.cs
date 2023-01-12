@@ -5,14 +5,16 @@ namespace PetShop
 {
     public partial class Form1 : Form
     {
+        SqlCommand cmd;
+        SqlConnection con;
+        SqlDataReader dr;
+
         public Form1()
         {
             InitializeComponent();
             txtpassword.UseSystemPasswordChar= true;
         }
-        /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
-        SqlConnection con = new SqlConnection
-                (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop;Integrated Security=True");
+        
 
         
 
@@ -21,7 +23,9 @@ namespace PetShop
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            con = new SqlConnection(@"Data Source=LAPTOP-RSFBMM3I\XFRHK;Initial Catalog=db_PetShop1;Integrated Security=True");
+            con.Open();
+            txtpassword.UseSystemPasswordChar = true;
         }
         private bool ValidateCredentials(string id, string password)
         {
@@ -44,23 +48,28 @@ namespace PetShop
 
         private void btlogin_Click(object sender, EventArgs e)
         {
-            string username = txtuser.Text;
-            string password = txtpassword.Text;
-            bool isValid = ValidateCredentials(username, password);
-
-            if (isValid)
+            if (txtpassword.Text != string.Empty || txtuser.Text != string.Empty)
             {
-                // Show the main form and close the login form
-                MessageBox.Show("login berhasil");
-                halaman_utama mainForm = new halaman_utama();
-                mainForm.Show();
-                this.Hide();
+
+                cmd = new SqlCommand("select * from Customers where username='" + txtuser.Text + "' and password='" + txtpassword.Text + "'", con);
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    dr.Close();
+                    this.Hide();
+                    halaman_utama home = new halaman_utama();
+                    home.ShowDialog();
+                }
+                else
+                {
+                    dr.Close();
+                    MessageBox.Show("Tidak ada Akun yang tersedia dengan nama pengguna dan kata sandi ini ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
             else
             {
-                // Show an error message
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show("Tolong isi semua kolom.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -90,6 +99,18 @@ namespace PetShop
             login_admin admin = new login_admin();
             admin.Show();
             this.Hide();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                txtpassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtpassword.UseSystemPasswordChar = true;
+            }
         }
     }
 }

@@ -41,6 +41,7 @@
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btlogin = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -180,11 +181,22 @@
             this.btlogin.UseVisualStyleBackColor = false;
             this.btlogin.Click += new System.EventHandler(this.btlogin_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(272, 269);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(18, 17);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 447);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btlogin);
             this.Controls.Add(this.txtpassword);
             this.Controls.Add(this.txtuser);
@@ -221,5 +233,6 @@
         private Button btlogin;
         private Button btnregis;
         private Button btadmin;
+        private CheckBox checkBox1;
     }
 }

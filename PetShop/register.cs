@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Linq;
+using System.Text.RegularExpressions;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -16,9 +17,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace PetShop
 {
     public partial class register : Form
-
-
     {
+        SqlCommand cmd;
+        SqlConnection con;
+        SqlDataReader dr;
+        Regex reg = new Regex(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+
         public register()
         {
             InitializeComponent();
@@ -26,49 +30,20 @@ namespace PetShop
             
         }
 
-        /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
-        SqlConnection con = new SqlConnection
-        (@"Data Source=LAPTOP-D2PPFK1M;Initial Catalog=db_PetShop;Integrated Security=True");
-
-        private void randomid()
-        {
-            Random rng= new Random();
-
-            string id = "ID";
-            for(int i = 0; i < 2; i++)
-            {
-                int r = rng.Next(0, 30);
-                if(r < 26)
-                {
-                    id += (int)('0' + r);
-                }
-                else
-                {
-                    id += (int)('9' + r - 26);
-                }
-            }
-            txtId.Text = id;
-        }
+        
 
         private void register_Load(object sender, EventArgs e)
         {
-            randomid();
-            txtId.ReadOnly= true;
+            con = new SqlConnection(@"Data Source=LAPTOP-RSFBMM3I\XFRHK;Initial Catalog=db_PetShop1;Integrated Security=True");
+            con.Open();
+            txtpassword.UseSystemPasswordChar = true;
+            txtconfirmpassword.UseSystemPasswordChar = true;
         }
 
-        private void  ClearData()
-        {
-            txtnama.Clear();
-            txtalamat.Clear();
-            txthp.Clear();
-            txtemail.Clear();
-            txtpassword.Clear();
-            txtId.Clear();
-        }
 
         private void btrng_Click(object sender, EventArgs e)
         {
-            randomid();
+           
         }
 
 
@@ -76,57 +51,65 @@ namespace PetShop
         private void btsave_Click(object sender, EventArgs e)
         {
 
-            string nama, email, nohp, alamat;
-
-            nama = txtnama.Text;
-            email = txtemail.Text;
-            nohp = txthp.Text;
-            alamat = txtalamat.Text;
-
-
-            if (string.IsNullOrEmpty(nama))
+            if (txtconfirmpassword.Text != string.Empty || txtpassword.Text != string.Empty || txtusername.Text != string.Empty || txtemail.Text != string.Empty)
             {
-                MessageBox.Show("nama harus diisi.");
-                return;
-            }
+                if (txtpassword.Text == txtconfirmpassword.Text)
+                {
+                    cmd = new SqlCommand("select * from Customers where username='" + txtusername.Text + "'", con);
+                    dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        dr.Close();
+                        MessageBox.Show("Username sudah ada silahkan coba yang lain ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    //else if (dr.Read())
+                    //{
+                    //    dr.Close();
+                    //    MessageBox.Show("Email sudah ada silahkan coba yang lain ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+                    else if (!reg.IsMatch(txtemail.Text))
+                    {
+                        dr.Close();
+                        MessageBox.Show("Email harus berupa alamat email yang valid ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (!Regex.IsMatch(txtpassword.Text, @"(!|@|#)") || !txtpassword.Text.Any(char.IsDigit))
+                    {
+                        dr.Close();
+                        MessageBox.Show("Kata Sandi Harus Mengandung setidaknya satu karakter khusus ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (!Regex.IsMatch(txtnama.Text, @"^[a-zA-Z]+$"))
+                    {
+                        dr.Close();
+                        MessageBox.Show("Nama harus berupa huruf ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        dr.Close();
+                        cmd = new SqlCommand("insert into Customers values(@username,@password,@name,@phonenumber,@email,@address)", con);
+                        cmd.Parameters.AddWithValue("username", txtusername.Text);
+                        cmd.Parameters.AddWithValue("password", txtpassword.Text);
+                        cmd.Parameters.AddWithValue("name", txtnama.Text);
+                        cmd.Parameters.AddWithValue("phonenumber", txthp.Text);
+                        cmd.Parameters.AddWithValue("email", txtemail.Text);
+                        cmd.Parameters.AddWithValue("address", txtalamat.Text);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Akun Anda telah dibuat. Silakan masuk sekarang.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Form1 balik = new Form1();
+                        balik.Show();
+                        this.Hide();
 
-            if (string.IsNullOrEmpty(email))
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Silakan masukkan kedua kata sandi yang sama ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
             {
-                MessageBox.Show("email harus diisi.");
-                return;
+                MessageBox.Show("\"Tolong isi semua kolom.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (string.IsNullOrEmpty(nohp))
-            {
-                MessageBox.Show("nomor handphone harus diisi.");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(alamat))
-            {
-                MessageBox.Show("alamat harus diisi.");
-                return;
-            }
-
-            con.Open();
-            SqlCommand sqlcmd = new SqlCommand();
-            sqlcmd.Connection = con;
-            sqlcmd.CommandType = CommandType.Text;
-            sqlcmd.CommandText = "INSERT INTO Customers values ('" + txtId.Text + "','" + txtnama.Text + "','" + txthp.Text + "','" + txtemail.Text + "', '" + txtpassword.Text + "', '" + txtalamat.Text + "')";
-
             
-
-            MessageBox.Show("register berhasil");
-            Form1 balik = new Form1();
-            balik.Show();
-            this.Hide();
-
-            
-
-            sqlcmd.ExecuteNonQuery();
-            con.Close();
-            
-            ClearData();
 
 
 
@@ -162,6 +145,33 @@ namespace PetShop
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                txtpassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtpassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                txtconfirmpassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtconfirmpassword.UseSystemPasswordChar = true;
+            }
+        }
     }
 }
