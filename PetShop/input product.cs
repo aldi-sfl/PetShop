@@ -41,7 +41,6 @@ namespace PetShop
             txtjumlah.Text = "";
             cbkategori.SelectedIndex = 0;
             txtcari.Text = "";
-            
         }
 
         private void showdata()
@@ -149,7 +148,7 @@ namespace PetShop
             {
 
                 DialogResult result = MessageBox.Show("Id produk atau nama produk sudah terdaftar. apakah anda ingin update?", "Confirm", MessageBoxButtons.YesNo);
-
+                 
                 if (result == DialogResult.Yes)
                 {
                     con.Open();
@@ -164,7 +163,7 @@ namespace PetShop
                     con.Close();
 
                     showdata();
-
+                    
                     reset();
                     showmaxid();
                     return;
@@ -184,13 +183,16 @@ namespace PetShop
 
             SqlCommand cmd = new SqlCommand();  
             cmd.Connection = con;
-            //cmd.CommandType = CommandType.Text;
-
-            cmd.CommandText = "ADDPRODUCT";
-            cmd.CommandType = CommandType.StoredProcedure;
-
+            cmd.CommandType = CommandType.Text;
             string selectedItem = cbkategori.SelectedItem.ToString();
-           
+            //cmd.CommandText = " insert into Products values ('" + customid + "','" + selectedItem+"','"+ txtnama.Text + "','" + int.Parse(txtharga.Text) + "','" + int.Parse(txtjumlah.Text) + "')";
+            //cmd.CommandText = " insert into Products (ProductID, Category, Name, Price, Quantity) values ('" + int.Parse(txtidproduk.Text) + "','" + selectedItem + "','" + txtnama.Text + "','" + txtharga.Text + "','" + int.Parse(txtjumlah.Text) + "')";
+            cmd.CommandText = "INSERT INTO Products (ProductID, Category, Name, Price, Quantity) VALUES (@productId, @category, @name, @price, @quantity)";
+            cmd.Parameters.AddWithValue("@productId", int.Parse(txtidproduk.Text));
+            cmd.Parameters.AddWithValue("@category", selectedItem);
+            cmd.Parameters.AddWithValue("@name", txtnama.Text);
+            cmd.Parameters.AddWithValue("@price", txtharga.Text);
+            cmd.Parameters.AddWithValue("@quantity", int.Parse(txtjumlah.Text));
 
             SqlParameter ProductID = new SqlParameter("@productid", SqlDbType.Int);
             SqlParameter Category = new SqlParameter("@category", SqlDbType.VarChar);
@@ -209,14 +211,6 @@ namespace PetShop
             cmd.Parameters.Add(Name);
             cmd.Parameters.Add(Price);
             cmd.Parameters.Add(Quantity);
-
-
-            int cekdata = cmd.ExecuteNonQuery();
-            if(cekdata > 0)
-            {
-                MessageBox.Show("data berhasil disimpan");
-            }
-            
 
             con.Close();
 
@@ -251,7 +245,7 @@ namespace PetShop
                 MessageBox.Show("harga harus diisi.");
                 return;
             }
-            string selectedItem = cbkategori.SelectedItem.ToString();
+
             int product = int.Parse(txtidproduk.Text);
             //bool productvalid = ValidateCredentialsproduct(product);
             bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
