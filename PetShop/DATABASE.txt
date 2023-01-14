@@ -1,0 +1,99 @@
+﻿CREATE DATABASE db_PetShop1;
+
+USE db_PetShop1;
+
+CREATE TABLE Customers (
+   CustomerID int  NOT NULL PRIMARY KEY identity ,
+username varchar (50) not null,   
+Password VARCHAR(255) NOT NULL,
+name VARCHAR(255) NOT NULL,
+   phonenumber VARCHAR(255) NOT NULL,
+   email VARCHAR(255) NOT NULL,
+   address VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Pets (
+   PetID INT NOT NULL PRIMARY KEY,
+   Name VARCHAR(255) NOT NULL,
+   Breed VARCHAR(255) NOT NULL,
+   CustomerID int NOT NULL,
+   FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+CREATE TABLE Admin (
+   IdAdmin INT NOT NULL PRIMARY KEY,
+usernameadmin varchar(50) not null,
+   Name VARCHAR(255) NOT NULL,
+   PhoneNumber VARCHAR(255) NOT NULL,
+   Email VARCHAR(255) NOT NULL,
+   Password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Appointments (
+   AppointmentID INT NOT NULL PRIMARY KEY,
+   Date DATE NOT NULL,
+   Time TIME NOT NULL,
+   Service VARCHAR(255) NOT NULL,
+   PetID INT NOT NULL,
+   FOREIGN KEY (PetID) REFERENCES Pets(PetID)
+);
+
+CREATE TABLE Products (
+   ProductID INT NOT NULL PRIMARY KEY,
+  Category VARCHAR(255) NOT NULL,
+   Name VARCHAR(255) NOT NULL,
+   Price VARCHAR (255) NOT NULL,
+   Quantity INT NOT NULL
+);
+
+CREATE TABLE Orders (
+   OrderID INT NOT NULL PRIMARY KEY,
+   CustomerID int NOT NULL,
+   FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+CREATE TABLE OrderItems (
+   OrderID INT NOT NULL,
+   ProductID INT NOT NULL,
+   Quantity INT NOT NULL,
+   PRIMARY KEY (OrderID, ProductID), 	
+   FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+   FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+
+create procedure ADDPRODUCT
+@productid int ,@category varchar(255), @name varchar(255), @harga int, @jumlah int
+as
+if exists(select * from Products where ProductID = @productid or Name = @name)
+update Products set  Price = @harga, Quantity = @jumlah
+where ProductID = @productid or Name = @name
+else
+insert into Products values(@productid,@category, @name,@harga, @jumlah)
+
+
+create procedure ADD_ORDER
+@customerid int, @orderid int ,@username varchar(50)
+as
+INSERT INTO Orders (CustomerID, OrderID, Username) VALUES (@customerid,@orderid, @username);
+
+create procedure ADD_ORDERITEM
+@orderid int ,@productid int, @jumlah int, @harga int
+as
+if exists(select * from OrderItems where OrderID = @orderid)
+update OrderItems set  ProductID = @productid, Quantity = @jumlah, Price = @harga
+where OrderID = @orderid 
+else
+insert into OrderItems values(@orderid,@productid,@jumlah, @harga)
+
+create trigger updatestock
+on OrderItems
+for INSERT
+as
+begin
+declare @productid varchar(255), @quantity int
+select @productid = ProductID , @quantity = Quantity from
+Products
+update Products set Quantity = (Quantity - @quantity)
+where ProductID = @productid
+end
