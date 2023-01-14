@@ -32,9 +32,12 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelusername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtidproduct = new System.Windows.Forms.TextBox();
+            this.txtidorder = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btco = new System.Windows.Forms.Button();
             this.dgvtampil = new System.Windows.Forms.DataGridView();
             this.txtharga = new System.Windows.Forms.TextBox();
@@ -51,7 +54,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btexit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbidcust = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -96,20 +100,20 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // label1
+            // labelusername
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(64, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Emp Name";
+            this.labelusername.AutoSize = true;
+            this.labelusername.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelusername.Location = new System.Drawing.Point(64, 18);
+            this.labelusername.Name = "labelusername";
+            this.labelusername.Size = new System.Drawing.Size(84, 17);
+            this.labelusername.TabIndex = 10;
+            this.labelusername.Text = "Emp Name";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::PetShop.Properties.Resources.computer_icons_user_profile_portable_network_graphics_vector_graphics_png_favpng_31THvNXgnrmpMkkCSfpupKPpH_removebg_preview;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 29);
@@ -120,6 +124,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.txtidproduct);
+            this.panel1.Controls.Add(this.txtidorder);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btco);
             this.panel1.Controls.Add(this.dgvtampil);
@@ -139,6 +145,30 @@
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // txtidproduct
+            // 
+            this.txtidproduct.Location = new System.Drawing.Point(414, 37);
+            this.txtidproduct.Name = "txtidproduct";
+            this.txtidproduct.Size = new System.Drawing.Size(100, 23);
+            this.txtidproduct.TabIndex = 18;
+            // 
+            // txtidorder
+            // 
+            this.txtidorder.Location = new System.Drawing.Point(414, 8);
+            this.txtidorder.Name = "txtidorder";
+            this.txtidorder.Size = new System.Drawing.Size(100, 23);
+            this.txtidorder.TabIndex = 18;
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(360, 48);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 33);
+            this.button1.TabIndex = 15;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btco
             // 
             this.btco.Location = new System.Drawing.Point(414, 139);
@@ -147,6 +177,7 @@
             this.btco.TabIndex = 14;
             this.btco.Text = "Check out";
             this.btco.UseVisualStyleBackColor = true;
+            this.btco.Click += new System.EventHandler(this.btco_Click);
             // 
             // dgvtampil
             // 
@@ -299,15 +330,25 @@
             this.btexit.Text = "keluar";
             this.btexit.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // label1
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(360, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 33);
-            this.button1.TabIndex = 15;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(64, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 17);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "id :";
+            // 
+            // lbidcust
+            // 
+            this.lbidcust.AutoSize = true;
+            this.lbidcust.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbidcust.Location = new System.Drawing.Point(91, 40);
+            this.lbidcust.Name = "lbidcust";
+            this.lbidcust.Size = new System.Drawing.Size(42, 17);
+            this.lbidcust.TabIndex = 10;
+            this.lbidcust.Text = "no id";
             // 
             // pembayaran
             // 
@@ -323,7 +364,9 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.bthome);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.lbidcust);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelusername);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -347,7 +390,7 @@
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
         private PictureBox pictureBox2;
-        private Label label1;
+        private Label labelusername;
         private PictureBox pictureBox1;
         private Panel panel1;
         private Label label8;
@@ -367,5 +410,9 @@
         private DataGridView dgvtampil;
         private Button btco;
         private Button button1;
+        private TextBox txtidproduct;
+        private TextBox txtidorder;
+        private Label label1;
+        private Label lbidcust;
     }
 }

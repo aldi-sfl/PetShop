@@ -34,7 +34,7 @@ namespace PetShop
 
         private void register_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(@"Data Source=LAPTOP-RSFBMM3I\XFRHK;Initial Catalog=db_PetShop1;Integrated Security=True");
+            con = new SqlConnection(@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
             con.Open();
             txtpassword.UseSystemPasswordChar = true;
             txtconfirmpassword.UseSystemPasswordChar = true;
@@ -72,10 +72,10 @@ namespace PetShop
                         dr.Close();
                         MessageBox.Show("Email harus berupa alamat email yang valid ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (!Regex.IsMatch(txtpassword.Text, @"(!|@|#)") || !txtpassword.Text.Any(char.IsDigit))
+                    else if (!Regex.IsMatch(txtpassword.Text, @"[A-Z]") || !Regex.IsMatch(txtpassword.Text, @"\d"))
                     {
                         dr.Close();
-                        MessageBox.Show("Kata Sandi Harus Mengandung setidaknya satu karakter khusus ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Kata Sandi Harus Mengandung setidaknya satu huruf besar atau satu angka", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if (!Regex.IsMatch(txtnama.Text, @"^[a-zA-Z]+$"))
                     {

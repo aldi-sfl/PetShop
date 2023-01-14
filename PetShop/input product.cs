@@ -13,6 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
+using System.Text.RegularExpressions;
+using PetShop.class_class;
 
 namespace PetShop
 {
@@ -21,11 +24,12 @@ namespace PetShop
         public order()
         {
             InitializeComponent();
-            cbkategori.SelectedIndex= 0; 
+            cbkategori.SelectedIndex= 0;
+            
         }
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-RSFBMM3I\XFRHK; Initial Catalog=db_PetShop1;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
 
         
 
@@ -80,49 +84,11 @@ namespace PetShop
             showdata();
             showmaxid();
             
+            
         }
 
 
 
-        private bool ValidateCredentialsproduct(int product)
-        {
-            SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop;Integrated Security=True");
-            {
-                con.Open();
-
-                // Ccek apakah ada  database sudah ada
-                string query = "SELECT COUNT(*) FROM Products WHERE ProductID = @product";
-                SqlCommand command = new SqlCommand(query, con);
-                {
-                    command.Parameters.AddWithValue("@product", product);                   
-                    
-                }
-                int count = (int)command.ExecuteScalar();
-
-                return count > 0; 
-            }
-        }
-
-        private bool ValidateCredentialsname(string name)
-        {
-            SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop;Integrated Security=True");
-            {
-                con.Open();
-
-                // Ccek apakah ada  database sudah ada
-                string query = "SELECT COUNT(*) FROM Products WHERE  Name = @name";
-                SqlCommand command = new SqlCommand(query, con);
-                {
-                    
-                    command.Parameters.AddWithValue("@name", name);
-                }
-                int count = (int)command.ExecuteScalar();
-
-                return count > 0;
-            }
-        }
 
        
 
@@ -172,11 +138,12 @@ namespace PetShop
                 MessageBox.Show("harga harus diisi.");
                 return;
             }
-
+            
             int product = int.Parse(txtidproduk.Text);
             string name = txtnama.Text;
-            bool productvalid = ValidateCredentialsproduct(product);
-            bool namevalid = ValidateCredentialsname(name);
+            bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
+            bool namevalid = validasiProduct.ValidateCredentialsname(name);
+            //bool namevalid = ValidateCredentialsname(name);
 
             if (productvalid || namevalid)
             {
@@ -190,7 +157,7 @@ namespace PetShop
                     SqlCommand ccmd = new SqlCommand();
                     ccmd.Connection = con;
                     ccmd.CommandType = CommandType.Text;
-                    ccmd.CommandText = " update Products set  Price = '" + txtharga.Text + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "' or Name = '" + txtnama.Text + "'";
+                    ccmd.CommandText = " update Products set  Price = '" + int.Parse(txtharga.Text) + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "' or Name = '" + txtnama.Text + "'";
 
                     ccmd.ExecuteNonQuery();
 
@@ -199,12 +166,14 @@ namespace PetShop
                     showdata();
 
                     reset();
+                    showmaxid();
                     return;
 
 
                 }
                 else
                 {
+                    
                     return;
                 }
 
@@ -226,13 +195,13 @@ namespace PetShop
             SqlParameter ProductID = new SqlParameter("@productid", SqlDbType.Int);
             SqlParameter Category = new SqlParameter("@category", SqlDbType.VarChar);
             SqlParameter Name = new SqlParameter("@name", SqlDbType.VarChar);
-            SqlParameter Price = new SqlParameter("@harga", SqlDbType.VarChar);
+            SqlParameter Price = new SqlParameter("@harga", SqlDbType.Int);
             SqlParameter Quantity = new SqlParameter("@jumlah", SqlDbType.Int);
 
             ProductID.Value = int.Parse(txtidproduk.Text);
             Category.Value = selectedItem;
             Name.Value = txtnama.Text;
-            Price.Value = txtharga.Text;
+            Price.Value = int.Parse(txtharga.Text);
             Quantity.Value = int.Parse(txtjumlah.Text);
 
             cmd.Parameters.Add(ProductID);
@@ -252,8 +221,8 @@ namespace PetShop
             con.Close();
 
             showdata();
+            reset();
             showmaxid();
-            reset();    
 
         }
 
@@ -284,17 +253,19 @@ namespace PetShop
             }
             string selectedItem = cbkategori.SelectedItem.ToString();
             int product = int.Parse(txtidproduk.Text);
-            bool productvalid = ValidateCredentialsproduct(product);
-            if(productvalid )
+            //bool productvalid = ValidateCredentialsproduct(product);
+            bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
+            if (productvalid )
             {
                 con.Open();
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = " update Products set Category = '"+selectedItem+"', Name = '" + txtnama.Text + "', Price = '" + txtharga.Text + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
+                cmd.CommandText = " update Products set Category = '"+selectedItem+"', Name = '" + txtnama.Text + "', Price = '" + int.Parse(txtharga.Text) + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
 
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("data berhasil di update", "pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.None);
 
                 con.Close();
 
@@ -322,7 +293,8 @@ namespace PetShop
             }
 
             int product = int.Parse(txtidproduk.Text);
-            bool productvalid = ValidateCredentialsproduct(product);
+            //bool productvalid = ValidateCredentialsproduct(product);
+            bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
 
             if (productvalid)
             {
@@ -331,22 +303,41 @@ namespace PetShop
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = " delete from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
-
-                cmd.ExecuteNonQuery();
-
-                con.Close();
-
-                showdata();
-                showmaxid();
-                reset();
-            }
-            else
+                //cmd.CommandText = " delete from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
+                cmd.CommandText = "select Name from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
+                using(SqlDataReader read = cmd.ExecuteReader())
+                
                 {
-                MessageBox.Show("id produk tidak terdaftar");
-                    return;
-                }
+                    if(read.Read())
+                    {
+                        string readname = read.GetString("Name");
+                        con.Close();
+                        DialogResult result = MessageBox.Show("apakah anda yakin ingin hapus produk " + readname + "", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Yes)
+                        {
+                            con.Open();
 
+                            cmd.Connection = con;
+                            cmd.CommandType = CommandType.Text;
+                            cmd.CommandText = " delete from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            showdata();
+                            showmaxid();
+                            reset();
+                        }
+
+                    }
+                    
+                }
+                }
+            else
+            {
+                MessageBox.Show("id produk tidak terdaftar silahkan periksa kembali id produk yang tersedia");
+                return;
+            }
+            
         }
 
 
@@ -355,6 +346,8 @@ namespace PetShop
             reset();
             showmaxid();
         }
+
+        
 
         private void btexit_Click(object sender, EventArgs e)
         {
@@ -370,10 +363,33 @@ namespace PetShop
 
         private void txtharga_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsPunctuation(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsPunctuation(e.KeyChar)&& !char.IsSymbol(e.KeyChar); ;
+           
 
         }
 
+        private void order_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
 
+        private void txtcari_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtcari_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                btcari.PerformClick();
+            }
+        }
+
+        private void txtjumlah_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsPunctuation(e.KeyChar) && !char.IsSymbol(e.KeyChar); ;
+            
+        }
     }
 }

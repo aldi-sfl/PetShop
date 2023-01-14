@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic.Logging;
+using PetShop.class_class;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -13,41 +15,30 @@ namespace PetShop
         {
             InitializeComponent();
             txtpassword.UseSystemPasswordChar= true;
+            //simpan data username
+            //txtuser.Text = showusername.username;
+           
         }
-        
+
+
 
         
-
 
        
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(@"Data Source=LAPTOP-RSFBMM3I\XFRHK;Initial Catalog=db_PetShop1;Integrated Security=True");
+            con = new SqlConnection(@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
             con.Open();
             txtpassword.UseSystemPasswordChar = true;
         }
-        private bool ValidateCredentials(string id, string password)
-        {
-            SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_petshop;Integrated Security=True");
-            {
-            con.Open();
+        
 
-            // Check if the username and password match a record in the database
-            string query = "SELECT COUNT(*) FROM Customers WHERE UsernameID = @id AND Password = @password";
-            SqlCommand command = new SqlCommand(query, con);
-            command.Parameters.AddWithValue("@id", id);
-            command.Parameters.AddWithValue("@password", password);
-            int count = (int)command.ExecuteScalar();
-
-            return count > 0;
-            }
-        }
 
 
         private void btlogin_Click(object sender, EventArgs e)
         {
+            showusername.username = txtuser.Text;
             if (txtpassword.Text != string.Empty || txtuser.Text != string.Empty)
             {
 
@@ -56,6 +47,8 @@ namespace PetShop
                 if (dr.Read())
                 {
                     dr.Close();
+                    MessageBox.Show("login berhasil","succes",MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                   
                     this.Hide();
                     halaman_utama home = new halaman_utama();
                     home.ShowDialog();
