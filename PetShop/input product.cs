@@ -24,14 +24,14 @@ namespace PetShop
         public order()
         {
             InitializeComponent();
-            cbkategori.SelectedIndex= 0;
-            
+            cbkategori.SelectedIndex = 0;
+
         }
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
         SqlConnection con = new SqlConnection
             (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
 
-        
+
 
         private void reset()
         {
@@ -41,13 +41,14 @@ namespace PetShop
             txtjumlah.Text = "";
             cbkategori.SelectedIndex = 0;
             txtcari.Text = "";
+
         }
 
         private void showdata()
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandType =CommandType.Text;
+            cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select ProductID, Category, Name, Price, Quantity from Products ";
             DataSet ds = new DataSet();
 
@@ -58,10 +59,10 @@ namespace PetShop
             dgvproduk.DataSource = ds;
 
             dgvproduk.DataMember = "Products";
-            
-            dgvproduk.ReadOnly=true;
 
-        
+            dgvproduk.ReadOnly = true;
+
+
         }
 
         private void showmaxid()
@@ -82,22 +83,22 @@ namespace PetShop
             reset();
             showdata();
             showmaxid();
-            
-            
+
+
         }
 
 
 
 
-       
+
 
         private void btcari_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Products where Name like '%"+txtcari.Text+"%' or Category like '%" + txtcari.Text + "%'";
-            
+            cmd.CommandText = "select * from Products where Name like '%" + txtcari.Text + "%' or Category like '%" + txtcari.Text + "%'";
+
             DataSet ds = new DataSet();
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -120,13 +121,13 @@ namespace PetShop
                 return;
             }
 
-            if (txtnama.Text =="")
+            if (txtnama.Text == "")
             {
                 MessageBox.Show("nama harus diisi.");
                 return;
             }
 
-            if (txtjumlah.Text=="")
+            if (txtjumlah.Text == "")
             {
                 MessageBox.Show("jumlah harus diisi.");
                 return;
@@ -137,7 +138,7 @@ namespace PetShop
                 MessageBox.Show("harga harus diisi.");
                 return;
             }
-            
+
             int product = int.Parse(txtidproduk.Text);
             string name = txtnama.Text;
             bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
@@ -148,7 +149,7 @@ namespace PetShop
             {
 
                 DialogResult result = MessageBox.Show("Id produk atau nama produk sudah terdaftar. apakah anda ingin update?", "Confirm", MessageBoxButtons.YesNo);
-                 
+
                 if (result == DialogResult.Yes)
                 {
                     con.Open();
@@ -163,7 +164,7 @@ namespace PetShop
                     con.Close();
 
                     showdata();
-                    
+
                     reset();
                     showmaxid();
                     return;
@@ -172,7 +173,7 @@ namespace PetShop
                 }
                 else
                 {
-                    
+
                     return;
                 }
 
@@ -181,18 +182,15 @@ namespace PetShop
 
             con.Open();
 
-            SqlCommand cmd = new SqlCommand();  
+            SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandType = CommandType.Text;
+            //cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = "ADDPRODUCT";
+            cmd.CommandType = CommandType.StoredProcedure;
+
             string selectedItem = cbkategori.SelectedItem.ToString();
-            //cmd.CommandText = " insert into Products values ('" + customid + "','" + selectedItem+"','"+ txtnama.Text + "','" + int.Parse(txtharga.Text) + "','" + int.Parse(txtjumlah.Text) + "')";
-            //cmd.CommandText = " insert into Products (ProductID, Category, Name, Price, Quantity) values ('" + int.Parse(txtidproduk.Text) + "','" + selectedItem + "','" + txtnama.Text + "','" + txtharga.Text + "','" + int.Parse(txtjumlah.Text) + "')";
-            cmd.CommandText = "INSERT INTO Products (ProductID, Category, Name, Price, Quantity) VALUES (@productId, @category, @name, @price, @quantity)";
-            cmd.Parameters.AddWithValue("@productId", int.Parse(txtidproduk.Text));
-            cmd.Parameters.AddWithValue("@category", selectedItem);
-            cmd.Parameters.AddWithValue("@name", txtnama.Text);
-            cmd.Parameters.AddWithValue("@price", txtharga.Text);
-            cmd.Parameters.AddWithValue("@quantity", int.Parse(txtjumlah.Text));
+
 
             SqlParameter ProductID = new SqlParameter("@productid", SqlDbType.Int);
             SqlParameter Category = new SqlParameter("@category", SqlDbType.VarChar);
@@ -211,6 +209,14 @@ namespace PetShop
             cmd.Parameters.Add(Name);
             cmd.Parameters.Add(Price);
             cmd.Parameters.Add(Quantity);
+
+
+            int cekdata = cmd.ExecuteNonQuery();
+            if (cekdata > 0)
+            {
+                MessageBox.Show("data berhasil disimpan");
+            }
+
 
             con.Close();
 
@@ -245,18 +251,18 @@ namespace PetShop
                 MessageBox.Show("harga harus diisi.");
                 return;
             }
-
+            string selectedItem = cbkategori.SelectedItem.ToString();
             int product = int.Parse(txtidproduk.Text);
             //bool productvalid = ValidateCredentialsproduct(product);
             bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
-            if (productvalid )
+            if (productvalid)
             {
                 con.Open();
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = " update Products set Category = '"+selectedItem+"', Name = '" + txtnama.Text + "', Price = '" + int.Parse(txtharga.Text) + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
+                cmd.CommandText = " update Products set Category = '" + selectedItem + "', Name = '" + txtnama.Text + "', Price = '" + int.Parse(txtharga.Text) + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("data berhasil di update", "pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -272,11 +278,11 @@ namespace PetShop
                 MessageBox.Show("id tidak ditemukan");
             }
 
-            
+
         }
 
 
-        
+
 
         private void btdelete_Click(object sender, EventArgs e)
         {
@@ -299,10 +305,10 @@ namespace PetShop
                 cmd.CommandType = CommandType.Text;
                 //cmd.CommandText = " delete from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
                 cmd.CommandText = "select Name from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
-                using(SqlDataReader read = cmd.ExecuteReader())
-                
+                using (SqlDataReader read = cmd.ExecuteReader())
+
                 {
-                    if(read.Read())
+                    if (read.Read())
                     {
                         string readname = read.GetString("Name");
                         con.Close();
@@ -323,15 +329,15 @@ namespace PetShop
                         }
 
                     }
-                    
+
                 }
-                }
+            }
             else
             {
                 MessageBox.Show("id produk tidak terdaftar silahkan periksa kembali id produk yang tersedia");
                 return;
             }
-            
+
         }
 
 
@@ -341,7 +347,7 @@ namespace PetShop
             showmaxid();
         }
 
-        
+
 
         private void btexit_Click(object sender, EventArgs e)
         {
@@ -357,14 +363,14 @@ namespace PetShop
 
         private void txtharga_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsPunctuation(e.KeyChar)&& !char.IsSymbol(e.KeyChar); ;
-           
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsPunctuation(e.KeyChar) && !char.IsSymbol(e.KeyChar); ;
+
 
         }
 
         private void order_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void txtcari_Click(object sender, EventArgs e)
@@ -383,7 +389,7 @@ namespace PetShop
         private void txtjumlah_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsPunctuation(e.KeyChar) && !char.IsSymbol(e.KeyChar); ;
-            
+
         }
     }
 }
