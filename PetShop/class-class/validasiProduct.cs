@@ -13,7 +13,7 @@ namespace PetShop.class_class
         public static bool ValidateCredentialsproduct(int product)
         {
             SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop2;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
             {
                 con.Open();
 
@@ -33,7 +33,7 @@ namespace PetShop.class_class
         public static bool ValidateCredentialsname(string name)
         {
             SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop2;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
             {
                 con.Open();
 

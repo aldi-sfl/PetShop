@@ -50,7 +50,7 @@ namespace PetShop
 
         private void produk_Load(object sender, EventArgs e)
         {
-
+            labelusername.Text = showusername.username;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

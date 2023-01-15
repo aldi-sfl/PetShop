@@ -23,6 +23,15 @@ namespace PetShop
 
         }
 
+        private void disable()
+        {
+            cbkategori.Enabled = false;
+            txtharga.ReadOnly = true;
+            txtidorder.ReadOnly= true;
+            txtproduct.ReadOnly=true;
+            txtjumlah.ReadOnly=true;
+        }
+
         private void idorder()
         {
             Random rng = new Random();
@@ -40,7 +49,7 @@ namespace PetShop
                     id += (int)('9' + r - 26);
                 }
             }
-            txtidorder.Text= id;
+            txtidorder.Text = "CO-" + id + "";
         }
 
         private void pembayaran_Load(object sender, EventArgs e)
@@ -96,7 +105,7 @@ namespace PetShop
             }koneksi.con.Close();
         }
 
-        private void showcustomerid()
+        public void showcustomerid()
         {
             koneksi.con.Open();
             SqlCommand cmdd = new SqlCommand();
@@ -117,6 +126,9 @@ namespace PetShop
 
         private void showprice()
         {
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
             koneksi.con.Open();
             SqlCommand cmdd = new SqlCommand();
             cmdd.Connection = koneksi.con;
@@ -145,6 +157,16 @@ namespace PetShop
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(txtproduct.Text == "")
+            {
+                MessageBox.Show("masukan nama produk");
+                return;
+            }
+            if (txtjumlah.Text == "")
+            {
+                MessageBox.Show("masukan jumlah produk");
+                return;
+            }
             showprice();
             showproductid();
             showcustomerid();
@@ -157,24 +179,32 @@ namespace PetShop
             cmd.CommandText = "ADD_ORDER";
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter CustomerID = new SqlParameter("@customerid", SqlDbType.Int);
-            SqlParameter OrderID = new SqlParameter("@orderid", SqlDbType.Int);
+            SqlParameter OrderID = new SqlParameter("@orderid", SqlDbType.VarChar);
             SqlParameter Username = new SqlParameter("@username", SqlDbType.VarChar);
 
             CustomerID.Value = int.Parse(lbidcust.Text);
-            OrderID.Value = int.Parse(txtidorder.Text);
+            OrderID.Value = txtidorder.Text;
             Username.Value = labelusername.Text;
 
             cmd.Parameters.Add(CustomerID);
             cmd.Parameters.Add(OrderID);
             cmd.Parameters.Add(Username);
-            
-
-            int cekdata = cmd.ExecuteNonQuery();
-            if (cekdata > 0)
+            DialogResult result = MessageBox.Show("apakah pilihan produk sudah benar? klik no untuk modifikasi pembelian", "peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show("data berhasil disimpan");
+                int cekdata = cmd.ExecuteNonQuery();
+                disable();
+
+                MessageBox.Show("silahkan tekan tombol check out");
             }
-                koneksi.con.Close();
+            else
+            {
+                return;
+            }
+
+          
+            
+            koneksi.con.Close();
         }
         private void cbview()
         {
@@ -198,6 +228,9 @@ namespace PetShop
 
         private void btco_Click(object sender, EventArgs e)
         {
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
             koneksi.con.Open();
 
             SqlCommand cmd = new SqlCommand();
@@ -224,8 +257,13 @@ namespace PetShop
             int cekdata = cmd.ExecuteNonQuery();
             if (cekdata > 0)
             {
+                notanota.orderid = txtidorder.Text;
                 MessageBox.Show("data berhasil disimpan");
+                nota kenota = new nota();
+                kenota.Show();
+                this.Hide();
             }
+
             koneksi.con.Close();
         }
 

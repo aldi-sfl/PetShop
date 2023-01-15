@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(halaman_utama));
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelusername = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -68,7 +68,7 @@
             this.label7.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(541, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(124, 32);
+            this.label7.Size = new System.Drawing.Size(100, 26);
             this.label7.TabIndex = 0;
             this.label7.Text = "PETSHOP";
             this.label7.Click += new System.EventHandler(this.label1_Click);
@@ -84,15 +84,15 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // labelusername
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(80, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Emp Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.labelusername.AutoSize = true;
+            this.labelusername.Location = new System.Drawing.Point(80, 21);
+            this.labelusername.Name = "labelusername";
+            this.labelusername.Size = new System.Drawing.Size(84, 17);
+            this.labelusername.TabIndex = 0;
+            this.labelusername.Text = "Emp Name";
+            this.labelusername.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox3
             // 
@@ -201,7 +201,7 @@
             // 
             this.textBox6.Location = new System.Drawing.Point(272, 285);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(218, 28);
+            this.textBox6.Size = new System.Drawing.Size(218, 24);
             this.textBox6.TabIndex = 8;
             this.textBox6.Text = "SELAMAT BERBELANJA";
             // 
@@ -264,7 +264,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(299, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 28);
+            this.textBox2.Size = new System.Drawing.Size(150, 24);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "Menyediakan";
             // 
@@ -292,7 +292,7 @@
             // 
             // halaman_utama
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(1000, 428);
@@ -305,7 +305,7 @@
             this.Controls.Add(this.bttransaksi);
             this.Controls.Add(this.btproduk);
             this.Controls.Add(this.bthome);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelusername);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -330,7 +330,7 @@
 
         #endregion
         private PictureBox pictureBox1;
-        private Label label1;
+        private Label labelusername;
 
         private Label label7;
         private PictureBox pictureBox3;

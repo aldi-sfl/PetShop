@@ -100,12 +100,11 @@ insert into OrderItems values(@orderid,@productid,@jumlah, @harga)
 
 create trigger updatestock
 on OrderItems
-for INSERT
+after insert
 as
 begin
 declare @productid varchar(255), @quantity int
-select @productid = ProductID , @quantity = Quantity from
-Products
+select @productid = ProductID , @quantity = Quantity from inserted
 update Products set Quantity = (Quantity - @quantity)
 where ProductID = @productid
 end

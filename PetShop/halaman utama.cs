@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetShop.class_class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,7 +58,7 @@ namespace PetShop
 
         private void halaman_utama_Load(object sender, EventArgs e)
         {
-
+            labelusername.Text = showusername.username;
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
