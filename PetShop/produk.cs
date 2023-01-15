@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetShop.class_class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PetShop.class_class;
 
 namespace PetShop
 {
@@ -16,16 +18,20 @@ namespace PetShop
         public produk()
         {
             InitializeComponent();
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
         }
 
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
-        SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
+        //SqlConnection con = new SqlConnection
+        //    (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
+        
 
         private void showdata()
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = koneksi.con;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select * from Products";
             DataSet ds = new DataSet();
@@ -67,7 +73,7 @@ namespace PetShop
         private void button1_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = koneksi.con;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select * from Products where Name like '%" + txtcari.Text + "%' or Category like '%" + txtcari.Text + "%'";
 

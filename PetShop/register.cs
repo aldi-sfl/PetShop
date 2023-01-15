@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Linq;
 using System.Text.RegularExpressions;
+using PetShop.class_class;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -19,23 +20,27 @@ namespace PetShop
     public partial class register : Form
     {
         SqlCommand cmd;
-        SqlConnection con;
+        //SqlConnection con;
         SqlDataReader dr;
         Regex reg = new Regex(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
 
         public register()
         {
             InitializeComponent();
-            
-            
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+
         }
 
         
 
         private void register_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
-            con.Open();
+            //con = new SqlConnection(@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
+            //con.Open();
+            koneksi.con.Open();
             txtpassword.UseSystemPasswordChar = true;
             txtconfirmpassword.UseSystemPasswordChar = true;
         }
@@ -55,7 +60,7 @@ namespace PetShop
             {
                 if (txtpassword.Text == txtconfirmpassword.Text)
                 {
-                    cmd = new SqlCommand("select * from Customers where username='" + txtusername.Text + "'", con);
+                    cmd = new SqlCommand("select * from Customers where username='" + txtusername.Text + "'", koneksi.con);
                     dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
@@ -85,7 +90,7 @@ namespace PetShop
                     else
                     {
                         dr.Close();
-                        cmd = new SqlCommand("insert into Customers values(@username,@password,@name,@phonenumber,@email,@address)", con);
+                        cmd = new SqlCommand("insert into Customers values(@username,@password,@name,@phonenumber,@email,@address)", koneksi.con);
                         cmd.Parameters.AddWithValue("username", txtusername.Text);
                         cmd.Parameters.AddWithValue("password", txtpassword.Text);
                         cmd.Parameters.AddWithValue("name", txtnama.Text);

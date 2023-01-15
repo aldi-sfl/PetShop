@@ -2,6 +2,7 @@ using Microsoft.VisualBasic.Logging;
 using PetShop.class_class;
 using System.Data;
 using System.Data.SqlClient;
+using PetShop.class_class;
 
 namespace PetShop
 {
@@ -9,32 +10,33 @@ namespace PetShop
     {
         SqlCommand cmd;
         SqlConnection con;
+
         SqlDataReader dr;
+        
 
         public Form1()
         {
             InitializeComponent();
             txtpassword.UseSystemPasswordChar= true;
-            //simpan data username
-            //txtuser.Text = showusername.username;
-           
+
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+
         }
 
-
-
-        
-
-       
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
-            con.Open();
+            //con = new SqlConnection(@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
+            //con.Open();
+            koneksi.con.Open();
+            
+            
             txtpassword.UseSystemPasswordChar = true;
         }
         
-
-
 
         private void btlogin_Click(object sender, EventArgs e)
         {
@@ -42,7 +44,7 @@ namespace PetShop
             if (txtpassword.Text != string.Empty || txtuser.Text != string.Empty)
             {
 
-                cmd = new SqlCommand("select * from Customers where username='" + txtuser.Text + "' and password='" + txtpassword.Text + "'", con);
+                cmd = new SqlCommand("select * from Customers where username='" + txtuser.Text + "' and password='" + txtpassword.Text + "'", koneksi.con);
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
@@ -64,6 +66,7 @@ namespace PetShop
             {
                 MessageBox.Show("Tolong isi semua kolom.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
 

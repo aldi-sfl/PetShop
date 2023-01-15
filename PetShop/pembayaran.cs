@@ -17,7 +17,10 @@ namespace PetShop
         public pembayaran()
         {
             InitializeComponent();
-            
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
         }
 
         private void idorder()
@@ -52,13 +55,13 @@ namespace PetShop
             //lbidproduct.Hide();
         }
 
-        SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
+        //SqlConnection con = new SqlConnection
+        //    (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
 
         private void showdata()
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = koneksi.con;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select ProductID, Category, Name, Price, Quantity from Products ";
             DataSet ds = new DataSet();
@@ -77,9 +80,9 @@ namespace PetShop
 
         private void showproductid()
         {
-            con.Open();
+            koneksi.con.Open();
             SqlCommand cmdd = new SqlCommand();
-            cmdd.Connection = con;
+            cmdd.Connection = koneksi.con;
             cmdd.CommandType = CommandType.Text;
             cmdd.CommandText = "select ProductID from Products where Name='" + txtproduct.Text + "'";
             using (SqlDataReader reader = cmdd.ExecuteReader())
@@ -90,14 +93,14 @@ namespace PetShop
                     txtidproduct.Text = ID.ToString();
   
                 }
-            }con.Close();
+            }koneksi.con.Close();
         }
 
         private void showcustomerid()
         {
-            con.Open();
+            koneksi.con.Open();
             SqlCommand cmdd = new SqlCommand();
-            cmdd.Connection = con;
+            cmdd.Connection = koneksi.con;
             cmdd.CommandType = CommandType.Text;
             cmdd.CommandText = "select CustomerID from Customers where username='" + labelusername.Text + "'";
             using (SqlDataReader reader = cmdd.ExecuteReader())
@@ -109,14 +112,14 @@ namespace PetShop
 
                 }
             }
-            con.Close();
+            koneksi.con.Close();
         }
 
         private void showprice()
         {
-            con.Open();
+            koneksi.con.Open();
             SqlCommand cmdd = new SqlCommand();
-            cmdd.Connection = con;
+            cmdd.Connection = koneksi.con;
             cmdd.CommandType = CommandType.Text;
             cmdd.CommandText = "select Price from Products where Name='" + txtproduct.Text + "'";
             using (SqlDataReader reader = cmdd.ExecuteReader())
@@ -134,7 +137,7 @@ namespace PetShop
                     MessageBox.Show("Product not found");
                 }
             }
-            con.Close();
+            koneksi.con.Close();
 
         }
         
@@ -146,10 +149,10 @@ namespace PetShop
             showproductid();
             showcustomerid();
 
-            con.Open();
+            koneksi.con.Open();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = koneksi.con;
 
             cmd.CommandText = "ADD_ORDER";
             cmd.CommandType = CommandType.StoredProcedure;
@@ -171,13 +174,13 @@ namespace PetShop
             {
                 MessageBox.Show("data berhasil disimpan");
             }
-            con.Close();
+                koneksi.con.Close();
         }
         private void cbview()
         {
             string selectedItem = cbkategori.SelectedItem.ToString();
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = koneksi.con;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select * from Products where Category like '%" + selectedItem + "%' ";
             
@@ -195,10 +198,10 @@ namespace PetShop
 
         private void btco_Click(object sender, EventArgs e)
         {
-            con.Open();
+            koneksi.con.Open();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = koneksi.con;
             
             cmd.CommandText = "ADD_ORDERITEM";
             cmd.CommandType = CommandType.StoredProcedure;
@@ -223,7 +226,7 @@ namespace PetShop
             {
                 MessageBox.Show("data berhasil disimpan");
             }
-            con.Close();
+            koneksi.con.Close();
         }
 
         private void label8_Click(object sender, EventArgs e)

@@ -1,4 +1,14 @@
-﻿CREATE DATABASE db_PetShop1;
+﻿
+setelah query database  di execute pastikan ganti nama data source pada kode dibawah ini pada class koneksi database. 
+sesuakan dengan data source laptop kalian
+
+ SqlConnection con = new SqlConnection
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
+
+
+
+
+CREATE DATABASE db_PetShop1;
 
 USE db_PetShop1;
 

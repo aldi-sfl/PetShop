@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetShop.class_class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,13 +18,18 @@ namespace PetShop
         {
             InitializeComponent();
             txtpassword.UseSystemPasswordChar = true;
+
+
         }
 
         private bool ValidateCredentials(string username, string password)
         {
             /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
-            SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshop1;Integrated Security=True");
+            //SqlConnection con = new SqlConnection
+            //(@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_petshop1;Integrated Security=True");
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
             {
                 con.Open();
 

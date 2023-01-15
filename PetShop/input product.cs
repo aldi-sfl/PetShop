@@ -25,12 +25,15 @@ namespace PetShop
         {
             InitializeComponent();
             cbkategori.SelectedIndex = 0;
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
 
         }
         /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
-        SqlConnection con = new SqlConnection
-            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
-
+        //SqlConnection con = new SqlConnection
+        //    (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
+        
 
 
         private void reset()
@@ -47,7 +50,7 @@ namespace PetShop
         private void showdata()
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = koneksi.con;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select ProductID, Category, Name, Price, Quantity from Products ";
             DataSet ds = new DataSet();
@@ -67,14 +70,14 @@ namespace PetShop
 
         private void showmaxid()
         {
-            con.Open();
+            koneksi.con.Open();
             SqlCommand cmdd = new SqlCommand();
-            cmdd.Connection = con;
+            cmdd.Connection = koneksi.con;
             cmdd.CommandType = CommandType.Text;
             cmdd.CommandText = "SELECT MAX(ProductID) +1 FROM Products";
             object hasil = cmdd.ExecuteScalar();
             txtidproduk.Text = hasil.ToString();
-            con.Close();
+            koneksi.con.Close();
 
         }
 
@@ -83,6 +86,7 @@ namespace PetShop
             reset();
             showdata();
             showmaxid();
+            
 
 
         }
@@ -95,7 +99,7 @@ namespace PetShop
         private void btcari_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = koneksi.con;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select * from Products where Name like '%" + txtcari.Text + "%' or Category like '%" + txtcari.Text + "%'";
 
@@ -152,16 +156,16 @@ namespace PetShop
 
                 if (result == DialogResult.Yes)
                 {
-                    con.Open();
+                    koneksi.con.Open();
 
                     SqlCommand ccmd = new SqlCommand();
-                    ccmd.Connection = con;
+                    ccmd.Connection = koneksi.con;
                     ccmd.CommandType = CommandType.Text;
                     ccmd.CommandText = " update Products set  Price = '" + int.Parse(txtharga.Text) + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "' or Name = '" + txtnama.Text + "'";
 
                     ccmd.ExecuteNonQuery();
 
-                    con.Close();
+                    koneksi.con.Close();
 
                     showdata();
 
@@ -180,10 +184,10 @@ namespace PetShop
 
             }
 
-            con.Open();
+            koneksi.con.Open();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection =    koneksi.con;
             //cmd.CommandType = CommandType.Text;
 
             cmd.CommandText = "ADDPRODUCT";
@@ -218,7 +222,7 @@ namespace PetShop
             }
 
 
-            con.Close();
+            koneksi.con.Close();
 
             showdata();
             reset();
@@ -257,17 +261,17 @@ namespace PetShop
             bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
             if (productvalid)
             {
-                con.Open();
+                koneksi.con.Open();
 
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = koneksi.con;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = " update Products set Category = '" + selectedItem + "', Name = '" + txtnama.Text + "', Price = '" + int.Parse(txtharga.Text) + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("data berhasil di update", "pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-                con.Close();
+                koneksi.con.Close();
 
                 showdata();
                 showmaxid();
@@ -298,10 +302,10 @@ namespace PetShop
 
             if (productvalid)
             {
-                con.Open();
+                    koneksi.con.Open();
 
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                cmd.Connection = koneksi.con;
                 cmd.CommandType = CommandType.Text;
                 //cmd.CommandText = " delete from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
                 cmd.CommandText = "select Name from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
@@ -311,17 +315,17 @@ namespace PetShop
                     if (read.Read())
                     {
                         string readname = read.GetString("Name");
-                        con.Close();
+                        koneksi.con.Close();
                         DialogResult result = MessageBox.Show("apakah anda yakin ingin hapus produk " + readname + "", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (result == DialogResult.Yes)
                         {
-                            con.Open();
+                            koneksi.con.Open();
 
-                            cmd.Connection = con;
+                            cmd.Connection = koneksi.con;
                             cmd.CommandType = CommandType.Text;
                             cmd.CommandText = " delete from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
                             cmd.ExecuteNonQuery();
-                            con.Close();
+                            koneksi.con.Close();
 
                             showdata();
                             showmaxid();
