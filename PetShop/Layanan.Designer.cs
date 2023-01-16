@@ -30,14 +30,15 @@
         {
             this.label7 = new System.Windows.Forms.Label();
             this.btnext = new System.Windows.Forms.Button();
-            this.txthp = new System.Windows.Forms.TextBox();
+            this.txtCustomer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtnama = new System.Windows.Forms.TextBox();
-            this.txtusername = new System.Windows.Forms.TextBox();
-            this.txtalamat = new System.Windows.Forms.TextBox();
+            this.txtname = new System.Windows.Forms.TextBox();
+            this.txtPet = new System.Windows.Forms.TextBox();
+            this.txtRas = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -60,13 +61,14 @@
             this.btnext.TabIndex = 11;
             this.btnext.Text = "selanjutnya";
             this.btnext.UseVisualStyleBackColor = true;
+            this.btnext.Click += new System.EventHandler(this.btnext_Click);
             // 
-            // txthp
+            // txtCustomer
             // 
-            this.txthp.Location = new System.Drawing.Point(306, 239);
-            this.txthp.Name = "txthp";
-            this.txthp.Size = new System.Drawing.Size(397, 27);
-            this.txthp.TabIndex = 21;
+            this.txtCustomer.Location = new System.Drawing.Point(306, 239);
+            this.txtCustomer.Name = "txtCustomer";
+            this.txtCustomer.Size = new System.Drawing.Size(397, 27);
+            this.txtCustomer.TabIndex = 21;
             // 
             // label2
             // 
@@ -108,26 +110,37 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Customer Id";
             // 
-            // txtnama
+            // txtname
             // 
-            this.txtnama.Location = new System.Drawing.Point(306, 153);
-            this.txtnama.Name = "txtnama";
-            this.txtnama.Size = new System.Drawing.Size(397, 27);
-            this.txtnama.TabIndex = 19;
+            this.txtname.Location = new System.Drawing.Point(306, 153);
+            this.txtname.Name = "txtname";
+            this.txtname.Size = new System.Drawing.Size(397, 27);
+            this.txtname.TabIndex = 19;
             // 
-            // txtusername
+            // txtPet
             // 
-            this.txtusername.Location = new System.Drawing.Point(307, 109);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.Size = new System.Drawing.Size(396, 27);
-            this.txtusername.TabIndex = 12;
+            this.txtPet.Location = new System.Drawing.Point(307, 109);
+            this.txtPet.Name = "txtPet";
+            this.txtPet.Size = new System.Drawing.Size(396, 27);
+            this.txtPet.TabIndex = 12;
+            this.txtPet.TextChanged += new System.EventHandler(this.txtPet_TextChanged);
             // 
-            // txtalamat
+            // txtRas
             // 
-            this.txtalamat.Location = new System.Drawing.Point(306, 195);
-            this.txtalamat.Name = "txtalamat";
-            this.txtalamat.Size = new System.Drawing.Size(397, 27);
-            this.txtalamat.TabIndex = 20;
+            this.txtRas.Location = new System.Drawing.Point(306, 195);
+            this.txtRas.Name = "txtRas";
+            this.txtRas.Size = new System.Drawing.Size(397, 27);
+            this.txtRas.TabIndex = 20;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblUsername.Location = new System.Drawing.Point(332, 319);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(99, 28);
+            this.lblUsername.TabIndex = 22;
+            this.lblUsername.Text = "Username";
             // 
             // Layanan
             // 
@@ -135,10 +148,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(813, 368);
-            this.Controls.Add(this.txthp);
-            this.Controls.Add(this.txtalamat);
-            this.Controls.Add(this.txtusername);
-            this.Controls.Add(this.txtnama);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.txtCustomer);
+            this.Controls.Add(this.txtRas);
+            this.Controls.Add(this.txtPet);
+            this.Controls.Add(this.txtname);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -147,6 +161,7 @@
             this.Controls.Add(this.label7);
             this.Name = "Layanan";
             this.Text = "Layanan";
+            this.Load += new System.EventHandler(this.Layanan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,13 +171,14 @@
 
         private Label label7;
         private Button btnext;
-        private TextBox txthp;
+        private TextBox txtCustomer;
         private Label label2;
         private Label label1;
         private Label label3;
         private Label label4;
-        private TextBox txtnama;
-        private TextBox txtusername;
-        private TextBox txtalamat;
+        private TextBox txtname;
+        private TextBox txtPet;
+        private TextBox txtRas;
+        private Label lblUsername;
     }
 }
