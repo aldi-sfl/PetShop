@@ -57,14 +57,14 @@ CREATE TABLE Products (
 );
 
 CREATE TABLE Orders (
-   OrderID INT NOT NULL PRIMARY KEY,
+   OrderID varchar(50) NOT NULL PRIMARY KEY,
    CustomerID int NOT NULL,
    Username Varchar (50) NOT NULL,
    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
 CREATE TABLE OrderItems (
-   OrderID INT NOT NULL,
+   OrderID varchar(50) NOT NULL,
    ProductID INT NOT NULL,
    Quantity INT NOT NULL,
    Price INT NOT NULL,
@@ -85,12 +85,12 @@ insert into Products values(@productid,@category, @name,@harga, @jumlah)
 
 
 create procedure ADD_ORDER
-@customerid int, @orderid int ,@username varchar(50)
+@customerid int, @orderid varchar(50) ,@username varchar(50)
 as
 INSERT INTO Orders (CustomerID, OrderID, Username) VALUES (@customerid,@orderid, @username);
 
 create procedure ADD_ORDERITEM
-@orderid int ,@productid int, @jumlah int, @harga int
+@orderid varchar(50) ,@productid int, @jumlah int, @harga int
 as
 if exists(select * from OrderItems where OrderID = @orderid)
 update OrderItems set  ProductID = @productid, Quantity = @jumlah, Price = @harga
