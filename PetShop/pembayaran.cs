@@ -255,6 +255,13 @@ namespace PetShop
             cmd.Parameters.Add(Price);
 
             int cekdata = cmd.ExecuteNonQuery();
+            if (cekdata > 0 &&  cbkategori.SelectedItem == "Layanan")
+            {
+                Layanan newLayanan = new Layanan();
+                newLayanan.Show();
+                this.Hide();
+                return;
+            }
             if (cekdata > 0)
             {
                 notanota.orderid = txtidorder.Text;
