@@ -207,7 +207,6 @@
             this.cbkategori.FormattingEnabled = true;
             this.cbkategori.Items.AddRange(new object[] {
             "-",
-            "Hewan",
             "Pakan",
             "Alat-alat",
             "Layanan"});
