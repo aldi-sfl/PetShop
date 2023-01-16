@@ -45,7 +45,6 @@ namespace PetShop
 
             dgvtampil.ReadOnly = true;
 
-
         }
 
         private void produk_Load(object sender, EventArgs e)
@@ -57,7 +56,6 @@ namespace PetShop
         {
 
         }
-
         private void bttampil_Click(object sender, EventArgs e)
         {
             showdata();

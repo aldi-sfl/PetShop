@@ -263,7 +263,12 @@ namespace PetShop
                 kenota.Show();
                 this.Hide();
             }
-
+            if(cbkategori.SelectedItem == "Layanan")
+            {
+                Layanan newlayanan = new Layanan();
+                newlayanan.Show();
+                this.Hide();
+            }
             koneksi.con.Close();
         }
 
