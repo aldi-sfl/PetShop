@@ -149,6 +149,8 @@
             this.dgvproduk.RowTemplate.Height = 25;
             this.dgvproduk.Size = new System.Drawing.Size(621, 220);
             this.dgvproduk.TabIndex = 9;
+            this.dgvproduk.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvproduk_CellClick);
+            this.dgvproduk.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvproduk_CellContentClick);
             // 
             // btupdate
             // 
@@ -210,8 +212,7 @@
             this.cbkategori.Items.AddRange(new object[] {
             "-",
             "Pakan",
-            "Alat-alat",
-            "Layanan"});
+            "Alat-alat"});
             this.cbkategori.Location = new System.Drawing.Point(186, 75);
             this.cbkategori.Name = "cbkategori";
             this.cbkategori.Size = new System.Drawing.Size(182, 23);

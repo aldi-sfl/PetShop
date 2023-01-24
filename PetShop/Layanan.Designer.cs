@@ -38,8 +38,6 @@
             this.txtname = new System.Windows.Forms.TextBox();
             this.txtPet = new System.Windows.Forms.TextBox();
             this.txtRas = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.noid = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -136,33 +134,12 @@
             this.txtRas.Size = new System.Drawing.Size(348, 23);
             this.txtRas.TabIndex = 20;
             // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUsername.Location = new System.Drawing.Point(290, 239);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(81, 21);
-            this.lblUsername.TabIndex = 22;
-            this.lblUsername.Text = "Username";
-            // 
-            // noid
-            // 
-            this.noid.AutoSize = true;
-            this.noid.Location = new System.Drawing.Point(401, 242);
-            this.noid.Name = "noid";
-            this.noid.Size = new System.Drawing.Size(38, 15);
-            this.noid.TabIndex = 23;
-            this.noid.Text = "label5";
-            // 
             // Layanan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(711, 276);
-            this.Controls.Add(this.noid);
-            this.Controls.Add(this.lblUsername);
+            this.ClientSize = new System.Drawing.Size(711, 408);
             this.Controls.Add(this.txtCustomer);
             this.Controls.Add(this.txtRas);
             this.Controls.Add(this.txtPet);
@@ -194,7 +171,5 @@
         private TextBox txtname;
         private TextBox txtPet;
         private TextBox txtRas;
-        private Label lblUsername;
-        private Label noid;
     }
 }

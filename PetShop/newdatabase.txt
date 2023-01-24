@@ -88,11 +88,32 @@ BEGIN
     END
     ELSE
     BEGIN
-        update tb_produk set  nama = @nama, stok = @stok, harga = @harga
+        update tb_produk set  stok = @stok, harga = @harga
         where  id_produk = @idproduk and id_vendor = @idvendor 
         SET @result = 0
     END
 END
+
+
+create procedure ADD_HEWAN
+@idhewan varchar(10) ,@idvendor varchar(10), @jenishewan varchar(100),@gender varchar(50), @stokhewan int, @harga int, @result int output
+as
+BEGIN
+    DECLARE @count int = (SELECT COUNT(*) FROM tb_hewan WHERE id_hewan = @idhewan and id_vendor = @idvendor)
+    IF @count = 0
+    BEGIN
+        INSERT INTO tb_hewan (id_hewan, id_vendor, jenis_hewan, gender, stok_hewan, harga)
+        VALUES (@idhewan, @idvendor, @jenishewan, @gender,  @stokhewan, @harga)
+        SET @result = 1
+    END
+    ELSE
+    BEGIN
+        update tb_hewan set   stok_hewan = @stokhewan, harga = @harga
+        where  jenis_hewan = @jenishewan and id_vendor = @idvendor 
+        SET @result = 0
+    END
+END
+
 
 create procedure ADD_CUSTOMER
 @idcustomer varchar(10), @nama varchar(100), @nohp varchar(20), @alamat varchar(100)
