@@ -122,3 +122,45 @@ begin
 insert into tb_customer (id_customer, nama,no_hp,alamat)
 values(@idcustomer, @nama, @nohp,@alamat)
 end
+
+CREATE TRIGGER tr_UpdateStock
+ON tb_order_detail
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @idproduk VARCHAR(255), @stok INT
+    SELECT @idproduk = id_produk, @stok = jumlah FROM inserted
+
+    UPDATE tb_produk
+    SET stok = CASE WHEN (stok - @stok) < 0 THEN 0 ELSE (stok - @stok) END
+    WHERE id_produk = @idproduk
+END
+
+CREATE TRIGGER tr_UpdateStockhewan
+ON tb_order_detail
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @idhewan VARCHAR(255), @stok INT
+    SELECT @idhewan = id_hewan, @stok = jumlah FROM inserted
+
+    UPDATE tb_hewan
+    SET stok_hewan = CASE WHEN (stok_hewan - @stok) < 0 THEN 0 ELSE (stok_hewan - @stok) END
+    WHERE id_hewan = @idhewan
+END
+
+create procedure ADD_ORDERDETAIL
+@idorderdetail varchar(10), @idorder varchar(10),@idproduk varchar(10),@idhewan varchar(10), @jumlah int, @total int
+as
+begin
+insert into tb_order_detail (id_detail, id_order,id_hewan, id_produk, jumlah, total)
+values(@idorderdetail , @idorder  ,@idhewan,@idproduk , @jumlah , @total )
+end
+
+create procedure ADD_ORDER
+@idorder varchar(10), @customerid varchar(10),@orderdate varchar(10)
+as
+begin
+insert into tb_order (id_order, customer_id, order_date)
+values(@idorder ,@customerid,@orderdate)
+end

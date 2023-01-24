@@ -38,13 +38,14 @@
             this.txthp = new System.Windows.Forms.TextBox();
             this.txtalamat = new System.Windows.Forms.TextBox();
             this.btsimpan = new System.Windows.Forms.Button();
+            this.btkembali = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(195, 19);
+            this.label2.Location = new System.Drawing.Point(130, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(421, 32);
             this.label2.TabIndex = 13;
@@ -120,20 +121,31 @@
             // 
             // btsimpan
             // 
-            this.btsimpan.Location = new System.Drawing.Point(588, 346);
+            this.btsimpan.Location = new System.Drawing.Point(515, 318);
             this.btsimpan.Name = "btsimpan";
-            this.btsimpan.Size = new System.Drawing.Size(75, 23);
+            this.btsimpan.Size = new System.Drawing.Size(97, 40);
             this.btsimpan.TabIndex = 16;
-            this.btsimpan.Text = "simpan";
+            this.btsimpan.Text = "selanjutnya";
             this.btsimpan.UseVisualStyleBackColor = true;
             this.btsimpan.Click += new System.EventHandler(this.btsimpan_Click);
+            // 
+            // btkembali
+            // 
+            this.btkembali.Location = new System.Drawing.Point(68, 318);
+            this.btkembali.Name = "btkembali";
+            this.btkembali.Size = new System.Drawing.Size(98, 38);
+            this.btkembali.TabIndex = 17;
+            this.btkembali.Text = "Kembali";
+            this.btkembali.UseVisualStyleBackColor = true;
+            this.btkembali.Click += new System.EventHandler(this.btkembali_Click);
             // 
             // add_customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(692, 410);
+            this.Controls.Add(this.btkembali);
             this.Controls.Add(this.btsimpan);
             this.Controls.Add(this.txtalamat);
             this.Controls.Add(this.txthp);
@@ -164,5 +176,6 @@
         private TextBox txthp;
         private TextBox txtalamat;
         private Button btsimpan;
+        private Button btkembali;
     }
 }

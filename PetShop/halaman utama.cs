@@ -75,14 +75,14 @@ namespace PetShop
 
         private void bttransaksi_Click(object sender, EventArgs e)
         {
-            pembayaran kebayar = new pembayaran();
+            add_customer kebayar = new add_customer();
             kebayar.Show();
             this.Hide();
         }
 
         private void btkeluar_Click(object sender, EventArgs e)
         {
-            Form1 keluar = new Form1();
+            login_admin keluar = new login_admin();
             keluar.Show();
             this.Hide();
         }

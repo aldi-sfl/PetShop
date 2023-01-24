@@ -18,11 +18,13 @@ namespace PetShop
         {
             InitializeComponent();
         }
+        public static String idcustomers;
 
         private void add_customer_Load(object sender, EventArgs e)
         {
             
             id();
+            
         }
 
         private void id()
@@ -34,11 +36,14 @@ namespace PetShop
 
 
         }
-
         
 
         private void btsimpan_Click(object sender, EventArgs e)
         {
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            idcustomers = txtid.Text;
             koneksi.con.Open();
             SqlCommand cmd = new SqlCommand("ADD_CUSTOMER", koneksi.con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -50,8 +55,19 @@ namespace PetShop
             if (cekdata > 0)
             {
                 MessageBox.Show("data berhasil disimpan");
+                
+                pembayaran bayar = new pembayaran();
+                bayar.Show();
+                this.Hide();
 
             }
+        }
+
+        private void btkembali_Click(object sender, EventArgs e)
+        {
+            halaman_utama home = new halaman_utama();
+            home.Show();
+            this.Hide();
         }
     }
 }
