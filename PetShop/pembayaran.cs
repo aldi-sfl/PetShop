@@ -166,5 +166,17 @@ namespace PetShop
                 
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            login_admin keluar = new login_admin();
+            keluar.Show();
+            this.Hide();
+        }
+
+        private void btexit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

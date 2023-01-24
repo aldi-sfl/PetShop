@@ -82,6 +82,18 @@ namespace PetShop
             register.Show();
             this.Hide();
         }
+
+        private void btnexit_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Anda Yakin Ingin Keluar?");
+            this.Close();
+        }
+
+        private void btnExit_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Apakah Anda Yakin Ingin Keluar?");
+            this.Close();
+        }
     }
     
 }
