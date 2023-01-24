@@ -29,31 +29,14 @@ namespace PetShop
         private void Layanan_Load(object sender, EventArgs e)
         {
             idPET();
-            showcustomerid();
+            
             txtPet.ReadOnly=true;
             
-            lblUsername.Text = showusername.username;
+            
 
         }
 
-        public void showcustomerid()
-        {
-            koneksi.con.Open();
-            SqlCommand cmdd = new SqlCommand();
-            cmdd.Connection = koneksi.con;
-            cmdd.CommandType = CommandType.Text;
-            cmdd.CommandText = "select CustomerID from Customers where username='" + lblUsername.Text + "'";
-            using (SqlDataReader reader = cmdd.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    int ID = reader.GetInt32("CustomerID");
-                    txtCustomer.Text = ID.ToString();
-                    noid.Text = ID.ToString();
-                }
-            }
-            koneksi.con.Close();
-        }
+       
         private void idPET()
         {
             Random rng = new Random();
@@ -77,7 +60,7 @@ namespace PetShop
 
 
         {
-            showcustomerid();
+            
             koneksi.con.Open();
 
             SqlCommand cmd = new SqlCommand();

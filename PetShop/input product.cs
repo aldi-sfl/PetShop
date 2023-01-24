@@ -60,6 +60,9 @@ namespace PetShop
 
         private void showdata()
         {
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
             koneksi.con.Open();
             SqlDataAdapter tampildata = new SqlDataAdapter("select * from tb_produk", koneksi.con);
             DataTable datatabel = new DataTable();
@@ -95,16 +98,11 @@ namespace PetShop
             else if(cbkategori.SelectedItem == "Alat-alat"){
                 string id = "ALT-" + num;
                 txtidproduk.Text = id;
-            }
-            else if(cbkategori.SelectedItem == "Layanan"){
-                string id = "LY-" + num;
-                txtidproduk.Text = id;
-            }
-            else
+            }else
             {
                 txtidproduk.Text = "-";
             }
-            txtidproduk.ReadOnly = true;
+            
            
             
             
@@ -117,19 +115,19 @@ namespace PetShop
 
         private void btcari_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = koneksi.con;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Products where Name like '%" + txtcari.Text + "%' or Category like '%" + txtcari.Text + "%'";
+            SqlCommand cmda = new SqlCommand();
+            cmda.Connection = koneksi.con;
+            cmda.CommandType = CommandType.Text;
+            cmda.CommandText = "select * from tb_produk where nama like '%" + txtcari.Text + "%' or kategori like '%" + txtcari.Text + "%'";
 
             DataSet ds = new DataSet();
 
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(ds, "Products");
+            SqlDataAdapter da = new SqlDataAdapter(cmda);
+            da.Fill(ds, "tb_produk");
 
             dgvproduk.DataSource = ds;
 
-            dgvproduk.DataMember = "Products";
+            dgvproduk.DataMember = "tb_produk";
 
             dgvproduk.ReadOnly = true;
         }
@@ -165,8 +163,8 @@ namespace PetShop
             SqlConnection con = koneksi.con;
             if (con.State == ConnectionState.Open)
                 con.Close();
-
             koneksi.con.Open();
+
             SqlCommand cmd = new SqlCommand("ADD_PRODUCT", koneksi.con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@idvendor", cbvendor.SelectedItem.ToString());
@@ -183,25 +181,20 @@ namespace PetShop
             cmd.ExecuteNonQuery();
             if (result.Value.ToString() == "0")
             {
-                SqlCommand tampildata = new SqlCommand("select nama, id_produk from tb_produk where id_vendor ='" +cbvendor.SelectedItem.ToString()+ "' and id_produk ='"+txtidproduk.Text+"'", koneksi.con);
-                SqlDataReader read = tampildata.ExecuteReader();
-                if (read.Read())
-                {
-                    string readname = read.GetString("nama");
-                    string readid = read.GetString("id_produk");
-                    koneksi.con.Close();
 
-                    DialogResult hasil = MessageBox.Show("produk dengan id : " + readname + " . apakah anda ingin update produk ini?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (hasil == DialogResult.Yes)
-                    {
-                        MessageBox.Show("data berhasil di update");
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                DialogResult hasil = MessageBox.Show("produk terdaftar . apakah anda ingin update produk ini?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (hasil == DialogResult.Yes)
+                {
+                    MessageBox.Show("data berhasil di update");
+                    showdata();
+                    return;
                     
+                }
+                else
+                {
+                    return;
+                }
+
             }
             else
             {
@@ -375,6 +368,40 @@ namespace PetShop
         private void cbkategori_SelectedIndexChanged(object sender, EventArgs e)
         {
             idproduk();
+        }
+
+        private void dgvproduk_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvproduk_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            string value1 = dgvproduk.Rows[e.RowIndex].Cells["id_vendor"].Value.ToString();
+            string value2 = dgvproduk.Rows[e.RowIndex].Cells["id_produk"].Value.ToString();
+            string value3 = dgvproduk.Rows[e.RowIndex].Cells["nama"].Value.ToString();
+            string value4 = dgvproduk.Rows[e.RowIndex].Cells["kategori"].Value.ToString();
+            string value5 = dgvproduk.Rows[e.RowIndex].Cells["stok"].Value.ToString();
+            string value6 = dgvproduk.Rows[e.RowIndex].Cells["harga"].Value.ToString();
+
+            
+            cbvendor.Text = value1;
+            txtidproduk.Text = value2;
+            txtnama.Text= value3;
+            cbkategori.Text= value4;
+            txtjumlah.Text = value5;
+            txtharga.Text=value6;
+
+            // Check if the clicked column is the one you want
+            if (e.ColumnIndex == 1) // 0 is the index of the column
+            {
+                // Get the value of the clicked cell
+                string cellValue = dgvproduk.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+
+                // Set the value of the TextBox
+                txtidproduk.Text = cellValue;
+            }
         }
     }
 }
