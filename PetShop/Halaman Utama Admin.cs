@@ -24,9 +24,9 @@ namespace PetShop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //dgv aa = new dgv();
-            //aa.Show();
-            //this.Hide();
+            DataUser aa = new DataUser();
+            aa.Show();
+            this.Hide();
         }
 
         private void txtProduk_Click(object sender, EventArgs e)

@@ -49,7 +49,7 @@ namespace PetShop
                 {
                     int ID = reader.GetInt32("CustomerID");
                     txtCustomer.Text = ID.ToString();
-
+                    noid.Text = ID.ToString();
                 }
             }
             koneksi.con.Close();
@@ -85,12 +85,12 @@ namespace PetShop
 
             cmd.CommandText = "ADD_PET";
             cmd.CommandType = CommandType.StoredProcedure;
-            SqlParameter PetID = new SqlParameter("@PetID", SqlDbType.Int);
+            SqlParameter PetID = new SqlParameter("@PetID", SqlDbType.VarChar);
             SqlParameter Name = new SqlParameter("@Name", SqlDbType.VarChar);
             SqlParameter Breed = new SqlParameter("@Breed", SqlDbType.VarChar);
             SqlParameter CustomerID = new SqlParameter("@CustomerID", SqlDbType.Int);
 
-            PetID.Value = int.Parse(txtPet.Text);
+            PetID.Value = txtPet.Text;
             Name.Value = txtname.Text;
             Breed.Value = txtRas.Text;
             CustomerID.Value = int.Parse(txtCustomer.Text);
@@ -99,18 +99,21 @@ namespace PetShop
             cmd.Parameters.Add(Name);
             cmd.Parameters.Add(Breed);
             cmd.Parameters.Add(CustomerID);
-            DialogResult result = MessageBox.Show("Apakah data sudab benar", "peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            int cekdata = cmd.ExecuteNonQuery();
+            if(cekdata >0 )
             {
-                int cekdata = cmd.ExecuteNonQuery();
-                
+                DialogResult result = MessageBox.Show("Apakah data sudab benar", "peringatan", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
 
-                MessageBox.Show("data berhasil disimpan");
+                    MessageBox.Show("data berhasil disimpan");
+                }
+                else
+                {
+                    return;
+                }
             }
-            else
-            {
-                return;
-            }
+            
 
 
 

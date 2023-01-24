@@ -90,7 +90,7 @@ as
 INSERT INTO Orders (CustomerID, OrderID, Username) VALUES (@customerid,@orderid, @username);
 
 create procedure ADD_PET
-@PetID int, @Name varchar(50) ,@Breed varchar(50), @CustomerID int
+@PetID varchar(50), @Name varchar(50) ,@Breed varchar(50), @CustomerID int
 as
 INSERT INTO Pets (PetID, Name, Breed, CustomerID) VALUES (@PetID,@Name, @Breed, @CustomerID);
 

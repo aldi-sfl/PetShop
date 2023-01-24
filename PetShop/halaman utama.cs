@@ -68,7 +68,7 @@ namespace PetShop
 
         private void btproduk_Click(object sender, EventArgs e)
         {
-            produk keproduk = new produk();
+            order keproduk = new order();
             keproduk.Show();
             this.Hide();
         }

@@ -1,6 +1,6 @@
 ﻿namespace PetShop
 {
-    partial class DataUser
+    partial class add_customer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,126 +28,125 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtidcustomer = new System.Windows.Forms.TextBox();
+            this.txtid = new System.Windows.Forms.TextBox();
             this.txtnama = new System.Windows.Forms.TextBox();
             this.txthp = new System.Windows.Forms.TextBox();
             this.txtalamat = new System.Windows.Forms.TextBox();
             this.btsimpan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.SystemColors.Window;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(247, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(170, 26);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "data customer";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(66, 68);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(195, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 23);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "idcustomer";
+            this.label2.Size = new System.Drawing.Size(421, 32);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "tambahkan informasi customer";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(51, 98);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(125, 23);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "id customer";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(66, 112);
+            this.label1.Location = new System.Drawing.Point(51, 139);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 23);
-            this.label1.TabIndex = 18;
+            this.label1.TabIndex = 14;
             this.label1.Text = "nama";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(66, 151);
+            this.label3.Location = new System.Drawing.Point(51, 181);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 23);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "no hp";
+            this.label3.Size = new System.Drawing.Size(154, 23);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "no handphone";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(66, 187);
+            this.label4.Location = new System.Drawing.Point(51, 231);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 23);
-            this.label4.TabIndex = 18;
+            this.label4.TabIndex = 14;
             this.label4.Text = "alamat";
             // 
-            // txtidcustomer
+            // txtid
             // 
-            this.txtidcustomer.Location = new System.Drawing.Point(219, 68);
-            this.txtidcustomer.Name = "txtidcustomer";
-            this.txtidcustomer.Size = new System.Drawing.Size(100, 23);
-            this.txtidcustomer.TabIndex = 19;
+            this.txtid.Location = new System.Drawing.Point(218, 98);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(85, 23);
+            this.txtid.TabIndex = 15;
             // 
             // txtnama
             // 
-            this.txtnama.Location = new System.Drawing.Point(219, 112);
+            this.txtnama.Location = new System.Drawing.Point(218, 139);
             this.txtnama.Name = "txtnama";
-            this.txtnama.Size = new System.Drawing.Size(235, 23);
-            this.txtnama.TabIndex = 19;
+            this.txtnama.Size = new System.Drawing.Size(275, 23);
+            this.txtnama.TabIndex = 15;
             // 
             // txthp
             // 
-            this.txthp.Location = new System.Drawing.Point(219, 151);
+            this.txthp.Location = new System.Drawing.Point(218, 181);
             this.txthp.Name = "txthp";
-            this.txthp.Size = new System.Drawing.Size(235, 23);
-            this.txthp.TabIndex = 19;
+            this.txthp.Size = new System.Drawing.Size(275, 23);
+            this.txthp.TabIndex = 15;
             // 
             // txtalamat
             // 
-            this.txtalamat.Location = new System.Drawing.Point(219, 187);
+            this.txtalamat.Location = new System.Drawing.Point(218, 231);
             this.txtalamat.Name = "txtalamat";
-            this.txtalamat.Size = new System.Drawing.Size(235, 23);
-            this.txtalamat.TabIndex = 19;
+            this.txtalamat.Size = new System.Drawing.Size(275, 23);
+            this.txtalamat.TabIndex = 15;
             // 
             // btsimpan
             // 
-            this.btsimpan.Location = new System.Drawing.Point(531, 230);
+            this.btsimpan.Location = new System.Drawing.Point(588, 346);
             this.btsimpan.Name = "btsimpan";
             this.btsimpan.Size = new System.Drawing.Size(75, 23);
-            this.btsimpan.TabIndex = 20;
-            this.btsimpan.Text = "button1";
+            this.btsimpan.TabIndex = 16;
+            this.btsimpan.Text = "simpan";
             this.btsimpan.UseVisualStyleBackColor = true;
+            this.btsimpan.Click += new System.EventHandler(this.btsimpan_Click);
             // 
-            // DataUser
+            // add_customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(636, 289);
+            this.BackColor = System.Drawing.Color.Orange;
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btsimpan);
             this.Controls.Add(this.txtalamat);
             this.Controls.Add(this.txthp);
             this.Controls.Add(this.txtnama);
-            this.Controls.Add(this.txtidcustomer);
+            this.Controls.Add(this.txtid);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label7);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "DataUser";
-            this.Text = "DataUser";
-            this.Load += new System.EventHandler(this.DataUser_Load);
+            this.Name = "add_customer";
+            this.Text = "add_customer";
+            this.Load += new System.EventHandler(this.add_customer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,12 +154,12 @@
 
         #endregion
 
-        private Label label7;
         private Label label2;
+        private Label label8;
         private Label label1;
         private Label label3;
         private Label label4;
-        private TextBox txtidcustomer;
+        private TextBox txtid;
         private TextBox txtnama;
         private TextBox txthp;
         private TextBox txtalamat;

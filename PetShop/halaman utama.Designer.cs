@@ -41,7 +41,6 @@
             this.bttransaksi = new System.Windows.Forms.Button();
             this.btkeluar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -109,7 +108,7 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = global::PetShop.Properties.Resources.Billing;
-            this.pictureBox4.Location = new System.Drawing.Point(15, 209);
+            this.pictureBox4.Location = new System.Drawing.Point(15, 216);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(60, 42);
@@ -155,17 +154,17 @@
             this.btproduk.Name = "btproduk";
             this.btproduk.Size = new System.Drawing.Size(131, 35);
             this.btproduk.TabIndex = 4;
-            this.btproduk.Text = "product";
+            this.btproduk.Text = "daftar product";
             this.btproduk.UseVisualStyleBackColor = true;
             this.btproduk.Click += new System.EventHandler(this.btproduk_Click);
             // 
             // bttransaksi
             // 
-            this.bttransaksi.Location = new System.Drawing.Point(80, 213);
+            this.bttransaksi.Location = new System.Drawing.Point(80, 223);
             this.bttransaksi.Name = "bttransaksi";
             this.bttransaksi.Size = new System.Drawing.Size(131, 35);
             this.bttransaksi.TabIndex = 4;
-            this.bttransaksi.Text = "belanja";
+            this.bttransaksi.Text = "Pemesanan";
             this.bttransaksi.UseVisualStyleBackColor = true;
             this.bttransaksi.Click += new System.EventHandler(this.bttransaksi_Click);
             // 
@@ -182,7 +181,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Linen;
-            this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.textBox5);
             this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.pictureBox8);
@@ -196,14 +194,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(745, 356);
             this.panel1.TabIndex = 0;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(272, 285);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(218, 24);
-            this.textBox6.TabIndex = 8;
-            this.textBox6.Text = "SELAMAT BERBELANJA";
             // 
             // textBox5
             // 
@@ -347,7 +337,6 @@
         private TextBox textBox2;
         private PictureBox pictureBox6;
         private TextBox textBox1;
-        private TextBox textBox6;
         private TextBox textBox5;
         private TextBox textBox4;
         private PictureBox pictureBox8;

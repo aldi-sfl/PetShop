@@ -35,11 +35,13 @@
             this.labelusername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbjenis = new System.Windows.Forms.ComboBox();
             this.txtidproduct = new System.Windows.Forms.TextBox();
             this.txtidorder = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btco = new System.Windows.Forms.Button();
-            this.dgvtampil = new System.Windows.Forms.DataGridView();
+            this.dgvhewan = new System.Windows.Forms.DataGridView();
+            this.dgvproduk = new System.Windows.Forms.DataGridView();
             this.txtharga = new System.Windows.Forms.TextBox();
             this.txtjumlah = new System.Windows.Forms.TextBox();
             this.txtproduct = new System.Windows.Forms.TextBox();
@@ -48,6 +50,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.bthome = new System.Windows.Forms.Button();
             this.btproduk = new System.Windows.Forms.Button();
@@ -56,12 +59,14 @@
             this.btexit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbidcust = new System.Windows.Forms.Label();
+            this.paneltutup = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvtampil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvhewan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvproduk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,11 +129,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.paneltutup);
+            this.panel1.Controls.Add(this.cbjenis);
             this.panel1.Controls.Add(this.txtidproduct);
             this.panel1.Controls.Add(this.txtidorder);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btco);
-            this.panel1.Controls.Add(this.dgvtampil);
+            this.panel1.Controls.Add(this.dgvhewan);
+            this.panel1.Controls.Add(this.dgvproduk);
             this.panel1.Controls.Add(this.txtharga);
             this.panel1.Controls.Add(this.txtjumlah);
             this.panel1.Controls.Add(this.txtproduct);
@@ -137,24 +145,38 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(187, 22);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(539, 373);
+            this.panel1.Size = new System.Drawing.Size(618, 407);
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // cbjenis
+            // 
+            this.cbjenis.FormattingEnabled = true;
+            this.cbjenis.Items.AddRange(new object[] {
+            "-",
+            "Hewan",
+            "Alat, pakan, dll"});
+            this.cbjenis.Location = new System.Drawing.Point(207, 16);
+            this.cbjenis.Name = "cbjenis";
+            this.cbjenis.Size = new System.Drawing.Size(121, 23);
+            this.cbjenis.TabIndex = 19;
+            this.cbjenis.SelectedIndexChanged += new System.EventHandler(this.cbjenis_SelectedIndexChanged);
+            // 
             // txtidproduct
             // 
-            this.txtidproduct.Location = new System.Drawing.Point(414, 37);
+            this.txtidproduct.Location = new System.Drawing.Point(423, 75);
             this.txtidproduct.Name = "txtidproduct";
             this.txtidproduct.Size = new System.Drawing.Size(100, 23);
             this.txtidproduct.TabIndex = 18;
             // 
             // txtidorder
             // 
-            this.txtidorder.Location = new System.Drawing.Point(414, 8);
+            this.txtidorder.Location = new System.Drawing.Point(423, 46);
             this.txtidorder.Name = "txtidorder";
             this.txtidorder.Size = new System.Drawing.Size(100, 23);
             this.txtidorder.TabIndex = 18;
@@ -162,7 +184,7 @@
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(360, 48);
+            this.button1.Location = new System.Drawing.Point(369, 86);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(39, 33);
             this.button1.TabIndex = 15;
@@ -171,7 +193,7 @@
             // 
             // btco
             // 
-            this.btco.Location = new System.Drawing.Point(414, 139);
+            this.btco.Location = new System.Drawing.Point(423, 177);
             this.btco.Name = "btco";
             this.btco.Size = new System.Drawing.Size(75, 23);
             this.btco.TabIndex = 14;
@@ -179,32 +201,41 @@
             this.btco.UseVisualStyleBackColor = true;
             this.btco.Click += new System.EventHandler(this.btco_Click);
             // 
-            // dgvtampil
+            // dgvhewan
             // 
-            this.dgvtampil.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvtampil.Location = new System.Drawing.Point(39, 184);
-            this.dgvtampil.Name = "dgvtampil";
-            this.dgvtampil.RowTemplate.Height = 25;
-            this.dgvtampil.Size = new System.Drawing.Size(460, 166);
-            this.dgvtampil.TabIndex = 13;
+            this.dgvhewan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvhewan.Location = new System.Drawing.Point(39, 222);
+            this.dgvhewan.Name = "dgvhewan";
+            this.dgvhewan.RowTemplate.Height = 25;
+            this.dgvhewan.Size = new System.Drawing.Size(557, 166);
+            this.dgvhewan.TabIndex = 13;
+            // 
+            // dgvproduk
+            // 
+            this.dgvproduk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvproduk.Location = new System.Drawing.Point(39, 222);
+            this.dgvproduk.Name = "dgvproduk";
+            this.dgvproduk.RowTemplate.Height = 25;
+            this.dgvproduk.Size = new System.Drawing.Size(557, 166);
+            this.dgvproduk.TabIndex = 13;
             // 
             // txtharga
             // 
-            this.txtharga.Location = new System.Drawing.Point(198, 130);
+            this.txtharga.Location = new System.Drawing.Point(207, 168);
             this.txtharga.Name = "txtharga";
             this.txtharga.Size = new System.Drawing.Size(100, 23);
             this.txtharga.TabIndex = 12;
             // 
             // txtjumlah
             // 
-            this.txtjumlah.Location = new System.Drawing.Point(198, 89);
+            this.txtjumlah.Location = new System.Drawing.Point(207, 127);
             this.txtjumlah.Name = "txtjumlah";
             this.txtjumlah.Size = new System.Drawing.Size(100, 23);
             this.txtjumlah.TabIndex = 12;
             // 
             // txtproduct
             // 
-            this.txtproduct.Location = new System.Drawing.Point(198, 53);
+            this.txtproduct.Location = new System.Drawing.Point(207, 91);
             this.txtproduct.Name = "txtproduct";
             this.txtproduct.Size = new System.Drawing.Size(155, 23);
             this.txtproduct.TabIndex = 12;
@@ -218,7 +249,7 @@
             "Pakan",
             "Alat-alat",
             "Layanan"});
-            this.cbkategori.Location = new System.Drawing.Point(198, 23);
+            this.cbkategori.Location = new System.Drawing.Point(207, 61);
             this.cbkategori.Name = "cbkategori";
             this.cbkategori.Size = new System.Drawing.Size(121, 23);
             this.cbkategori.TabIndex = 11;
@@ -229,7 +260,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(13, 132);
+            this.label8.Location = new System.Drawing.Point(22, 170);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 17);
             this.label8.TabIndex = 10;
@@ -249,7 +280,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(13, 91);
+            this.label3.Location = new System.Drawing.Point(22, 129);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 17);
             this.label3.TabIndex = 10;
@@ -259,18 +290,28 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(13, 59);
+            this.label2.Location = new System.Drawing.Point(22, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(170, 17);
             this.label2.TabIndex = 10;
             this.label2.Text = "Masukan Nama Product";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(22, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 17);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Pilih jenis produk";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(13, 25);
+            this.label6.Location = new System.Drawing.Point(22, 63);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 17);
             this.label6.TabIndex = 10;
@@ -349,12 +390,20 @@
             this.lbidcust.TabIndex = 10;
             this.lbidcust.Text = "no id";
             // 
+            // paneltutup
+            // 
+            this.paneltutup.BackColor = System.Drawing.Color.CadetBlue;
+            this.paneltutup.Location = new System.Drawing.Point(39, 222);
+            this.paneltutup.Name = "paneltutup";
+            this.paneltutup.Size = new System.Drawing.Size(557, 166);
+            this.paneltutup.TabIndex = 20;
+            // 
             // pembayaran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(753, 414);
+            this.ClientSize = new System.Drawing.Size(818, 448);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.btexit);
             this.Controls.Add(this.button3);
@@ -378,7 +427,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvtampil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvhewan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvproduk)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -406,12 +456,16 @@
         private TextBox txtjumlah;
         private TextBox txtproduct;
         private ComboBox cbkategori;
-        private DataGridView dgvtampil;
+        private DataGridView dgvproduk;
         private Button btco;
         private Button button1;
         private TextBox txtidproduct;
         private TextBox txtidorder;
         private Label label1;
         private Label lbidcust;
+        private DataGridView dgvhewan;
+        private Label label4;
+        private ComboBox cbjenis;
+        private Panel paneltutup;
     }
 }

@@ -30,10 +30,21 @@ namespace PetShop
                 con.Close();
 
         }
-        /// silahkan ganti data source dan pastikan nama database sama yaitu db_PetShop
-        //SqlConnection con = new SqlConnection
-        //    (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=db_PetShop1;Integrated Security=True");
         
+        private void vendorname()
+        {
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            koneksi.con.Open();
+            SqlCommand cmd = new SqlCommand("select id_vendor from tb_vendor", koneksi.con);
+            SqlDataReader read = cmd.ExecuteReader();
+            while (read.Read())
+            {
+                cbvendor.Items.Add(read["id_vendor"].ToString());
+                cbvendor.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+        }
 
 
         private void reset()
@@ -49,46 +60,54 @@ namespace PetShop
 
         private void showdata()
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = koneksi.con;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select ProductID, Category, Name, Price, Quantity from Products ";
-            DataSet ds = new DataSet();
-
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(ds, "Products");
-
-            dgvproduk.DataSource = ds;
-
-            dgvproduk.DataMember = "Products";
-
+            koneksi.con.Open();
+            SqlDataAdapter tampildata = new SqlDataAdapter("select * from tb_produk", koneksi.con);
+            DataTable datatabel = new DataTable();
+            tampildata.Fill(datatabel);
+            dgvproduk.DataSource = datatabel;
             dgvproduk.ReadOnly = true;
 
 
         }
 
-        private void showmaxid()
-        {
-            koneksi.con.Open();
-            SqlCommand cmdd = new SqlCommand();
-            cmdd.Connection = koneksi.con;
-            cmdd.CommandType = CommandType.Text;
-            cmdd.CommandText = "SELECT MAX(ProductID) +1 FROM Products";
-            object hasil = cmdd.ExecuteScalar();
-            txtidproduk.Text = hasil.ToString();
-            koneksi.con.Close();
-
-        }
+       
 
         private void order_Load(object sender, EventArgs e)
         {
+            cbkategori.DropDownStyle = ComboBoxStyle.DropDownList;
             reset();
             showdata();
-            showmaxid();
+            vendorname();
+            idproduk();
+          
+        }
+
+        private void idproduk()
+        {
+            Random rand = new Random();
+            int num = rand.Next(1000, 9999);
+
+            if (cbkategori.SelectedItem == "Pakan")
+            {
+                string id = "PK-" + num;
+                txtidproduk.Text = id;
+            }
+            else if(cbkategori.SelectedItem == "Alat-alat"){
+                string id = "ALT-" + num;
+                txtidproduk.Text = id;
+            }
+            else if(cbkategori.SelectedItem == "Layanan"){
+                string id = "LY-" + num;
+                txtidproduk.Text = id;
+            }
+            else
+            {
+                txtidproduk.Text = "-";
+            }
+            txtidproduk.ReadOnly = true;
+           
             
-
-
+            
         }
 
 
@@ -143,90 +162,56 @@ namespace PetShop
                 return;
             }
 
-            int product = int.Parse(txtidproduk.Text);
-            string name = txtnama.Text;
-            bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
-            bool namevalid = validasiProduct.ValidateCredentialsname(name);
-            //bool namevalid = ValidateCredentialsname(name);
-
-            if (productvalid || namevalid)
-            {
-
-                DialogResult result = MessageBox.Show("Id produk atau nama produk sudah terdaftar. apakah anda ingin update?", "Confirm", MessageBoxButtons.YesNo);
-
-                if (result == DialogResult.Yes)
-                {
-                    koneksi.con.Open();
-
-                    SqlCommand ccmd = new SqlCommand();
-                    ccmd.Connection = koneksi.con;
-                    ccmd.CommandType = CommandType.Text;
-                    ccmd.CommandText = " update Products set  Price = '" + int.Parse(txtharga.Text) + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "' or Name = '" + txtnama.Text + "'";
-
-                    ccmd.ExecuteNonQuery();
-
-                    koneksi.con.Close();
-
-                    showdata();
-
-                    reset();
-                    showmaxid();
-                    return;
-
-
-                }
-                else
-                {
-
-                    return;
-                }
-
-
-            }
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
 
             koneksi.con.Open();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection =    koneksi.con;
-            //cmd.CommandType = CommandType.Text;
-
-            cmd.CommandText = "ADDPRODUCT";
+            SqlCommand cmd = new SqlCommand("ADD_PRODUCT", koneksi.con);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@idvendor", cbvendor.SelectedItem.ToString());
+            cmd.Parameters.AddWithValue("@kategori", cbkategori.SelectedItem.ToString());
+            cmd.Parameters.AddWithValue("@idproduk", txtidproduk.Text);
+            cmd.Parameters.AddWithValue("@nama", txtnama.Text);
+            cmd.Parameters.AddWithValue("@stok", int.Parse(txtjumlah.Text));
+            cmd.Parameters.AddWithValue("@harga", int.Parse(txtharga.Text));
+            var result = new SqlParameter("@result", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+            cmd.Parameters.Add(result);
+            cmd.ExecuteNonQuery();
+            if (result.Value.ToString() == "0")
+            {
+                SqlCommand tampildata = new SqlCommand("select nama, id_produk from tb_produk where id_vendor ='" +cbvendor.SelectedItem.ToString()+ "' and id_produk ='"+txtidproduk.Text+"'", koneksi.con);
+                SqlDataReader read = tampildata.ExecuteReader();
+                if (read.Read())
+                {
+                    string readname = read.GetString("nama");
+                    string readid = read.GetString("id_produk");
+                    koneksi.con.Close();
 
-            string selectedItem = cbkategori.SelectedItem.ToString();
-
-
-            SqlParameter ProductID = new SqlParameter("@productid", SqlDbType.Int);
-            SqlParameter Category = new SqlParameter("@category", SqlDbType.VarChar);
-            SqlParameter Name = new SqlParameter("@name", SqlDbType.VarChar);
-            SqlParameter Price = new SqlParameter("@harga", SqlDbType.Int);
-            SqlParameter Quantity = new SqlParameter("@jumlah", SqlDbType.Int);
-
-            ProductID.Value = int.Parse(txtidproduk.Text);
-            Category.Value = selectedItem;
-            Name.Value = txtnama.Text;
-            Price.Value = int.Parse(txtharga.Text);
-            Quantity.Value = int.Parse(txtjumlah.Text);
-
-            cmd.Parameters.Add(ProductID);
-            cmd.Parameters.Add(Category);
-            cmd.Parameters.Add(Name);
-            cmd.Parameters.Add(Price);
-            cmd.Parameters.Add(Quantity);
-
-
-            int cekdata = cmd.ExecuteNonQuery();
-            if (cekdata > 0)
+                    DialogResult hasil = MessageBox.Show("produk dengan id : " + readname + " . apakah anda ingin update produk ini?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (hasil == DialogResult.Yes)
+                    {
+                        MessageBox.Show("data berhasil di update");
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                    
+            }
+            else
             {
                 MessageBox.Show("data berhasil disimpan");
             }
-
-
-            koneksi.con.Close();
+            koneksi.con.Close();        
 
             showdata();
             reset();
-            showmaxid();
+            
 
         }
 
@@ -255,33 +240,37 @@ namespace PetShop
                 MessageBox.Show("harga harus diisi.");
                 return;
             }
-            string selectedItem = cbkategori.SelectedItem.ToString();
-            int product = int.Parse(txtidproduk.Text);
-            //bool productvalid = ValidateCredentialsproduct(product);
-            bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
-            if (productvalid)
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            koneksi.con.Open();
+
+            SqlCommand cmd = new SqlCommand("select count(*) from tb_produk where id_produk = @idproduk or nama = @nama", koneksi.con);
             {
-                koneksi.con.Open();
+                cmd.Parameters.AddWithValue("@idproduk", txtidproduk.Text);
+                cmd.Parameters.AddWithValue("@nama", txtnama.Text);
+                int count = (int)cmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    SqlCommand cmdd = new SqlCommand("UPDATE tb_produk SET nama = @nama, stok = @stok, harga = @harga WHERE id_produk = @id_produk", koneksi.con);
+                    cmdd.Parameters.AddWithValue("@nama", txtnama.Text);
+                    cmdd.Parameters.AddWithValue("@stok", int.Parse(txtjumlah.Text));
+                    cmdd.Parameters.AddWithValue("@harga", int.Parse(txtharga.Text));
+                    cmdd.Parameters.AddWithValue("@id_produk", txtidproduk.Text);
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = koneksi.con;
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = " update Products set Category = '" + selectedItem + "', Name = '" + txtnama.Text + "', Price = '" + int.Parse(txtharga.Text) + "', Quantity ='" + int.Parse(txtjumlah.Text) + "' where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
-
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("data berhasil di update", "pemberitahuan", MessageBoxButtons.OK, MessageBoxIcon.None);
-
-                koneksi.con.Close();
-
-                showdata();
-                showmaxid();
-                reset();
+                   
+                    cmdd.ExecuteNonQuery();
+                    koneksi.con.Close();
+                    MessageBox.Show("produk berhasil di update");
+                    showdata();
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("produk tidak ditemukan");
+                    return;
+                }
             }
-            else
-            {
-                MessageBox.Show("id tidak ditemukan");
-            }
-
 
         }
 
@@ -295,52 +284,33 @@ namespace PetShop
                 MessageBox.Show("isi id produk yang akan dihapus");
                 return;
             }
-
-            int product = int.Parse(txtidproduk.Text);
-            //bool productvalid = ValidateCredentialsproduct(product);
-            bool productvalid = validasiProduct.ValidateCredentialsproduct(product);
-
-            if (productvalid)
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            koneksi.con.Open();
+            
+            SqlCommand cmd = new SqlCommand("select count(*) from tb_produk where id_produk = @idproduk", koneksi.con);
             {
-                    koneksi.con.Open();
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = koneksi.con;
-                cmd.CommandType = CommandType.Text;
-                //cmd.CommandText = " delete from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
-                cmd.CommandText = "select Name from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
-                using (SqlDataReader read = cmd.ExecuteReader())
-
+                cmd.Parameters.AddWithValue("@idproduk", txtidproduk.Text);
+                int count = (int)cmd.ExecuteScalar();
+                if (count > 0)
                 {
-                    if (read.Read())
-                    {
-                        string readname = read.GetString("Name");
-                        koneksi.con.Close();
-                        DialogResult result = MessageBox.Show("apakah anda yakin ingin hapus produk " + readname + "", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (result == DialogResult.Yes)
-                        {
-                            koneksi.con.Open();
-
-                            cmd.Connection = koneksi.con;
-                            cmd.CommandType = CommandType.Text;
-                            cmd.CommandText = " delete from Products where ProductID = '" + int.Parse(txtidproduk.Text) + "'";
-                            cmd.ExecuteNonQuery();
-                            koneksi.con.Close();
-
-                            showdata();
-                            showmaxid();
-                            reset();
-                        }
-
-                    }
+                    
+                    SqlCommand cmdd = new SqlCommand("delete  from tb_produk where id_produk = '"+txtidproduk.Text+"'", koneksi.con);
+                    cmdd.ExecuteNonQuery();
+                    koneksi.con.Close();
+                    MessageBox.Show("produk berhasil di hapus");
+                    showdata();
+                    return;
 
                 }
+                else
+                {
+                    MessageBox.Show("data tidak ditemukan");
+                    return;
+                }
             }
-            else
-            {
-                MessageBox.Show("id produk tidak terdaftar silahkan periksa kembali id produk yang tersedia");
-                return;
-            }
+            
 
         }
 
@@ -348,7 +318,7 @@ namespace PetShop
         private void btreset_Click(object sender, EventArgs e)
         {
             reset();
-            showmaxid();
+            
         }
 
 
@@ -394,6 +364,17 @@ namespace PetShop
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsPunctuation(e.KeyChar) && !char.IsSymbol(e.KeyChar); ;
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void cbkategori_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idproduk();
         }
     }
 }

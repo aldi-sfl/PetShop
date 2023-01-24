@@ -39,6 +39,7 @@
             this.txtPet = new System.Windows.Forms.TextBox();
             this.txtRas = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.noid = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -46,18 +47,17 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.Window;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(258, 18);
+            this.label7.Location = new System.Drawing.Point(226, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(243, 32);
+            this.label7.Size = new System.Drawing.Size(199, 26);
             this.label7.TabIndex = 10;
             this.label7.Text = "Daftarkan Hewan";
             // 
             // btnext
             // 
-            this.btnext.Location = new System.Drawing.Point(679, 303);
-            this.btnext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnext.Location = new System.Drawing.Point(594, 227);
             this.btnext.Name = "btnext";
-            this.btnext.Size = new System.Drawing.Size(101, 31);
+            this.btnext.Size = new System.Drawing.Size(88, 23);
             this.btnext.TabIndex = 11;
             this.btnext.Text = "selanjutnya";
             this.btnext.UseVisualStyleBackColor = true;
@@ -65,18 +65,19 @@
             // 
             // txtCustomer
             // 
-            this.txtCustomer.Location = new System.Drawing.Point(306, 239);
+            this.txtCustomer.Location = new System.Drawing.Point(268, 179);
+            this.txtCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCustomer.Name = "txtCustomer";
-            this.txtCustomer.Size = new System.Drawing.Size(397, 27);
+            this.txtCustomer.Size = new System.Drawing.Size(348, 23);
             this.txtCustomer.TabIndex = 21;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(76, 148);
+            this.label2.Location = new System.Drawing.Point(66, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 29);
+            this.label2.Size = new System.Drawing.Size(70, 23);
             this.label2.TabIndex = 17;
             this.label2.Text = "Name";
             // 
@@ -84,9 +85,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(77, 104);
+            this.label1.Location = new System.Drawing.Point(67, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 29);
+            this.label1.Size = new System.Drawing.Size(65, 23);
             this.label1.TabIndex = 16;
             this.label1.Text = "Pet Id";
             // 
@@ -94,9 +95,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(76, 190);
+            this.label3.Location = new System.Drawing.Point(66, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 29);
+            this.label3.Size = new System.Drawing.Size(44, 23);
             this.label3.TabIndex = 15;
             this.label3.Text = "Ras";
             // 
@@ -104,50 +105,63 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(77, 234);
+            this.label4.Location = new System.Drawing.Point(67, 176);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 29);
+            this.label4.Size = new System.Drawing.Size(129, 23);
             this.label4.TabIndex = 14;
             this.label4.Text = "Customer Id";
             // 
             // txtname
             // 
-            this.txtname.Location = new System.Drawing.Point(306, 153);
+            this.txtname.Location = new System.Drawing.Point(268, 115);
+            this.txtname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(397, 27);
+            this.txtname.Size = new System.Drawing.Size(348, 23);
             this.txtname.TabIndex = 19;
             // 
             // txtPet
             // 
-            this.txtPet.Location = new System.Drawing.Point(307, 109);
+            this.txtPet.Location = new System.Drawing.Point(269, 82);
+            this.txtPet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPet.Name = "txtPet";
-            this.txtPet.Size = new System.Drawing.Size(396, 27);
+            this.txtPet.Size = new System.Drawing.Size(347, 23);
             this.txtPet.TabIndex = 12;
             this.txtPet.TextChanged += new System.EventHandler(this.txtPet_TextChanged);
             // 
             // txtRas
             // 
-            this.txtRas.Location = new System.Drawing.Point(306, 195);
+            this.txtRas.Location = new System.Drawing.Point(268, 146);
+            this.txtRas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRas.Name = "txtRas";
-            this.txtRas.Size = new System.Drawing.Size(397, 27);
+            this.txtRas.Size = new System.Drawing.Size(348, 23);
             this.txtRas.TabIndex = 20;
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUsername.Location = new System.Drawing.Point(332, 319);
+            this.lblUsername.Location = new System.Drawing.Point(290, 239);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(99, 28);
+            this.lblUsername.Size = new System.Drawing.Size(81, 21);
             this.lblUsername.TabIndex = 22;
             this.lblUsername.Text = "Username";
             // 
+            // noid
+            // 
+            this.noid.AutoSize = true;
+            this.noid.Location = new System.Drawing.Point(401, 242);
+            this.noid.Name = "noid";
+            this.noid.Size = new System.Drawing.Size(38, 15);
+            this.noid.TabIndex = 23;
+            this.noid.Text = "label5";
+            // 
             // Layanan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(813, 368);
+            this.ClientSize = new System.Drawing.Size(711, 276);
+            this.Controls.Add(this.noid);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtCustomer);
             this.Controls.Add(this.txtRas);
@@ -159,6 +173,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnext);
             this.Controls.Add(this.label7);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Layanan";
             this.Text = "Layanan";
             this.Load += new System.EventHandler(this.Layanan_Load);
@@ -180,5 +195,6 @@
         private TextBox txtPet;
         private TextBox txtRas;
         private Label lblUsername;
+        private Label noid;
     }
 }

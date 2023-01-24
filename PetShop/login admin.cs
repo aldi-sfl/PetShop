@@ -34,9 +34,9 @@ namespace PetShop
                 con.Open();
 
                 // Check if the username and password match a record in the database
-                string query = "SELECT COUNT(*) FROM Admin WHERE usernameadmin = @username AND password = @password";
+                string query = "SELECT COUNT(*) FROM admin WHERE id_admin = @idadmin AND password = @password";
                 SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@idadmin", username);
                 command.Parameters.AddWithValue("@password", password);
                 int count = (int)command.ExecuteScalar();
 
@@ -59,8 +59,8 @@ namespace PetShop
             {
                 // Show the main form and close the login form
                 MessageBox.Show("login berhasil");
-                Halaman_Utama_Admin halaman_Utama_Admin = new Halaman_Utama_Admin();
-                halaman_Utama_Admin.Show();
+                halaman_utama halaman_utama = new halaman_utama();
+                halaman_utama.Show();
                 this.Hide();
 
             }

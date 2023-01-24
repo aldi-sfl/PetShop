@@ -13,12 +13,12 @@ namespace PetShop.class_class
         public static bool ValidateCredentialsproduct(int product)
         {
             SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop2;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=petshop;Integrated Security=True");
             {
                 con.Open();
 
                 // Ccek apakah ada  database sudah ada
-                string query = "SELECT COUNT(*) FROM Products WHERE ProductID = @product";
+                string query = "SELECT COUNT(*) FROM tb_produk WHERE id_produk = @product";
                 SqlCommand command = new SqlCommand(query, con);
                 {
                     command.Parameters.AddWithValue("@product", product);
@@ -33,12 +33,12 @@ namespace PetShop.class_class
         public static bool ValidateCredentialsname(string name)
         {
             SqlConnection con = new SqlConnection
-            (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=db_PetShop2;Integrated Security=True");
+            (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=petshop;Integrated Security=True");
             {
                 con.Open();
 
                 // Ccek apakah ada  database sudah ada
-                string query = "SELECT COUNT(*) FROM Products WHERE  Name = @name";
+                string query = "SELECT COUNT(*) FROM tb_produk WHERE  nama = @name";
                 SqlCommand command = new SqlCommand(query, con);
                 {
 

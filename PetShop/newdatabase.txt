@@ -1,0 +1,103 @@
+﻿
+create table tb_hewan(
+id_hewan varchar(10) not null,
+id_vendor varchar(10)not null,
+jenis_hewan varchar(50) not null,
+gender varchar(50) not null,
+stok_hewan int not null,
+harga int not null
+
+);
+
+create table tb_produk(
+id_produk varchar(10) not null,
+id_vendor varchar(10) not null,
+nama varchar(100) not null,
+kategori varchar(50) not null,
+stok int not null,
+harga int not null 
+);
+
+create table tb_vendor(
+id_vendor varchar(10) not null,
+nama_vendor varchar(100) not null,
+no_hp varchar(15) not null,
+alamat varchar (100) not null
+);
+
+create table tb_order(
+id_order varchar (10) not null,
+customer_id varchar(10) not null,
+order_date varchar (30) not null,
+jumlah_produk int not null,
+total int not null
+);
+
+create table tb_order_detail(
+id_detail varchar(10) not null,
+id_order varchar(10) not null,
+id_hewan varchar(10),
+id_produk varchar(10), 
+jumlah int not null,
+total int not null
+);
+
+create table tb_customer(
+id_customer varchar(10) not null,
+nama varchar (100) not null,
+no_hp varchar(15) not null,
+alamat varchar(100) not null
+);
+
+create table admin(
+id_admin varchar(10) not null,
+nama varchar (100) not null,
+role  varchar (50),
+password varchar (100) not null
+);
+
+
+create procedure ADD_VENDOR
+@idvendor varchar(10) ,@namavendor varchar(255), @nohp varchar(20), @alamat varchar(255)
+as
+if exists(select * from tb_vendor where id_vendor = @idvendor )
+update tb_vendor set  nama_vendor = @namavendor, no_hp = @nohp, alamat = @alamat
+where id_vendor = @idvendor 
+else
+insert into tb_vendor values(@idvendor,@namavendor, @nohp,@alamat)
+
+CREATE PROCEDURE DEL_PRODUCT
+    @idproduk varchar(10)
+AS
+BEGIN
+    DELETE FROM tb_produk
+    WHERE id_produk = @idproduk
+END
+
+
+create procedure ADD_PRODUCT
+@idproduk varchar(10) ,@idvendor varchar(10), @nama varchar(100),@kategori varchar(50), @stok int, @harga int, @result int output
+as
+BEGIN
+    DECLARE @count int = (SELECT COUNT(*) FROM tb_produk WHERE id_produk = @idproduk and id_vendor = @idvendor)
+    IF @count = 0
+    BEGIN
+        INSERT INTO tb_produk (id_vendor, id_produk, nama, kategori, stok, harga)
+        VALUES (@idvendor, @idproduk, @nama, @kategori, @stok, @harga)
+        SET @result = 1
+    END
+    ELSE
+    BEGIN
+        update tb_produk set  nama = @nama, stok = @stok, harga = @harga
+        where  id_produk = @idproduk and id_vendor = @idvendor 
+        SET @result = 0
+    END
+END
+
+create procedure ADD_CUSTOMER
+@idcustomer varchar(10), @nama varchar(100), @nohp varchar(20), @alamat varchar(100)
+as
+begin
+insert into tb_customer (id_customer, nama,no_hp,alamat)
+values(@idcustomer, @nama, @nohp,@alamat)
+end

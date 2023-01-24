@@ -46,10 +46,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cbkategori = new System.Windows.Forms.ComboBox();
             this.btexit = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txtcari = new System.Windows.Forms.ToolStripTextBox();
             this.btcari = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbvendor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvproduk)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,17 +70,17 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(68, 62);
+            this.label8.Location = new System.Drawing.Point(32, 149);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 23);
+            this.label8.Size = new System.Drawing.Size(103, 23);
             this.label8.TabIndex = 2;
-            this.label8.Text = "product id";
+            this.label8.Text = "id produk";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(68, 127);
+            this.label2.Location = new System.Drawing.Point(32, 187);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 23);
             this.label2.TabIndex = 2;
@@ -88,7 +90,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(395, 66);
+            this.label3.Location = new System.Drawing.Point(393, 176);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 23);
             this.label3.TabIndex = 2;
@@ -98,40 +100,40 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(395, 99);
+            this.label4.Location = new System.Drawing.Point(393, 132);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 23);
+            this.label4.Size = new System.Drawing.Size(151, 23);
             this.label4.TabIndex = 2;
-            this.label4.Text = "jumlah";
+            this.label4.Text = "jumlah produk";
             // 
             // txtidproduk
             // 
-            this.txtidproduk.Location = new System.Drawing.Point(222, 62);
+            this.txtidproduk.Location = new System.Drawing.Point(186, 149);
             this.txtidproduk.Name = "txtidproduk";
-            this.txtidproduk.Size = new System.Drawing.Size(140, 23);
+            this.txtidproduk.Size = new System.Drawing.Size(182, 23);
             this.txtidproduk.TabIndex = 1;
             // 
             // txtnama
             // 
-            this.txtnama.Location = new System.Drawing.Point(222, 127);
+            this.txtnama.Location = new System.Drawing.Point(186, 187);
             this.txtnama.Name = "txtnama";
-            this.txtnama.Size = new System.Drawing.Size(140, 23);
+            this.txtnama.Size = new System.Drawing.Size(182, 23);
             this.txtnama.TabIndex = 3;
             // 
             // txtharga
             // 
-            this.txtharga.Location = new System.Drawing.Point(549, 66);
+            this.txtharga.Location = new System.Drawing.Point(547, 176);
             this.txtharga.Name = "txtharga";
-            this.txtharga.Size = new System.Drawing.Size(140, 23);
+            this.txtharga.Size = new System.Drawing.Size(167, 23);
             this.txtharga.TabIndex = 4;
             this.txtharga.TextChanged += new System.EventHandler(this.txtharga_TextChanged);
             this.txtharga.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtharga_KeyPress);
             // 
             // txtjumlah
             // 
-            this.txtjumlah.Location = new System.Drawing.Point(549, 103);
+            this.txtjumlah.Location = new System.Drawing.Point(547, 136);
             this.txtjumlah.Name = "txtjumlah";
-            this.txtjumlah.Size = new System.Drawing.Size(140, 23);
+            this.txtjumlah.Size = new System.Drawing.Size(167, 23);
             this.txtjumlah.TabIndex = 5;
             this.txtjumlah.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtjumlah_KeyPress);
             // 
@@ -141,17 +143,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvproduk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvproduk.Location = new System.Drawing.Point(93, 252);
+            this.dgvproduk.Location = new System.Drawing.Point(93, 325);
             this.dgvproduk.Name = "dgvproduk";
             this.dgvproduk.RowHeadersWidth = 51;
             this.dgvproduk.RowTemplate.Height = 25;
-            this.dgvproduk.Size = new System.Drawing.Size(621, 211);
+            this.dgvproduk.Size = new System.Drawing.Size(621, 220);
             this.dgvproduk.TabIndex = 9;
             // 
             // btupdate
             // 
             this.btupdate.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btupdate.Location = new System.Drawing.Point(295, 206);
+            this.btupdate.Location = new System.Drawing.Point(293, 267);
             this.btupdate.Name = "btupdate";
             this.btupdate.Size = new System.Drawing.Size(75, 23);
             this.btupdate.TabIndex = 99;
@@ -162,7 +164,7 @@
             // btinsert
             // 
             this.btinsert.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btinsert.Location = new System.Drawing.Point(188, 206);
+            this.btinsert.Location = new System.Drawing.Point(186, 267);
             this.btinsert.Name = "btinsert";
             this.btinsert.Size = new System.Drawing.Size(75, 23);
             this.btinsert.TabIndex = 6;
@@ -173,7 +175,7 @@
             // btdelete
             // 
             this.btdelete.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btdelete.Location = new System.Drawing.Point(407, 206);
+            this.btdelete.Location = new System.Drawing.Point(405, 267);
             this.btdelete.Name = "btdelete";
             this.btdelete.Size = new System.Drawing.Size(75, 23);
             this.btdelete.TabIndex = 89;
@@ -184,7 +186,7 @@
             // btreset
             // 
             this.btreset.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btreset.Location = new System.Drawing.Point(515, 206);
+            this.btreset.Location = new System.Drawing.Point(513, 267);
             this.btreset.Name = "btreset";
             this.btreset.Size = new System.Drawing.Size(75, 23);
             this.btreset.TabIndex = 67;
@@ -196,7 +198,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(68, 99);
+            this.label5.Location = new System.Drawing.Point(32, 77);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 23);
             this.label5.TabIndex = 2;
@@ -210,10 +212,11 @@
             "Pakan",
             "Alat-alat",
             "Layanan"});
-            this.cbkategori.Location = new System.Drawing.Point(222, 97);
+            this.cbkategori.Location = new System.Drawing.Point(186, 75);
             this.cbkategori.Name = "cbkategori";
-            this.cbkategori.Size = new System.Drawing.Size(140, 23);
+            this.cbkategori.Size = new System.Drawing.Size(182, 23);
             this.cbkategori.TabIndex = 2;
+            this.cbkategori.SelectedIndexChanged += new System.EventHandler(this.cbkategori_SelectedIndexChanged);
             // 
             // btexit
             // 
@@ -226,6 +229,30 @@
             this.btexit.UseVisualStyleBackColor = true;
             this.btexit.Click += new System.EventHandler(this.btexit_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(144, 24);
+            this.toolStripLabel1.Text = "Cari Produk atau kategori";
+            // 
+            // txtcari
+            // 
+            this.txtcari.Name = "txtcari";
+            this.txtcari.Size = new System.Drawing.Size(100, 27);
+            this.txtcari.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcari_KeyPress);
+            this.txtcari.Click += new System.EventHandler(this.txtcari_Click);
+            // 
+            // btcari
+            // 
+            this.btcari.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btcari.Image = ((System.Drawing.Image)(resources.GetObject("btcari.Image")));
+            this.btcari.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btcari.Name = "btcari";
+            this.btcari.Size = new System.Drawing.Size(24, 24);
+            this.btcari.Text = "toolStripButton1";
+            this.btcari.Click += new System.EventHandler(this.btcari_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -237,42 +264,38 @@
             this.toolStripLabel1,
             this.txtcari,
             this.btcari});
-            this.toolStrip1.Location = new System.Drawing.Point(253, 163);
+            this.toolStrip1.Location = new System.Drawing.Point(261, 222);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(268, 20);
+            this.toolStrip1.Size = new System.Drawing.Size(282, 27);
             this.toolStrip1.TabIndex = 100;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripLabel1
+            // label7
             // 
-            this.toolStripLabel1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(130, 17);
-            this.toolStripLabel1.Text = "Cari data atau kategori";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(32, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 23);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "vendor";
             // 
-            // txtcari
+            // cbvendor
             // 
-            this.txtcari.Name = "txtcari";
-            this.txtcari.Size = new System.Drawing.Size(100, 20);
-            this.txtcari.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcari_KeyPress);
-            this.txtcari.Click += new System.EventHandler(this.txtcari_Click);
-            // 
-            // btcari
-            // 
-            this.btcari.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btcari.Image = ((System.Drawing.Image)(resources.GetObject("btcari.Image")));
-            this.btcari.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btcari.Name = "btcari";
-            this.btcari.Size = new System.Drawing.Size(24, 17);
-            this.btcari.Text = "toolStripButton1";
-            this.btcari.Click += new System.EventHandler(this.btcari_Click);
+            this.cbvendor.FormattingEnabled = true;
+            this.cbvendor.Location = new System.Drawing.Point(186, 110);
+            this.cbvendor.Name = "cbvendor";
+            this.cbvendor.Size = new System.Drawing.Size(182, 23);
+            this.cbvendor.TabIndex = 101;
+            this.cbvendor.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(800, 475);
+            this.ClientSize = new System.Drawing.Size(800, 557);
+            this.Controls.Add(this.cbvendor);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btexit);
             this.Controls.Add(this.cbkategori);
@@ -287,6 +310,7 @@
             this.Controls.Add(this.txtidproduk);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
@@ -322,9 +346,11 @@
         private Label label5;
         private ComboBox cbkategori;
         private Button btexit;
-        private ToolStrip toolStrip1;
         private ToolStripLabel toolStripLabel1;
         private ToolStripTextBox txtcari;
         private ToolStripButton btcari;
+        private ToolStrip toolStrip1;
+        private Label label7;
+        private ComboBox cbvendor;
     }
 }
