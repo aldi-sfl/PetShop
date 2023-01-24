@@ -11,7 +11,7 @@ namespace PetShop.class_class
     {
 
         public static SqlConnection con = new SqlConnection
-                (@"Data Source=DESKTOP-48CBQ99; Initial Catalog=petshop;Integrated Security=True");
+                (@"Data Source=LAPTOP-D2PPFK1M; Initial Catalog=petshop;Integrated Security=True");
 
 
 

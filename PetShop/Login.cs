@@ -29,8 +29,8 @@ namespace PetShop
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //con = new SqlConnection(@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
-            //con.Open();
+            con = new SqlConnection(@"Data Source=LAPTOP-D2PPFK1M;Initial Catalog=petshop;Integrated Security=True");
+            con.Open();
             koneksi.con.Open();
             
             

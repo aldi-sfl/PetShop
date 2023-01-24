@@ -75,6 +75,13 @@ namespace PetShop
         {
 
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            register register = new register();
+            register.Show();
+            this.Hide();
+        }
     }
     
 }

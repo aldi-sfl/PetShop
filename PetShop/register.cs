@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Data.Linq;
 using System.Text.RegularExpressions;
 using PetShop.class_class;
+using System.Data.SqlClient;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -40,11 +41,12 @@ namespace PetShop
 
         private void register_Load(object sender, EventArgs e)
         {
-            //con = new SqlConnection(@"Data Source=DESKTOP-48CBQ99;Initial Catalog=db_PetShop1;Integrated Security=True");
+            //con = new SqlConnection(@"Data Source=LAPTOP-D2PPFK1M;Initial Catalog=petshop;Integrated Security=True");
             //con.Open();
             koneksi.con.Open();
-            txtpassword.UseSystemPasswordChar = true;
+            txtPassword.UseSystemPasswordChar = true;
             txtconfirmpassword.UseSystemPasswordChar = true;
+            txtID.Focus();
         }
 
 
@@ -58,28 +60,19 @@ namespace PetShop
         private void btsave_Click(object sender, EventArgs e)
         {
 
-            if (txtconfirmpassword.Text != string.Empty || txtpassword.Text != string.Empty || txtusername.Text != string.Empty || txtemail.Text != string.Empty)
+            if (txtID.Text != string.Empty || txtnama.Text != string.Empty || txtRole.Text != string.Empty || txtPassword.Text != string.Empty || txtconfirmpassword.Text != string.Empty )
             {
-                if (txtpassword.Text == txtconfirmpassword.Text)
+                if (txtPassword.Text == txtconfirmpassword.Text)
                 {
-                    cmd = new SqlCommand("select * from Customers where username='" + txtusername.Text + "'", koneksi.con);
+                    cmd = new SqlCommand("select * from admin where nama='" + txtnama.Text + "'", koneksi.con);
                     dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
                         dr.Close();
-                        MessageBox.Show("Username sudah ada silahkan coba yang lain ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("nama sudah ada silahkan coba yang lain ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    //else if (dr.Read())
-                    //{
-                    //    dr.Close();
-                    //    MessageBox.Show("Email sudah ada silahkan coba yang lain ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
-                    else if (!reg.IsMatch(txtemail.Text))
-                    {
-                        dr.Close();
-                        MessageBox.Show("Email harus berupa alamat email yang valid ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (!Regex.IsMatch(txtpassword.Text, @"[A-Z]") || !Regex.IsMatch(txtpassword.Text, @"\d"))
+                    
+                    else if (!Regex.IsMatch(txtPassword.Text, @"[A-Z]") || !Regex.IsMatch(txtPassword.Text, @"\d"))
                     {
                         dr.Close();
                         MessageBox.Show("Kata Sandi Harus Mengandung setidaknya satu huruf besar atau satu angka", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -92,16 +85,18 @@ namespace PetShop
                     else
                     {
                         dr.Close();
-                        cmd = new SqlCommand("insert into Customers values(@username,@password,@name,@phonenumber,@email,@address)", koneksi.con);
-                        cmd.Parameters.AddWithValue("username", txtusername.Text);
-                        cmd.Parameters.AddWithValue("password", txtpassword.Text);
-                        cmd.Parameters.AddWithValue("name", txtnama.Text);
-                        cmd.Parameters.AddWithValue("phonenumber", txthp.Text);
-                        cmd.Parameters.AddWithValue("email", txtemail.Text);
-                        cmd.Parameters.AddWithValue("address", txtalamat.Text);
+                        cmd = new SqlCommand("insert into admin values(@id_admin,@nama,@Role,@password)", koneksi.con);
+
+                        cmd.Parameters.AddWithValue("id_admin", txtID.Text);
+                        cmd.Parameters.AddWithValue("nama", txtnama.Text);
+                        cmd.Parameters.AddWithValue("Role", txtRole.Text);
+                        cmd.Parameters.AddWithValue("password", txtPassword.Text);
+                        
+                      
+                        
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Akun Anda telah dibuat. Silakan masuk sekarang.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Form1 balik = new Form1();
+                        login_admin balik = new login_admin();
                         balik.Show();
                         this.Hide();
 
@@ -126,7 +121,7 @@ namespace PetShop
 
         private void btcanccel_Click(object sender, EventArgs e)
         {
-            Form1 registrationForm = new Form1();
+            login_admin registrationForm = new login_admin();
             registrationForm.Show();
             this.Hide();
 
@@ -147,10 +142,6 @@ namespace PetShop
 
         }
 
-        private void txthp_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
 
         private void label7_Click(object sender, EventArgs e)
         {
@@ -161,11 +152,11 @@ namespace PetShop
         {
             if (checkBox1.Checked)
             {
-                txtpassword.UseSystemPasswordChar = false;
+                txtPassword.UseSystemPasswordChar = false;
             }
             else
             {
-                txtpassword.UseSystemPasswordChar = true;
+                txtPassword.UseSystemPasswordChar = true;
             }
         }
 
@@ -179,6 +170,11 @@ namespace PetShop
             {
                 txtconfirmpassword.UseSystemPasswordChar = true;
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
