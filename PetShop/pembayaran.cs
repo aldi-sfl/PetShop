@@ -29,6 +29,7 @@ namespace PetShop
         {
             
             dataproduk();
+            tampilhewan();
         }
 
        
@@ -53,13 +54,34 @@ namespace PetShop
             
         }
 
+        private void tampilhewan()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = koneksi.con;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from tb_hewan ";
+            DataSet ds = new DataSet();
 
-       
-       
 
-       
-        
-        
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds, "tb_hewan");
+
+            dgvhewan.DataSource = ds;
+
+            dgvhewan.DataMember = "tb_hewan";
+
+            dgvhewan.ReadOnly = true;
+
+
+        }
+
+
+
+
+
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -79,25 +101,9 @@ namespace PetShop
             
           
         }
-        private void cbview()
-        {
-            string selectedItem = cbkategori.SelectedItem.ToString();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = koneksi.con;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Products where Category like '%" + selectedItem + "%' ";
-            
-            DataSet ds = new DataSet();
+        
 
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(ds, "Products");
-
-            dgvproduk.DataSource = ds;
-
-            dgvproduk.DataMember = "Products";
-
-            dgvproduk.ReadOnly = true;
-        }
+       
 
         private void btco_Click(object sender, EventArgs e)
         {
@@ -133,7 +139,8 @@ namespace PetShop
 
         private void cbkategori_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbview();
+            
+            
         }
 
         private void txtproduct_TextChanged(object sender, EventArgs e)

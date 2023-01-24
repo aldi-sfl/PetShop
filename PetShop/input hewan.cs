@@ -207,7 +207,8 @@ namespace PetShop
                 if (count > 0)
                 {
                     SqlCommand cmdd = new SqlCommand("UPDATE tb_hewan SET stok_hewan = @stokhewan, harga = @harga WHERE id_hewan = @idhewan", koneksi.con);
-                    
+
+                    cmdd.Parameters.AddWithValue("@idhewan", txtidhewan.Text);
                     cmdd.Parameters.AddWithValue("@stokhewan", int.Parse(txtjumlah.Text));
                     cmdd.Parameters.AddWithValue("@harga", int.Parse(txtharga.Text));
                     
@@ -229,14 +230,29 @@ namespace PetShop
 
         private void dgvhewan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string value1 = dgvhewan.Rows[e.RowIndex].Cells["id_hewan"].Value.ToString();
+            string value2 = dgvhewan.Rows[e.RowIndex].Cells["id_vendor"].Value.ToString();
+            string value3 = dgvhewan.Rows[e.RowIndex].Cells["jenis_hewan"].Value.ToString();
+            string value4 = dgvhewan.Rows[e.RowIndex].Cells["gender"].Value.ToString();
+            string value5 = dgvhewan.Rows[e.RowIndex].Cells["stok_hewan"].Value.ToString();
+            string value6 = dgvhewan.Rows[e.RowIndex].Cells["harga"].Value.ToString();
+
+
+            txtidhewan.Text = value1;
+            cbvendor.Text = value2;
+            cbhewan.Text = value3;
+            cbgender.Text = value4;
+            txtjumlah.Text = value5;
+            txtharga.Text = value6;
+
             // Check if the clicked column is the one you want
-            if (e.ColumnIndex == 0) // 0 is the index of the column
+            if (e.ColumnIndex == 1) // 0 is the index of the column
             {
                 // Get the value of the clicked cell
                 string cellValue = dgvhewan.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
 
                 // Set the value of the TextBox
-                txtidhewan.Text = cellValue;
+                dgvhewan.Text = cellValue;
             }
         }
 

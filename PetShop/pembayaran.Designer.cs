@@ -35,6 +35,7 @@
             this.labelusername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.paneltutup = new System.Windows.Forms.Panel();
             this.cbjenis = new System.Windows.Forms.ComboBox();
             this.txtidproduct = new System.Windows.Forms.TextBox();
             this.txtidorder = new System.Windows.Forms.TextBox();
@@ -57,9 +58,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btexit = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbidcust = new System.Windows.Forms.Label();
-            this.paneltutup = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -154,6 +152,14 @@
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // paneltutup
+            // 
+            this.paneltutup.BackColor = System.Drawing.Color.CadetBlue;
+            this.paneltutup.Location = new System.Drawing.Point(39, 222);
+            this.paneltutup.Name = "paneltutup";
+            this.paneltutup.Size = new System.Drawing.Size(557, 166);
+            this.paneltutup.TabIndex = 20;
+            // 
             // cbjenis
             // 
             this.cbjenis.FormattingEnabled = true;
@@ -244,11 +250,6 @@
             // cbkategori
             // 
             this.cbkategori.FormattingEnabled = true;
-            this.cbkategori.Items.AddRange(new object[] {
-            "-",
-            "Pakan",
-            "Alat-alat",
-            "Layanan"});
             this.cbkategori.Location = new System.Drawing.Point(207, 61);
             this.cbkategori.Name = "cbkategori";
             this.cbkategori.Size = new System.Drawing.Size(121, 23);
@@ -330,12 +331,12 @@
             // 
             // btproduk
             // 
-            this.btproduk.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btproduk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btproduk.Location = new System.Drawing.Point(67, 125);
             this.btproduk.Name = "btproduk";
             this.btproduk.Size = new System.Drawing.Size(100, 29);
             this.btproduk.TabIndex = 11;
-            this.btproduk.Text = "product";
+            this.btproduk.Text = "daftar produk";
             this.btproduk.UseVisualStyleBackColor = true;
             this.btproduk.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -346,7 +347,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 29);
             this.button3.TabIndex = 11;
-            this.button3.Text = "belanja";
+            this.button3.Text = "pemesanan";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // pictureBox3
@@ -370,34 +371,6 @@
             this.btexit.Text = "keluar";
             this.btexit.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(64, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "id :";
-            // 
-            // lbidcust
-            // 
-            this.lbidcust.AutoSize = true;
-            this.lbidcust.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbidcust.Location = new System.Drawing.Point(91, 40);
-            this.lbidcust.Name = "lbidcust";
-            this.lbidcust.Size = new System.Drawing.Size(42, 17);
-            this.lbidcust.TabIndex = 10;
-            this.lbidcust.Text = "no id";
-            // 
-            // paneltutup
-            // 
-            this.paneltutup.BackColor = System.Drawing.Color.CadetBlue;
-            this.paneltutup.Location = new System.Drawing.Point(39, 222);
-            this.paneltutup.Name = "paneltutup";
-            this.paneltutup.Size = new System.Drawing.Size(557, 166);
-            this.paneltutup.TabIndex = 20;
-            // 
             // pembayaran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -412,8 +385,6 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.bthome);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.lbidcust);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelusername);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
@@ -461,8 +432,6 @@
         private Button button1;
         private TextBox txtidproduct;
         private TextBox txtidorder;
-        private Label label1;
-        private Label lbidcust;
         private DataGridView dgvhewan;
         private Label label4;
         private ComboBox cbjenis;
