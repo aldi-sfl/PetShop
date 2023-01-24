@@ -59,9 +59,10 @@
             // cbvendor
             // 
             this.cbvendor.FormattingEnabled = true;
-            this.cbvendor.Location = new System.Drawing.Point(213, 122);
+            this.cbvendor.Location = new System.Drawing.Point(243, 163);
+            this.cbvendor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbvendor.Name = "cbvendor";
-            this.cbvendor.Size = new System.Drawing.Size(182, 23);
+            this.cbvendor.Size = new System.Drawing.Size(207, 28);
             this.cbvendor.TabIndex = 121;
             // 
             // toolStrip1
@@ -75,9 +76,9 @@
             this.toolStripLabel1,
             this.txtcari,
             this.btcari});
-            this.toolStrip1.Location = new System.Drawing.Point(288, 234);
+            this.toolStrip1.Location = new System.Drawing.Point(329, 312);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(282, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(322, 27);
             this.toolStrip1.TabIndex = 120;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -85,7 +86,7 @@
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(144, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(180, 24);
             this.toolStripLabel1.Text = "Cari Produk atau kategori";
             // 
             // txtcari
@@ -99,19 +100,21 @@
             this.btcari.Image = ((System.Drawing.Image)(resources.GetObject("btcari.Image")));
             this.btcari.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btcari.Name = "btcari";
-            this.btcari.Size = new System.Drawing.Size(24, 24);
+            this.btcari.Size = new System.Drawing.Size(29, 24);
             this.btcari.Text = "toolStripButton1";
             this.btcari.Click += new System.EventHandler(this.btcari_Click);
             // 
             // btexit
             // 
             this.btexit.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btexit.Location = new System.Drawing.Point(740, 24);
+            this.btexit.Location = new System.Drawing.Point(846, 32);
+            this.btexit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btexit.Name = "btexit";
-            this.btexit.Size = new System.Drawing.Size(75, 23);
+            this.btexit.Size = new System.Drawing.Size(86, 31);
             this.btexit.TabIndex = 115;
             this.btexit.Text = "keluar";
             this.btexit.UseVisualStyleBackColor = true;
+            this.btexit.Click += new System.EventHandler(this.btexit_Click);
             // 
             // cbhewan
             // 
@@ -123,18 +126,20 @@
             "Anjing",
             "Kelinci",
             "Hamster"});
-            this.cbhewan.Location = new System.Drawing.Point(213, 87);
+            this.cbhewan.Location = new System.Drawing.Point(243, 116);
+            this.cbhewan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbhewan.Name = "cbhewan";
-            this.cbhewan.Size = new System.Drawing.Size(182, 23);
+            this.cbhewan.Size = new System.Drawing.Size(207, 28);
             this.cbhewan.TabIndex = 106;
             this.cbhewan.SelectedIndexChanged += new System.EventHandler(this.cbhewan_SelectedIndexChanged);
             // 
             // btinsert
             // 
             this.btinsert.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btinsert.Location = new System.Drawing.Point(213, 279);
+            this.btinsert.Location = new System.Drawing.Point(243, 372);
+            this.btinsert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btinsert.Name = "btinsert";
-            this.btinsert.Size = new System.Drawing.Size(75, 23);
+            this.btinsert.Size = new System.Drawing.Size(86, 31);
             this.btinsert.TabIndex = 114;
             this.btinsert.Text = "insert";
             this.btinsert.UseVisualStyleBackColor = true;
@@ -143,9 +148,10 @@
             // btreset
             // 
             this.btreset.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btreset.Location = new System.Drawing.Point(540, 279);
+            this.btreset.Location = new System.Drawing.Point(617, 372);
+            this.btreset.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btreset.Name = "btreset";
-            this.btreset.Size = new System.Drawing.Size(75, 23);
+            this.btreset.Size = new System.Drawing.Size(86, 31);
             this.btreset.TabIndex = 117;
             this.btreset.Text = "reset";
             this.btreset.UseVisualStyleBackColor = true;
@@ -154,9 +160,10 @@
             // btdelete
             // 
             this.btdelete.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btdelete.Location = new System.Drawing.Point(432, 279);
+            this.btdelete.Location = new System.Drawing.Point(494, 372);
+            this.btdelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btdelete.Name = "btdelete";
-            this.btdelete.Size = new System.Drawing.Size(75, 23);
+            this.btdelete.Size = new System.Drawing.Size(86, 31);
             this.btdelete.TabIndex = 118;
             this.btdelete.Text = "delete";
             this.btdelete.UseVisualStyleBackColor = true;
@@ -165,9 +172,10 @@
             // btupdate
             // 
             this.btupdate.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btupdate.Location = new System.Drawing.Point(320, 279);
+            this.btupdate.Location = new System.Drawing.Point(366, 372);
+            this.btupdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btupdate.Name = "btupdate";
-            this.btupdate.Size = new System.Drawing.Size(75, 23);
+            this.btupdate.Size = new System.Drawing.Size(86, 31);
             this.btupdate.TabIndex = 119;
             this.btupdate.Text = "update";
             this.btupdate.UseVisualStyleBackColor = true;
@@ -175,32 +183,35 @@
             // 
             // txtjumlah
             // 
-            this.txtjumlah.Location = new System.Drawing.Point(574, 148);
+            this.txtjumlah.Location = new System.Drawing.Point(656, 197);
+            this.txtjumlah.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtjumlah.Name = "txtjumlah";
-            this.txtjumlah.Size = new System.Drawing.Size(167, 23);
+            this.txtjumlah.Size = new System.Drawing.Size(190, 27);
             this.txtjumlah.TabIndex = 113;
             // 
             // txtharga
             // 
-            this.txtharga.Location = new System.Drawing.Point(574, 188);
+            this.txtharga.Location = new System.Drawing.Point(656, 251);
+            this.txtharga.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtharga.Name = "txtharga";
-            this.txtharga.Size = new System.Drawing.Size(167, 23);
+            this.txtharga.Size = new System.Drawing.Size(190, 27);
             this.txtharga.TabIndex = 112;
             // 
             // txtidhewan
             // 
-            this.txtidhewan.Location = new System.Drawing.Point(213, 161);
+            this.txtidhewan.Location = new System.Drawing.Point(243, 215);
+            this.txtidhewan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtidhewan.Name = "txtidhewan";
-            this.txtidhewan.Size = new System.Drawing.Size(182, 23);
+            this.txtidhewan.Size = new System.Drawing.Size(207, 27);
             this.txtidhewan.TabIndex = 103;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(420, 144);
+            this.label4.Location = new System.Drawing.Point(480, 192);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 23);
+            this.label4.Size = new System.Drawing.Size(95, 29);
             this.label4.TabIndex = 109;
             this.label4.Text = "jumlah";
             // 
@@ -208,9 +219,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(420, 188);
+            this.label3.Location = new System.Drawing.Point(480, 251);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 23);
+            this.label3.Size = new System.Drawing.Size(87, 29);
             this.label3.TabIndex = 108;
             this.label3.Text = "harga";
             // 
@@ -218,9 +229,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(59, 122);
+            this.label7.Location = new System.Drawing.Point(67, 163);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 23);
+            this.label7.Size = new System.Drawing.Size(129, 29);
             this.label7.TabIndex = 107;
             this.label7.Text = "id vendor";
             // 
@@ -228,9 +239,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(59, 89);
+            this.label5.Location = new System.Drawing.Point(67, 119);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 23);
+            this.label5.Size = new System.Drawing.Size(157, 29);
             this.label5.TabIndex = 105;
             this.label5.Text = "jenis hewan";
             // 
@@ -238,9 +249,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(59, 199);
+            this.label2.Location = new System.Drawing.Point(67, 265);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 23);
+            this.label2.Size = new System.Drawing.Size(102, 29);
             this.label2.TabIndex = 104;
             this.label2.Text = "gender";
             // 
@@ -248,9 +259,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(59, 161);
+            this.label8.Location = new System.Drawing.Point(67, 215);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 23);
+            this.label8.Size = new System.Drawing.Size(126, 29);
             this.label8.TabIndex = 110;
             this.label8.Text = "id hewan";
             // 
@@ -258,19 +269,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(356, 27);
+            this.label1.Location = new System.Drawing.Point(407, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 32);
+            this.label1.Size = new System.Drawing.Size(218, 40);
             this.label1.TabIndex = 102;
             this.label1.Text = "input hewan";
             // 
             // dgvhewan
             // 
             this.dgvhewan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvhewan.Location = new System.Drawing.Point(100, 323);
+            this.dgvhewan.Location = new System.Drawing.Point(114, 431);
+            this.dgvhewan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvhewan.Name = "dgvhewan";
+            this.dgvhewan.RowHeadersWidth = 51;
             this.dgvhewan.RowTemplate.Height = 25;
-            this.dgvhewan.Size = new System.Drawing.Size(631, 237);
+            this.dgvhewan.Size = new System.Drawing.Size(721, 316);
             this.dgvhewan.TabIndex = 122;
             this.dgvhewan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvhewan_CellContentClick);
             // 
@@ -281,17 +294,18 @@
             "-",
             "Jantan",
             "Betina"});
-            this.cbgender.Location = new System.Drawing.Point(213, 203);
+            this.cbgender.Location = new System.Drawing.Point(243, 271);
+            this.cbgender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbgender.Name = "cbgender";
-            this.cbgender.Size = new System.Drawing.Size(182, 23);
+            this.cbgender.Size = new System.Drawing.Size(207, 28);
             this.cbgender.TabIndex = 123;
             // 
             // input_hewan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(866, 616);
+            this.ClientSize = new System.Drawing.Size(990, 821);
             this.Controls.Add(this.cbgender);
             this.Controls.Add(this.dgvhewan);
             this.Controls.Add(this.cbvendor);
@@ -312,6 +326,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "input_hewan";
             this.Text = "input_hewan";
             this.Load += new System.EventHandler(this.input_hewan_Load);

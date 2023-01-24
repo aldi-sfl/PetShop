@@ -206,7 +206,7 @@ namespace PetShop
                 int count = (int)cmd.ExecuteScalar();
                 if (count > 0)
                 {
-                    SqlCommand cmdd = new SqlCommand("UPDATE tb_hewan SET stok_hewan = @stok, harga = @harga WHERE id_hewan = @idhewan", koneksi.con);
+                    SqlCommand cmdd = new SqlCommand("UPDATE tb_hewan SET stok_hewan = @stokhewan, harga = @harga WHERE id_hewan = @idhewan", koneksi.con);
                     
                     cmdd.Parameters.AddWithValue("@stokhewan", int.Parse(txtjumlah.Text));
                     cmdd.Parameters.AddWithValue("@harga", int.Parse(txtharga.Text));
@@ -293,6 +293,14 @@ namespace PetShop
 
             dgvhewan.ReadOnly = true;
             
+        }
+
+        private void btexit_Click(object sender, EventArgs e)
+        {
+            Halaman_Utama_Admin vendor = new Halaman_Utama_Admin();
+            vendor.Show();
+            this.Hide();
+
         }
     }
 }

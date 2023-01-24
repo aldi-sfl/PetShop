@@ -68,7 +68,7 @@ namespace PetShop
 
         private void btproduk_Click(object sender, EventArgs e)
         {
-            order keproduk = new order();
+            Halaman_Utama_Admin keproduk = new Halaman_Utama_Admin();
             keproduk.Show();
             this.Hide();
         }
@@ -84,6 +84,13 @@ namespace PetShop
         {
             Form1 keluar = new Form1();
             keluar.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            vendor vendor = new vendor();
+            vendor.Show();
             this.Hide();
         }
     }

@@ -31,7 +31,11 @@ namespace PetShop
         }
 
         private void btsimpan_Click(object sender, EventArgs e)
+
         {
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
             koneksi.con.Open();
             SqlCommand cmd = new SqlCommand("ADD_VENDOR", koneksi.con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -50,6 +54,9 @@ namespace PetShop
 
         private void btshow_Click(object sender, EventArgs e)
         {
+            SqlConnection con = koneksi.con;
+            if (con.State == ConnectionState.Open)
+                con.Close();
             koneksi.con.Open();
             SqlDataAdapter tampildata = new SqlDataAdapter("select * from tb_vendor", koneksi.con);
             DataTable datatabel = new DataTable();
@@ -59,7 +66,30 @@ namespace PetShop
 
         private void bthome_Click(object sender, EventArgs e)
         {
-            
+            halaman_utama home= new halaman_utama();
+            home.Show();
+            this.Hide();
+        }
+
+        private void dgvvendor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bthapus_Click(object sender, EventArgs e)
+        {
+            txtidvendor.Text = "";
+            txtnama.Text = "";
+            txtalamat.Text = "";
+            txthp.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Halaman_Utama_Admin admin = new Halaman_Utama_Admin();
+            admin.Show();
+            this.Hide();
         }
     }
+    
 }

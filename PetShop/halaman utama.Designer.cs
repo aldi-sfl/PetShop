@@ -49,6 +49,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -58,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -67,7 +70,7 @@
             this.label7.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(541, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 26);
+            this.label7.Size = new System.Drawing.Size(124, 32);
             this.label7.TabIndex = 0;
             this.label7.Text = "PETSHOP";
             this.label7.Click += new System.EventHandler(this.label1_Click);
@@ -88,7 +91,7 @@
             this.labelusername.AutoSize = true;
             this.labelusername.Location = new System.Drawing.Point(80, 21);
             this.labelusername.Name = "labelusername";
-            this.labelusername.Size = new System.Drawing.Size(84, 17);
+            this.labelusername.Size = new System.Drawing.Size(101, 19);
             this.labelusername.TabIndex = 0;
             this.labelusername.Text = "Emp Name";
             this.labelusername.Click += new System.EventHandler(this.label1_Click);
@@ -108,7 +111,7 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = global::PetShop.Properties.Resources.Billing;
-            this.pictureBox4.Location = new System.Drawing.Point(15, 216);
+            this.pictureBox4.Location = new System.Drawing.Point(15, 205);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(60, 42);
@@ -120,7 +123,7 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::PetShop.Properties.Resources.Log_out;
-            this.pictureBox5.Location = new System.Drawing.Point(13, 325);
+            this.pictureBox5.Location = new System.Drawing.Point(13, 349);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(60, 42);
@@ -150,6 +153,7 @@
             // 
             // btproduk
             // 
+            this.btproduk.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btproduk.Location = new System.Drawing.Point(80, 153);
             this.btproduk.Name = "btproduk";
             this.btproduk.Size = new System.Drawing.Size(131, 35);
@@ -160,7 +164,7 @@
             // 
             // bttransaksi
             // 
-            this.bttransaksi.Location = new System.Drawing.Point(80, 223);
+            this.bttransaksi.Location = new System.Drawing.Point(80, 212);
             this.bttransaksi.Name = "bttransaksi";
             this.bttransaksi.Size = new System.Drawing.Size(131, 35);
             this.bttransaksi.TabIndex = 4;
@@ -170,7 +174,7 @@
             // 
             // btkeluar
             // 
-            this.btkeluar.Location = new System.Drawing.Point(80, 325);
+            this.btkeluar.Location = new System.Drawing.Point(80, 349);
             this.btkeluar.Name = "btkeluar";
             this.btkeluar.Size = new System.Drawing.Size(131, 35);
             this.btkeluar.TabIndex = 4;
@@ -254,7 +258,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(299, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 24);
+            this.textBox2.Size = new System.Drawing.Size(150, 28);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "Menyediakan";
             // 
@@ -280,12 +284,36 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Makanan Kucing";
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.White;
+            this.pictureBox9.Image = global::PetShop.Properties.Resources.computer_icons_user_profile_portable_network_graphics_vector_graphics_png_favpng_31THvNXgnrmpMkkCSfpupKPpH_removebg_preview;
+            this.pictureBox9.Location = new System.Drawing.Point(15, 263);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(60, 42);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 6;
+            this.pictureBox9.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(80, 270);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 35);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Vendor";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // halaman_utama
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(1000, 428);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -313,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +369,7 @@
         private TextBox textBox5;
         private TextBox textBox4;
         private PictureBox pictureBox8;
+        private PictureBox pictureBox9;
+        private Button button1;
     }
 }

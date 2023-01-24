@@ -24,7 +24,7 @@ namespace PetShop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataUser aa = new DataUser();
+           input_hewan aa = new input_hewan();
             aa.Show();
             this.Hide();
         }
@@ -43,7 +43,7 @@ namespace PetShop
 
         private void btexit_Click(object sender, EventArgs e)
         {
-            Form1 home = new Form1();
+            halaman_utama home = new halaman_utama();
             home.Show();
             this.Hide();
         }
